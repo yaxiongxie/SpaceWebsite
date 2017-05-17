@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>租房</title>
+    <!-- Bootstrap core CSS -->
+       {% load static %}
+{% include "frontsite/importsource.html" %}
+<style>
+        body{ overflow-y: scroll;}
+        .jumbotron{
+            font-size: 13px;
+        }
+        a{
+            cursor:pointer;
+        }
+        .searchCondition{
+            margin-top: 30px;
+            padding-bottom: 30px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .conditionDiv{
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+        .conditionDiv>a{
+            padding-left: 8px;
+        }
+        .conditionDiv>span{
+            font-size: 13px;
+        }
+        .listDiv{
+            margin-top: 20px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .listItem>div>img{
+            width: 100%;
+            height: 150px;
+            padding-left: 10px;
+
+        }
+        .listItem>div{
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        .col-md-5>p{
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .col-md-5>h3{
+            color:#00A9FA;
+        }
+        .col-md-2>p>span{
+            font-size: 20px;
+            color: red;
+        }
+        .col-md-2>p{
+            padding-top: 10px;
+            font-size: 13px;
+        }
+        hr{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+  </head>
+
+  <body>
+<!-- Fixed navbar -->
+   {% include "frontsite/nav.html" %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="searchCondition">
+                <div class="conditionDiv">
+                    <span><b>区域: </b></span>
+                    <a href="/polls/rentlist/c0s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t{{ type_id }}/">全部</a>
+                    {% for country in country_list %}
+                    <a href="/polls/rentlist/c{{ country.id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t{{ type_id }}/">{{ country.country_name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="conditionDiv">
+                    <span><b>地铁: </b></span>
+                    <a href="/polls/rentlist/c{{ country_id }}s0r{{ rent_id }}a{{ area_id }}t{{ type_id }}/">不限</a>
+                    {% for subway in subway_list %}
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway.id }}r{{ rent_id }}a{{ area_id }}t{{ type_id }}/">{{ subway.subway_name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="conditionDiv">
+                    <span><b>租金: </b></span>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r0a{{ area_id }}t{{ type_id }}/">不限</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r1a{{ area_id }}t{{ type_id }}/">1000元以下</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r2a{{ area_id }}t{{ type_id }}/">1000-2000元</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r3a{{ area_id }}t{{ type_id }}/">2000-3000元</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r4a{{ area_id }}t{{ type_id }}/">3000-5000元</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r5a{{ area_id }}t{{ type_id }}/">5000元以上</a>
+                </div>
+                <div class="conditionDiv">
+                    <span><b>面积: </b></span>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a0t{{ type_id }}/">不限</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a1t{{ type_id }}/">50平以下</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a2t{{ type_id }}/">50-70平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a3t{{ type_id }}/">70-90平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a4t{{ type_id }}/">90-120平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a5t{{ type_id }}/">120-140平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a6t{{ type_id }}/">140-160平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a7t{{ type_id }}/">160-200平</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a8t{{ type_id }}/">200平以上</a>
+                </div>
+                <div class="conditionDiv">
+                    <span><b>房型: </b></span>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t0/">不限</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t1/">一室</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t2/">二室</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t3/">三室</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t4/">四室</a>
+                    <a href="/polls/rentlist/c{{ country_id }}s{{ subway_id }}r{{ rent_id }}a{{ area_id }}t5/">四室以上</a>
+                </div>
+            </div>
+
+            <div class="listDiv">
+                {% for rent in data_list %}
+                <div class="listItem row">
+                    <div class="col-md-3">
+                        <!---->
+                        <img src="/{{ rent.image1 }}"/>
+                    </div>
+                    <div class="col-md-5">
+                        <h3><a href="/polls/rentdetail/{{ rent.id }}">{{ rent.title }}</a></h3>
+                        <p><b>{{ rent.roomType }}  {{ rent.area }}平米  {{ rent.roomDirection }}</b></p>
+                        <p>{{ rent.address }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p><span>{{ rent.price }}</span>元/月</p>
+                        <p>{{ rent.createTime|date:'Y-m-d' }} 更新</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p>{{ rent.seeNum }}人</p>
+                        <p>看过此房</p>
+                    </div>
+                </div>
+                <hr/>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div> <!-- /container -->
+  {% include "frontsite/footer.html" %}
+  </body>
+</html>

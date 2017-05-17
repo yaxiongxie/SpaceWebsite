@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>商业服务</title>
+    <!-- Bootstrap core CSS -->
+     {% load static %}
+      {% include "frontsite/importsource.html" %}
+    <style>
+        body{
+            background-color: #eee;
+            overflow-y: scroll;
+        }
+        .jumbotron{
+            font-size: 13px;
+        }
+        a{
+            cursor:pointer;
+        }
+        .baseDiv{
+            margin-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .imgDiv{
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .titleDiv{
+            padding-top: 40px;
+            padding-bottom: 30px;
+        }
+        .contentDiv{
+            font-size: 15px;
+            padding-top: 10px;
+        }
+        .col-md-4{
+            text-align: center;
+            padding-top: 40px;
+        }
+        .col-md-4>p{
+            margin-top: 10px;
+        }
+        hr{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    {% include "frontsite/nav.html" %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class = "baseDiv">
+                <div class ="titleDiv">
+                    <h3><b>互为设计企业服务介绍</b></h3>
+                </div>
+                <hr/>
+                <div class="contentDiv">
+                    空间家，不只是企业选址，更是汇聚最优秀的各行业巨头，打造中国最大的企业服务联盟，构建以企业租后市场为主的办公服务体系，为企业提供高效、低成本、智慧的注册、装修、法律、财务等一站式管家服务。让每一个企业都能高效办公，快乐生活。
+空间家，您的企业服务管家。
+              </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_01.jpg" %}"/>
+                    <p>财务系统</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_02.jpg" %}"/>
+                    <p>人事社保管理系统</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_03.jpg" %}"/>
+                    <p>装饰设计</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_05.jpg" %}"/>
+                    <p>办公用品租售</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_06.jpg" %}"/>
+                    <p>企业e服务</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="{% static "polls/img_06.jpg" %}"/>
+                    <p>企业推广</p>
+                </div>
+            </div>
+
+    </div> <!-- /container -->
+    </div>
+{% include "frontsite/footer.html" %}
+
+
+</body>
+</html>

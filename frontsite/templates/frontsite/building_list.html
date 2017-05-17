@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>写字楼</title>
+    <!-- Bootstrap core CSS -->
+       {% load static %}
+{% include "frontsite/importsource.html" %}
+<style>
+        body{ overflow-y: scroll;}
+        .jumbotron{
+            font-size: 13px;
+        }
+        a{
+            cursor:pointer;
+        }
+        .searchCondition{
+            margin-top: 30px;
+            padding-bottom: 30px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .conditionDiv{
+            padding-left: 30px;
+            padding-top: 20px;
+        }
+        .conditionDiv>a{
+            padding-left: 8px;
+        }
+        .conditionDiv>span{
+            font-size: 13px;
+        }
+        .listDiv{
+            margin-top: 20px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .listItem>div>img{
+            width: 100%;
+            height: 150px;
+            padding-left: 10px;
+
+        }
+        .listItem>div{
+            padding-top: 10px;
+            padding-bottom: 10px;
+
+        }
+        .col-md-7>p{
+            font-size: 14px;
+            margin-top: 20px;
+        }
+        .col-md-7>h3{
+            color:#00A9FA;
+        }
+        .col-md-2>p>span{
+            font-size: 20px;
+            color: red;
+        }
+        .col-md-2>p{
+            padding-top: 10px;
+            font-size: 13px;
+        }
+        hr{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+  </head>
+
+  <body>
+<!-- Fixed navbar -->
+   {% include "frontsite/nav.html" %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class="searchCondition">
+                <div class="conditionDiv">
+                    <span><b>区域: </b></span>
+                    <a href="/polls/buildinglist/c0s{{ subway_id }}a{{ area_id }}p{{ price_id }}"/>全部</a>
+                    {% for country in country_list %}
+                    <a href="/polls/buildinglist/c{{ country.id }}s{{ subway_id }}a{{ area_id }}p{{ price_id }}">{{ country.country_name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="conditionDiv">
+                    <span><b>地铁: </b></span>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s0a{{ area_id }}p{{ price_id }}">不限</a>
+                    {% for subway in subway_list %}
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway.id }}a{{ area_id }}p{{ price_id }}">{{ subway.subway_name }}</a>
+                    {% endfor %}
+                </div>
+                <div class="conditionDiv">
+                    <span><b>面积: </b></span>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a0p{{ price_id }}">不限</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a1p{{ price_id }}">100平以下</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a2p{{ price_id }}">100-300平</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a3p{{ price_id }}">300-500平</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a4p{{ price_id }}">500-1000平</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a5p{{ price_id }}">1000-2000平</a>
+                    <a  href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a6p{{ price_id }}">2000平以上</a>
+                </div>
+                <div class="conditionDiv">
+                    <span><b>租售: </b></span>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p0">不限</a>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p1">3元/㎡/天以下</a>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p2">3-5元/㎡/天</a>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p3">5-10元/㎡/天</a>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p4">10-15元/㎡/天</a>
+                    <a href="/polls/buildinglist/c{{ country_id }}s{{ subway_id }}a{{ area_id }}p5">15元/㎡/天以上</a>
+                </div>
+            </div>
+
+            <div class="listDiv">
+                {% for OfficeBuilding in data_list %}
+                <div class="listItem row">
+                    <div class="col-md-3">
+                        <img src="/{{ OfficeBuilding.image1 }}"/>
+                    </div>
+                    <div class="col-md-7">
+                        <h3><a href="/polls/buildingdetail/{{ OfficeBuilding.id }}">{{ OfficeBuilding.title }}</a></h3>
+                        <p><b>所在位置： {{ OfficeBuilding.address }}</b></p>
+                        <p>周边地铁：{{ OfficeBuilding.subwayDescription }}</p>
+                    </div>
+                    <div class="col-md-2">
+                        <p><span><b>{{ OfficeBuilding.rent_price }}</b></span> 元/㎡/天 起</p>
+                        <p><button class="btn btn-success" type="button">预约看空间</button></p>
+                    </div>
+                </div>
+                <hr/>
+                {% endfor %}
+            </div>
+        </div>
+
+
+    </div> <!-- /container -->
+  {% include "frontsite/footer.html" %}
+  </body>
+</html>
