@@ -17,6 +17,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^test/a(c(?P<station>[0-9]{1,4}))*(s(?P<railway>[0-9]{1,4}))*/$', views.test),
     url(r'^rentlist/c(\d+)s(\d+)r(\d+)a(\d+)t(\d+)/$', views.rentlist),
     url(r'^buildinglist/c(\d+)s(\d+)a(\d+)p(\d+)/$', views.buildinglist),
     url(r'^rentdetail/(\d+)/$', views.rentdetail),

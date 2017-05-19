@@ -6,6 +6,14 @@ from django.http import HttpResponse
 from .models import Rent, OfficeBuilding, Country, Subway,User
 from .forms import UserForm
 
+def test(request,*args,**kargs):
+    print kargs
+    for arg in kargs:
+        print arg
+        print  kargs[arg]
+    html = "<html><body>It is now</body></html>"
+    return HttpResponse(html)
+
 
 def buildinglist(reqest, country_id, subway_id, area_id, price_id):
     country_id = int(country_id)
