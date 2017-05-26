@@ -11,6 +11,8 @@ def test(request,*args,**kargs):
     for arg in kargs:
         print arg
         print  kargs[arg]
+
+    print kargs['railway']== None
     html = "<html><body>It is now</body></html>"
     return HttpResponse(html)
 

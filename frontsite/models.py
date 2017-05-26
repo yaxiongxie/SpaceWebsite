@@ -22,6 +22,9 @@ from django.db import models
 #
 #     def __str__(self):
 #         return self.choice_text
+
+
+
 class Country(models.Model):
     country_name = models.CharField(max_length=200)
     sort_int = models.IntegerField()
@@ -36,7 +39,8 @@ class Country(models.Model):
 
 class User(models.Model):
     name = models.CharField(max_length=200)
-    password = models.CharField(max_length=200)
+    password = models.CharField(max_length=200,blank=True)
+    age=models.IntegerField()
 
     def __unicode__(self):
         return u'%s' % self.name

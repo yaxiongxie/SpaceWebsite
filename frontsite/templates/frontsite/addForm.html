@@ -5,11 +5,12 @@
     <title>test</title>
 </head>
 <body>
-    {{ error }}
+    {{ error}}
     <form action="frontsite/form" method="post">
         {% csrf_token %}
         name:<input type="text" name="name" value=""><br/>
         password:<input type="password" name="password" value=""><br/>
+        age:<input type="text" name="age" value=""><br/>
         <input type="submit" value="submit">
 
     </form>
