@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'frontsite.apps.FrontsiteConfig',
+    'publish.apps.PublishConfig',
+    'commonData.apps.CommondataConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

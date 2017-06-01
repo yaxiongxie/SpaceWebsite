@@ -5,7 +5,7 @@ from __future__ import unicode_literals
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 
-from .models import OfficeBuildingList,OfficeList,Messages,New
+from .models import User
 
 
 class UserForm(ModelForm):
