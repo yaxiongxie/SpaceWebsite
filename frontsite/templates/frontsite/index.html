@@ -1,229 +1,438 @@
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>首页</title>
-    <!-- Bootstrap core CSS -->
-     {% load static %}
-      {% include "frontsite/importsource.html" %}
-    <style>
-        body{
-            overflow-y: scroll;
-        }
-        .contentDiv{
-            font-size: 14px;
-            position: relative;
-            height:610px;
-        }
-        #pic1{
-             background: url("{% static "polls/banner1.jpg" %}") no-repeat;
-            width: 100%;
-            height:610px;
-            background-attachment: fixed;
-            background-position: center 0;
-            display:block;
-            position: absolute;
-        }
-        #pic2{
-             background: url("{% static "polls/banner2.jpg" %}") no-repeat;
-            width: 100%;
-            height:610px;
-            background-attachment: fixed;
-            background-position: center 0;
-            display:block;
-            position: absolute;
-        }
-        .intro{
-            width: 100%;
-            position: absolute;
-            margin-top: 180px;
-            color: white;
-        }
-        .searchDiv{
-            position: absolute;
-            margin-top: -30px;
-            padding-top: 10px;
-            padding-bottom: 50px;
-            border-color: gray;
-            border-width: medium;
-            background-color: white;
-        }
-
-        a{
-            cursor:pointer;
-        }
-        .isekboxs>a{
-            display: inline-block;
-            width:46px;
-            height:10px;
-            background: #e9ebf3;
-            margin-right: 4px;
-        }
-        hr{
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-        .row>img{
-            padding-left: 10px;
-            padding-bottom: 10px;
-        }
-        .isekboxs>a{
-            display: inline-block;
-            width:46px;
-            height:10px;
-            background: #e9ebf3;
-            margin-right: 4px;
-        }
-        .isekboxs>a:hover{
-            background: #ff503f;
-        }
-        .titleText{
-            font-size: 50px;
-            width: 100%;
-            padding-left: 10%;
-        }
-        .secondTitle{
-            font-size: 30px;
-            width: 100%;
-            text-align: right;
-            padding-right: 20%;
-        }
-        .searchInputDiv{
-            width: 80%;
-            text-align: center;
-            margin-top: 100px;
-        }
-        .hotbuilding{
-            margin-top: 150px;
-        }
-        .col-md-4>img{
-            width: 90%;
-            height: 90%;
-            padding-top: 20px;
-        }
-        .col-md-4>img:hover{
-            cursor: pointer;
-        }
-  </style>
-    <script>
-        var count=1;
-        function animalDiv(){
-            count++;
-            if(count%2==0){
-                $("#pic2").fadeOut("slow");
-            }else{
-                $("#pic2").fadeIn("slow");
-            }
-        }
-        setInterval('animalDiv()', 3000);
-        function imgHref(url){
-            window.location.href=url;
-        }
-    </script>
-
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+    {% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
 </head>
-
 <body>
-
-
-        <div class="contentDiv">
-            <div id="pic1"></div>
-           <div id="pic2"></div>
-            <div class="intro">
-                <div class="container">
-                    <div class="titleText">互为设计</div>
-                    <div class="secondTitle">----极致租用平台</div>
-                    <!--
-                    <div class="searchInputDiv">
-                        <div class="input-group">
-                      <input type="text" class="form-control input-lg" placeholder="请输入关键字...">
-                      <span class="input-group-btn">
-                        <button class="btn btn-lg" type="button">开始找房</button>
-                      </span>
+{% include "frontsite/head.html" %}
+<div class="pz_banner">
+    <div style="height:700px; position:relative;">
+    	<div class="bann_bg"></div>
+    	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
+            <div class="pz_slides_3">
+            	<div class="_btn"></div>
+                <div class="_pic">
+                    <ul>
+                        <li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
+                       	<li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
+                        <li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
+                    </ul>
+                </div>
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+          	</div>
+		  	<script>
+				  var s_count = $(".pz_slides_3 ._pic img").length;
+				  var s_li = "";
+				  for (j = 1; j <= s_count; j++) { s_li += "<li></li>"; }
+				  $(".pz_slides_3 > ._btn").html("<ul>" + s_li + "</ul>");
+				  var btn = 1920 - $(".pz_slides_3 ._btn").width();
+				  var btnl = btn / 2;
+				  $(".pz_slides_3 ._btn").css("left", btnl + "px");
+				  jQuery(".pz_slides_3").slide({ titCell: "._btn li", mainCell: "._pic ul", effect: "fold", autoPlay: true, delayTime: 1500, interTime: 3000 });
+		    </script>
+        </div>
+        <div class="bann_tab">
+            <div class="hd">
+                <ul>
+                    <li>写字楼</li>
+                    <li>商铺</li>
+                    <li>住宅</li>
+                </ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <div class="bann_tit">选择区域</div>
+                    <div class="bann_lsit1">
+                        <li><a href="#">不限</a></li>
+                        <li class="on"><a href="#">武昌区</a></li>
+                        <li><a href="#">江汉区</a></li>
+                        <li><a href="#">江岸区</a></li>
+                        <li><a href="#">洪山区</a></li>
+                        <li><a href="#">硚口区</a></li>
+                        <li><a href="#">汉阳区</a></li>
+                        <li><a href="#">江夏区</a></li>
+                        <li><a href="#">青山区</a></li>
+                        <li><a href="#">黄陂区</a></li>
+                        <li><a href="#">东湖高新区</a></li>
+                        <li><a href="#">丁字桥</a></li>
+                        <li><a href="#">东亭</a></li>
                     </div>
-                    -->
-                    <!-- /input-group -->
-                </div>
-                </div>
-            <div class="navbar-fixed-top">
-                <div class="container">
-                    <nav class="blog-nav">
-                        <a class="blog-nav-item active" href="/polls/index">首页</a>
-                        <a class="blog-nav-item" href="/polls/buildinglist/c0s0a0p0/">写字楼</a>
-                        <a class="blog-nav-item" href="/polls/rentlist/c0s0r0a0t0">租房</a>
-                        <a class="blog-nav-item" href="/polls/services">商业服务</a>
-                        <a class="blog-nav-item" href="/polls/aboutus">关于我们</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-            <div class="container">
-            <div class="row searchDiv">
-                        <div class="col-md-4">
-                            <b>选择区域</b><br/><br/>
-                            <a href="/polls/buildinglist/c0s0a0p0">全部</a>
-                            {% for country in country_list %}
-                                <a href="/polls/buildinglist/c{{ country.id }}s0a0p0">{{ country.country_name }}</a>
-                            {% endfor %}
-                        </div>
-                        <div class="col-md-4 isekboxs">
-                            <b>选择面积(单位:m)</b><br/><br/>
-                            <a href="/polls/buildinglist/c0s0a1p0"></a>
-                            <a href="/polls/buildinglist/c0s0a2p0"></a>
-                            <a href="/polls/buildinglist/c0s0a3p0"></a>
-                            <a href="/polls/buildinglist/c0s0a4p0"></a>
-                            <a href="/polls/buildinglist/c0s0a5p0"></a>
-                            <br/>
-                            <div class="row">
-                                <span class="col-md-2">0</span>
-                                <span class="col-md-2">100</span>
-                                <span class="col-md-2">300</span>
-                                <span class="col-md-2">500</span>
-                                <span class="col-md-2">1000</span>
-                                <span class="col-md-2">2000</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 isekboxs">
-                            <b>选择价格(单位:元/m/天)</b><br/><br/>
-                            <a href="/polls/buildinglist/c0s0a0p1"></a>
-                            <a href="/polls/buildinglist/c0s0a0p2"></a>
-                            <a href="/polls/buildinglist/c0s0a0p3"></a>
-                            <a href="/polls/buildinglist/c0s0a0p4"></a>
-                            <a href="/polls/buildinglist/c0s0a0p5"></a>
-                            <br/>
-                            <div class="row">
-                                <span class="col-md-2">0</span>
-                                <span class="col-md-2">3</span>
-                                <span class="col-md-2">5</span>
-                                <span class="col-md-2">10</span>
-                                <span class="col-md-2">15</span>
-                                <span class="col-md-2">∞</span>
-                            </div>
-                        </div>
-            </div>
-        </div>
-        <div class="container hotbuilding">
-
-            <h1>热门商圈</h1><br/>
-            <div class="row">
-                {% for building in building_list %}
-                    <div class="col-md-4">
-                        <img src="/{{ building.image1 }}" onclick="imgHref('/frontsite/buildingdetail/{{ building.id }}')"/>
+                    <div class="bann_lsit2">
+                        <span><strong>B</strong><a href="#">白沙洲</a></span>|
+                        <span><strong>C</strong><a href="#">陈家湾</a></span>|
+                        <span>
+                            <strong>G</strong>
+                            <a href="#">广阜屯</a>
+                            <a href="#">光谷</a>
+                            <a href="#">关山</a>
+                        </span>|
+                        <span><strong>H</strong><a href="#">洪山周边</a></span>|
+                        <span><strong>J</strong><a href="#">街道口</a></span>|
+                        <span><strong>L</strong><a href="#">珞狮南路</a></span>
                     </div>
-                {% endfor %}
+                    <div class="bann_tit" style=" background:url({% static "images/bann4.png" %}) left center no-repeat;">选择面积</div>
+                    <div class="bann_lsit3">
+                        <li class="on"><a href="#">不限</a></li>
+                        <li><a href="#">0-100㎡</a></li>
+                        <li><a href="#">100-200㎡</a></li>
+                        <li><a href="#">200-300㎡</a></li>
+                        <li><a href="#">300-500㎡</a></li>
+                        <li><a href="#">500-800㎡</a></li>
+                        <li><a href="#">800-1000㎡</a></li>
+                        <li><a href="#">1000㎡ 以上</a></li>  
+                    </div>
+                    <div class="bann_so">
+                        <div class="so">
+                            <input type="text" class="Search" placeholder="">
+                            <input type="button" value="开始搜索" class="sear_sub">
+                        </div>
+                        <div class="Map_search"><a href="#">地图搜索</a></div>
+                    </div>
+                </ul>
             </div>
         </div>
-
-        {% include "frontsite/footer.html" %}
+		<script>
+            jQuery(".bann_tab").slide({trigger:"click",pnLoop:false});
+        </script>
+    </div>
+</div>
+<div class="pz_main">
+	<div class="w_1200">
+        <div class="home_tit">
+        	<h1><img src="{% static "images/main1.png" %}" width="1200" height="38" alt=""></h1>
+        </div>    
+    </div>
+    <div class="back2">
+    	<div class="w_1200">
+        	<div class="home_tab home_tab_one">
+            	<div class="hd">
+                    <ul>
+                        <li>热门写字楼</li>
+                        <li>热门商铺</li>
+                    </ul>
+                </div>
+                <div class="bd">
+                	<div class="bd_ul_one">
+                    	<div class="tab_list_one">
+                            <ul>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main8.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l1">
+                                        <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf2">
+                                            <h1>中心五牛大厦</h1>
+                                            <p>浦东大道1101号-1205号</p>
+                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                        </div>
+                                    </div>
+                                    <div class="l1" style=" float:right;">
+                                        <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf2">
+                                            <h1>中心五牛大厦</h1>
+                                            <p>浦东大道1101号-1205号</p>
+                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                        </div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main11.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main12.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="more"><a href="#">read more</a></div>
+                    </div>
+                    <div class="bd_ul_one">
+                    	<div class="tab_list_one">
+                            <ul>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main8.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l1">
+                                        <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf2">
+                                            <h1>中心五牛大厦</h1>
+                                            <p>浦东大道1101号-1205号</p>
+                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                        </div>
+                                    </div>
+                                    <div class="l1" style=" float:right;">
+                                        <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf2">
+                                            <h1>中心五牛大厦</h1>
+                                            <p>浦东大道1101号-1205号</p>
+                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                        </div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main11.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                                <li><a href="#">
+                                	<div class="l2">
+                                        <div class="tab_pic"><img src="{% static "images/main12.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                    </div>
+                                </a></li>
+                            </ul>
+                        </div>
+                        <div class="more"><a href="#">read more</a></div>
+                    </div>
+                </div>
+            </div>
+            <script>
+				jQuery(".home_tab_one").slide({trigger:"click",pnLoop:false});
+			</script>
+        </div>
+    </div>
+	<div class="home_tab">
+    	<div class="w_1200">
+        	<div class="home_tit">
+                <h1><img src="{% static "images/main2.png" %}" width="1200" height="38" alt=""></h1>
+                <div class="more"><a href="#">read more</a></div>
+            </div>
+            <div class="home_tab home_tab_two">
+            	<div class="hd">
+                    <ul>
+                        <li>企业策划</li>
+                        <li>运营支持</li>
+                        <li>配套供应</li>
+                    </ul>
+                </div>
+                <div class="bd">
+                	<div class="bd_ul_two">
+                    	<ul>
+                        	<li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main17_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">装修设计</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main18_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">工商代账服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main19_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">社保人力资源服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main20_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">商务咨询服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main21_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公用品租售服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main22_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公用品租售服务</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                    <div class="bd_ul_two">
+                    	<ul>
+                        	<li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main17_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">装修设计</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main18_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">工商代账服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main19_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">社保人力资源服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main20_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">商务咨询服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main21_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公用品租售服务</div>
+                            </a></li>
+                            <li><a href="#">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main22_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公用品租售服务</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script>
+				jQuery(".home_tab_two").slide({trigger:"click",pnLoop:false});
+			</script>
+        </div>
+    </div>
+    <div class="w_1200">
+        <div class="home_tit">
+            <h1><img src="{% static "images/main3.png" %}" width="1200" height="38" alt=""></h1>
+            <div class="more"><a href="#">read more</a></div>
+        </div>
+    </div>
+    <div class="back3">
+    	<div class="l_ty">
+        	<img src="{% static "images/main23.jpg" %}" width="960" height="364" alt="">
+            <div class="l_540 l_pf">
+            	<h1>销售管理系统<i></i></h1>
+                <p>人事管理系统，属于ERP的一个部分。它单指汇集成功企业先进的人力资源管理理念、人力资源管理实践、人力资源信息化...</p>
+                <span>more</span>
+            </div>
+        </div>
+        <div class="r_ty">
+        	<img src="{% static "images/main24.jpg" %}" width="960" height="364" alt="">
+            <div class="l_540 r_pf">
+            	<h1>销售管理系统<i></i></h1>
+                <p>人事管理系统，属于ERP的一个部分。它单指汇集成功企业先进的人力资源管理理念、人力资源管理实践、人力资源信息化...</p>
+                <span>more</span>
+            </div>
+        </div>
+    </div>
+    <div class="w_1200">
+        <div class="home_tit">
+            <h1><img src="{% static "images/main4.png" %}" width="1200" height="38" alt=""></h1>
+            <div class="more"><a href="#">read more</a></div>
+        </div>
+        <div class="home_new">
+        	<div class="news_scrool">
+            	<div class="bd">
+                	<ul>
+                        <li class="news_pic"><a href="#">
+                            <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
+                            <span>有为空间——一站式企业服务</span>
+                        </a></li>
+                        <li class="news_pic"><a href="#">
+                            <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
+                            <span>有为空间——一站式企业服务</span>
+                        </a></li>
+                        <li class="news_pic"><a href="#">
+                            <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
+                            <span>有为空间——一站式企业服务</span>
+                        </a></li>
+                    </ul>
+                </div>
+            </div>
+            <script>jQuery(".news_scrool").slide({mainCell:".bd ul",effect:"left",autoPlay:true,delayTime: 1500, interTime: 3000 });</script>
+            <div class="news_list">
+            	<div class="news_pic">
+                	<img src="{% static "images/main30.jpg" %}" width="380" height="160" alt="">
+                    <span>看了少奋斗十年，升职加薪办公室风水</span>
+                </div>
+                <div class="news_text">
+                	<li><a href="#">古代建筑选址是如何看风水的?</a><time>04-22</time></li>
+                    <li><a href="#">看进来，专家投资写字楼的散步要诀</a><time>04-22</time></li>
+                    <li><a href="#">企业厂房选址的六大秘籍</a><time>04-22</time></li>
+                    <li><a href="#">入驻写字楼对企业有什么好处？</a><time>04-22</time></li>
+                    <li><a href="#">再背景企业选址为什么如此重要</a><time>04-22</time></li>
+                </div>
+            </div>
+            <div class="news_list">
+            	<div class="news_pic"><a href="#">
+                	<img src="{% static "images/main31.jpg" %}" width="380" height="160" alt="">
+                    <span>选对写字楼，对企业形象很重要</span>
+                </a></div>
+                <div class="news_text">
+                	<li><a href="#">古代建筑选址是如何看风水的?</a><time>04-22</time></li>
+                    <li><a href="#">看进来，专家投资写字楼的散步要诀</a><time>04-22</time></li>
+                    <li><a href="#">企业厂房选址的六大秘籍</a><time>04-22</time></li>
+                    <li><a href="#">入驻写字楼对企业有什么好处？</a><time>04-22</time></li>
+                    <li><a href="#">再背景企业选址为什么如此重要</a><time>04-22</time></li>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
 </body>
 </html>

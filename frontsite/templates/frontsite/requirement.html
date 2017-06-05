@@ -1,0 +1,65 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main" style=" position:relative;">
+	<div class="bann_bg"></div>
+    <div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">个人中心</a></div>
+    	<div class="member">
+        	{% include "frontsite/personalNav.html" %}
+            <div class="r_799">
+                <div class="t_798">
+                    <div class="l_jf ico2">房源服务&nbsp;<span>发布需求</span></div>
+                    <div class="r_tc"><a href="#">退出登录</a></div>
+                </div>
+                <div class="Availability Availability_two">
+                	<form class="l_623">
+                    	<label>
+                        	<div class="fm_name1 fm_name3"><span>*</span>姓名</div>
+                            <div class="fm_input1 fm_input3">	
+                            	<input type="text" placeholder="" class="fm13">
+                            </div>
+                        </label>
+                        <label>
+                        	<div class="fm_name1 fm_name3"><span>*</span>电话</div>
+                            <div class="fm_input1 fm_input3">	
+                            	<input type="text" placeholder="" class="fm13">
+                            </div>
+                        </label>
+                        <label>
+                        	<div class="fm_name1 fm_name3"><span>*</span>需求描述</div>
+                            <div class="fm_input1 fm_input3">	
+                            	<textarea  type="text" placeholder="" class="fm14"></textarea>
+                            </div>
+                        </label>
+                        <label>
+                        	<input  type="button" value="发布需求" class="fm10 fm16">
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+<script>
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+				</script>
+</body>
+</html>

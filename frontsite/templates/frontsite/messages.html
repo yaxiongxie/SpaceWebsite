@@ -1,0 +1,340 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main" style=" position:relative;">
+	<div class="bann_bg"></div>
+    <div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">个人中心</a></div>
+    	<div class="member">
+        	{% include "frontsite/personalNav.html" %}
+            <script>
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+				</script>
+            <div class="r_799">
+                <div class="t_798">
+                    <div class="l_jf ico5">消息中心</span></div>
+                    <div class="r_tc"><a href="#">退出登录</a></div>
+                </div>
+                <div class="MessageCenter_tit">
+                	<ul>
+                    	<li class="on"><a href="#">未读</a></li>
+                        <li><a href="#">已读</a></li>
+                    </ul>
+                </div>
+                <div class="MessageCenter">
+                	<ul>
+                    	<li style=" background:#f0efef; font-size:16px; border-bottom:1px solid #fff;">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">发件人</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">内容</td>
+                                <td width="239">操作</td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li>
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                        <li class="l1">
+                        	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td width="268">管理员1</td>
+                                <td width="32">&nbsp;</td>
+                                <td width="331">欢迎注册有为空间~</td>
+                                 <td width="239" class="del_box">
+                                	<a href="#" class="delete">删除</a>
+                                	<div class="qd_del">
+                                    	<i></i>
+                                		<h1>确定删除吗？</h1>
+                                        <h2><a href="#">取消</a><a href="#" style=" border:none;">确定</a></h2>
+                                    </div>
+                                </td>
+                                <td width="71">&nbsp;</td>
+                               </tr>
+                            </table>
+						</li>
+                    </ul>
+                </div>
+                <div class="wack1">
+                    <div class="pz_fy">
+                        <a href="#">&lt;</a>
+                        <a href="#" class="on">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">&gt;</a>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+</body>
+</html>

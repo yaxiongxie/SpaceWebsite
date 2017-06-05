@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>关于我们</title>
+    <!-- Bootstrap core CSS -->
+     {% load static %}
+      {% include "frontsite/importsource.html" %}
+    <style>
+        body{
+            background-color: #eee;
+            overflow-y: scroll;
+        }
+        .jumbotron{
+            font-size: 13px;
+        }
+        a{
+            cursor:pointer;
+        }
+        .baseDiv{
+            margin-top: 30px;
+            padding-left: 30px;
+            padding-right: 30px;
+            padding-bottom: 50px;
+            background-color: white;
+            border-color: gray;
+            border-width: medium;
+        }
+        .imgDiv{
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .titleDiv{
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .contentDiv{
+            font-size: 16px;
+            padding-top: 30px;
+        }
+        hr{
+            margin-top: 0px;
+            margin-bottom: 0px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    {% include "frontsite/nav.html" %}
+
+    <div class="jumbotron">
+        <div class="container">
+            <div class = "baseDiv">
+                <div class ="titleDiv">
+                    <h3><b>关于我们</b></h3>
+                </div>
+                <hr/>
+                <div class="imgDiv">
+                    <img src="{% static 'polls/aboutus.jpg' %}"/>
+                </div>
+                <div class="contentDiv">
+                    <b>互为设计</b><br/><br/>
+互为设计是集搜索、产品研发、大数据处理、服务标准建立为一体的以数据驱动的全价值链房产服务平台。链家网的前身为链家在线，成立于2010年并于2014年正式更名为链家网。目前，链家网线上房源已覆盖北京、上海、广州、深圳、天津、成都、青岛、重庆、大连等36个地区。在房产交易服务领域，链家网旨在通过“链接人与服务”不断提高服务效率、提升服务体验，为用户提供更安全、更便捷、更舒心的综合房产服务，致力于实现推动行业进步，让房屋交易不再难的企业愿景。
+                </div>
+            </div>
+        </div>
+    </div> <!-- /container -->
+
+    {% include "frontsite/footer.html" %}
+
+</body>
+</html>

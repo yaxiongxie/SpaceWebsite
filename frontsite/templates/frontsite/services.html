@@ -1,119 +1,225 @@
-
-<!DOCTYPE html>
-<html lang="zh-CN">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
-
-    <title>商业服务</title>
-    <!-- Bootstrap core CSS -->
-     {% load static %}
-      {% include "frontsite/importsource.html" %}
-    <style>
-        body{
-            background-color: #eee;
-            overflow-y: scroll;
-        }
-        .jumbotron{
-            font-size: 13px;
-        }
-        a{
-            cursor:pointer;
-        }
-        .baseDiv{
-            margin-top: 30px;
-            padding-left: 30px;
-            padding-right: 30px;
-            padding-bottom: 50px;
-            background-color: white;
-            border-color: gray;
-            border-width: medium;
-        }
-        .imgDiv{
-            margin-top: 30px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .titleDiv{
-            padding-top: 40px;
-            padding-bottom: 30px;
-        }
-        .contentDiv{
-            font-size: 15px;
-            padding-top: 10px;
-        }
-        .col-md-4{
-            text-align: center;
-            padding-top: 40px;
-        }
-        .col-md-4>p{
-            margin-top: 10px;
-        }
-        hr{
-            margin-top: 0px;
-            margin-bottom: 0px;
-        }
-    </style>
-
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
 </head>
-
 <body>
-
-    {% include "frontsite/nav.html" %}
-
-    <div class="jumbotron">
-        <div class="container">
-            <div class = "baseDiv">
-                <div class ="titleDiv">
-                    <h3><b>互为设计企业服务介绍</b></h3>
-                </div>
-                <hr/>
-                <div class="contentDiv">
-                    空间家，不只是企业选址，更是汇聚最优秀的各行业巨头，打造中国最大的企业服务联盟，构建以企业租后市场为主的办公服务体系，为企业提供高效、低成本、智慧的注册、装修、法律、财务等一站式管家服务。让每一个企业都能高效办公，快乐生活。
-空间家，您的企业服务管家。
-              </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_01.jpg" %}"/>
-                    <p>财务系统</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_02.jpg" %}"/>
-                    <p>人事社保管理系统</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_03.jpg" %}"/>
-                    <p>装饰设计</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_05.jpg" %}"/>
-                    <p>办公用品租售</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_06.jpg" %}"/>
-                    <p>企业e服务</p>
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static "polls/img_06.jpg" %}"/>
-                    <p>企业推广</p>
-                </div>
-            </div>
-
-    </div> <!-- /container -->
+{% include "frontsite/head.html" %}
+<div class="pz_banner">
+    <div style="height:340px; position:relative;">
+    	<div class="bann_bg"></div>
+    	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
+            <img src="{% static "images/banner7.jpg" %}" width="1920" height="340">
+		</div>
     </div>
-{% include "frontsite/footer.html" %}
-
-
+</div>
+<div class="pz_main">
+	<div class="w_1200">
+    	<div class="Bus_Serv_List">
+        	<ul>
+            	<li>
+                	<h1>企业策划</h1>
+                    <p>企业策划包括企业的发展战略、盈利模式、运营模式、业务规划、营销策略、组织机构、财务预算等内容。</p>
+                    <div class="bs_pic">
+                    	<a href="/frontsite/service">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main87.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main87_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">装修设计</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main88.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main88_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">图文广告</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-right:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main89.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main89_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">包装设计</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main90.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main90_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">视频制作</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main91.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main91_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">文案撰写</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-right:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main92.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main92_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">网站建设</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main93.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main93_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">软件开发</div>
+                        </a>
+                        <a href="#" style=" border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main94.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main94_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">微信开发</div>
+                        </a>
+                        <a href="#" style=" border-right:none;  border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main95.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main95_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">企业推广</div>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                	<h1>运营支持</h1>
+                    <p>企业策划包括企业的发展战略、盈利模式、运营模式、业务规划、营销策略、组织机构、财务预算等内容。</p>
+                    <div class="bs_pic">
+                    	<a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main96.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main96_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">工商代办</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main97.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main97_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">社保代办</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-right:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main98.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main98_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">人事外包</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main99.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main99_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">版权培训</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main100.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main100_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">企业培训</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-right:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main101.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main101_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">版权培训</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main102.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main102_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">法律服务</div>
+                        </a>
+                        <a href="#" style=" border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main103.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main103_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">专利服务</div>
+                        </a>
+                        <a href="#" style=" border-right:none;  border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main104.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main104_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">高企认定</div>
+                       </a>
+                    </div>
+                </li>
+                <li style=" margin-right:0; padding-right:0; border-right:none;">
+                	<h1>配套共赢</h1>
+                    <p>企业策划包括企业的发展战略、盈利模式、运营模式、业务规划、营销策略、组织机构、财务预算等内容。</p>
+                    <div class="bs_pic">
+                    	<a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main105.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main105_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">办公用品租售</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main106.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main106_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">职业工服</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-right:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main107.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main107_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">办公绿植</div>
+                            <div class="bs_pic3"></div>
+                        </a>
+                        <a href="#" style=" border-bottom:none;">
+                        	<div class="bs_pic1">
+                            	<img src="{% static "images/main108.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
+                                <img src="{% static "images/main108_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
+                            </div>
+                            <div class="bs_pic2">活动布展用品</div>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
 </body>
 </html>

@@ -1,0 +1,31 @@
+ {% load static %}
+<div class="pz_top">
+	<div class="back1">
+        <div class="w_1200">
+            <div class="top">
+                <div class="logo"><a href="/frontsite/index"><img src="{% static "images/logo.png" %}" width="182" height="28" alt=""></a></div>
+                <div class="menu"  id="navSlide">
+                    <ul>
+                        <li class="nli l1">
+                            <span><a href="/frontsite/index">首 页</a></span>
+                        </li>
+                        <li class="nli l2">
+                            <span><a href="/frontsite/buildinglist">选址</a></span>
+                        </li>
+                        <li class="nli l3">
+                            <span><a href="/frontsite/services">商业服务</a></span>
+                        </li>
+                        <li class="nli l4">
+                            <span><a href="/frontsite/personal">个人中心</a></span>
+                        </li>
+                   </ul>
+                </div>
+                <script>
+                     jQuery(".menu").slide({ type: "menu", titCell: ".nli", targetCell: ".sub", effect: "slideDown", delayTime:200, triggerTime: 0,returnDefault: true });
+                </script>
+                <div class="login"><a href="/frontsite/login">登录</a>&nbsp;/&nbsp;<a href="/frontsite/registe">注册</a></div>
+                <div class="Castspace"><a href="#">投放空间</a><a href="#">委托找房</a></div>
+            </div>
+        </div>
+    </div>
+</div>

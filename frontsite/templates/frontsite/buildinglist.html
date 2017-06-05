@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_banner">
+    <div style="height:340px; position:relative;">
+    	<div class="bann_bg"></div>
+    	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
+            <img src="{% static "images/banner1.jpg" %}" width="1920" height="340"/>
+		</div>
+    </div>
+</div>
+<div class="pz_main">
+	<div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">热门写字楼</a></div>
+    	<div class="listings_list">
+        	<div class="listings_list_1">
+            	<div class="tit_name">类型：</div>
+           		<div class="bann_lsit3 m_t_0">
+                    <li class="on"><a href="#">不限</a></li>
+                    <li><a href="#">写字楼</a></li>
+                    <li><a href="#">商铺</a></li>
+                    <li><a href="#">住宅</a></li>
+                </div>
+            </div>
+            <div class="listings_list_1">
+            	<div class="tit_name">区域：</div>
+           		<div class="bann_lsit1 m_t_2">
+                    <li><a href="#">不限</a></li>
+                    <li class="on"><a href="#">武昌</a></li>
+                    <li><a href="#">江汉</a></li>
+                    <li><a href="#">江岸</a></li>
+                    <li><a href="#">洪山</a></li>
+                    <li><a href="#">硚口</a></li>
+                    <li><a href="#">汉阳</a></li>
+                    <li><a href="#">江夏</a></li>
+                    <li><a href="#">青山</a></li>
+                </div>
+                <div class="bann_lsit2 m_t_1">
+                    <span><strong>B</strong><a href="#">白沙洲</a></span>|
+                    <span><strong>C</strong><a href="#">陈家湾</a></span>|
+                    <span>
+                        <strong>G</strong>
+                        <a href="#">广阜屯</a>
+                        <a href="#">光谷</a>
+                        <a href="#">关山</a>
+                    </span>|
+                    <span><strong>H</strong><a href="#">洪山周边</a></span>|
+                    <span><strong>J</strong><a href="#">街道口</a></span>|
+                    <span><strong>L</strong><a href="#">珞狮南路</a></span>
+                </div>
+            </div>
+        	<div class="listings_list_1">
+            	<div class="tit_name">面积：</div>
+           		<div class="bann_lsit3 m_t_0">
+                    <li class="on"><a href="#">不限</a></li>
+                    <li><a href="#">0-100㎡</a></li>
+                    <li><a href="#">100-200㎡</a></li>
+                    <li><a href="#">200-300㎡</a></li>
+                    <li><a href="#">300-500㎡</a></li>
+                    <li><a href="#">500-800㎡</a></li>
+                    <li><a href="#">800-1000㎡</a></li>
+                    <li><a href="#">1000㎡ 以上</a></li>  
+                </div>
+            </div>
+        	<div class="listings_list_2">
+            	<div class="Map_search Map_search1"><a href="#">地图搜索</a></div>
+            	<div class="so so1">
+                    <input type="text" class="Search" placeholder="">
+                    <input type="button" value="开始搜索" class="sear_sub">
+                </div>
+            </div>
+        </div>
+    	<div class="listings">
+        	<ul>
+            	<li>
+                	<div class="pic_270"><a href="/frontsite/building"><img src="{% static "images/main36.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="/frontsite/building">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="/frontsite/building">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main37.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main36.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main37.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main36.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main37.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main36.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+                <li>
+                	<div class="pic_270"><a href="#"><img src="{% static "images/main37.jpg" %}" width="270" height="202"></a></div>
+                    <div class="text_508">
+                    	<h1><a href="#">世界城广场 写字楼出售出租 随时看房</a></h1>
+                        <h2>
+                        	<span class="ico1"><strong>世界城广场</strong>&nbsp;&nbsp;东湖高新区光谷光谷步行街</span>
+                        	<span class="ico2">附近有234、23、12、213路公交车，距离地铁2号线600米</span>
+                        </h2> 
+                        <h3>
+                        	<a href="#">100㎡</a>
+                            <a href="#">180㎡</a>
+                            <a href="#">250㎡</a>
+                            <a href="#">1000㎡</a>
+                        </h3>  
+                    </div>
+                    <div class="text_380">
+                    	<h1><strong>100~130 </strong>/㎡/月万</h1>
+                        <h2><a href="#">马上预约看房</a></h2>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    	<div class="wack1">
+            <div class="pz_fy">
+                <a href="#"><</a>
+                <a href="#" class="on">1</a>
+                <a href="#">2</a>
+                <a href="#">3</a>
+                <a href="#">></a>
+            </div> 
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+</body>
+</html>

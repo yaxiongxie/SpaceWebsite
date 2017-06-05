@@ -1,0 +1,109 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main">
+	<div class="back7" style=" background:url(images/main79.jpg) center no-repeat; background-size:cover">
+    	<div class="pic_139"><img src="images/main80.png" width="139" height="36"></div>
+        <div class="l_350">
+        	<div class="map_so">
+                <input type="text" class="Search" placeholder="请输入房源名称、区域或商圈">
+                <input type="button" value="搜索" class="sear_sub">
+            </div>
+            <div class="lc_350">
+            	<div class="lc_tit1" style=" margin-top:20px;"><span>面积</span></div>
+                <div class="lc_list1">
+                	<li class="on"><a href="#">不限</a></li>
+                    <li><a href="#">200-300㎡</a></li>
+                    <li><a href="#">800-1000㎡</a></li>
+                    <li><a href="#">0-100㎡&nbsp;&nbsp;&nbsp;</a></li>
+                    <li><a href="#">300-500㎡</a></li>
+                    <li><a href="#">1000㎡ 以上</a></li>
+                    <li><a href="#">100-200㎡</a></li>
+                    <li><a href="#">500-800㎡</a></li>
+                </div>
+                <div class="lc_tit1"><span>价格</span></div>
+                <div class="lc_list1">
+                	<li class="on"><a href="#">不限</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                    <li><a href="#">50以下/㎡</a></li>
+                </div>
+            </div>
+            <div class="lc_350">
+            	<div class="lc_tit">
+                	<h1>北京</h1>
+                    <span>共120个结果</span>
+                </div>
+                <div class="lc_list">
+                	<li><a href="#">
+                    	<div class="pic_86"><img src="images/main81.jpg" width="86" height="65"></div>
+                        <div class="text_231">
+                        	<h1>世界城广场 写字楼出售出租 精装修随时看房</h1>
+                            <h2><strong>100~130</strong> /㎡/月万</h2>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                    	<div class="pic_86"><img src="images/main81.jpg" width="86" height="65"></div>
+                        <div class="text_231">
+                        	<h1>世界城广场 写字楼出售出租 精装修随时看房</h1>
+                            <h2><strong>100~130</strong> /㎡/月万</h2>
+                        </div>
+                    </a></li>
+                    <li><a href="#">
+                    	<div class="pic_86"><img src="images/main81.jpg" width="86" height="65"></div>
+                        <div class="text_231">
+                        	<h1>世界城广场 写字楼出售出租 精装修随时看房</h1>
+                            <h2><strong>100~130</strong> /㎡/月万</h2>
+                        </div>
+                    </a></li>
+                </div>
+            	<div class="jiazai"><a href="#">加载更多…</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+
+$(document).ready(function(){
+	$('.right_78 .t_76').on('mouseenter',function(){
+		$(this).children('.pf_269').stop().animate({
+			width:'198px',
+			left:'-200px'
+			})
+		
+	})
+	$('.right_78 .t_76').on('mouseleave',function(){
+		$(this).children('.pf_269').stop().animate({
+			width:'0px',
+			left:'0'
+			})
+		
+	})
+	$(".right_78 .renter").on("click", function () {
+		$('body,html').animate({ scrollTop: 0 });
+	})		
+
+})
+</script>
+</body>
+</html>

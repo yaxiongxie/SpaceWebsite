@@ -1,0 +1,155 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_banner">
+    <div style="height:400px; position:relative;">
+    	<div class="bann_bg"></div>
+    	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
+            <img src="images/banner3.jpg" width="1920" height="400"/>
+		</div>
+    </div>
+</div>
+<div class="pz_main">
+	<div class="w_1200">
+    	<div id="dituContent">加载中...</div>
+        <div class="contactus">
+        	<div class="l_800">
+            	<img src="images/main69.png" width="107" height="107" class="pic_fy1">
+            	<li>
+                	地　址：中国  上海市  某某路****号<br/>
+                    电　话：000-*** **** /  000-*** ****<br/> 
+                    传　真：000-*** ****<br/>
+                    邮　箱：youwei@123.com
+                </li>
+                <li>
+                	微   博：*************************<br/>
+                    全国加盟热线：18888888888 / 18888888888<br/>
+                    全国免费服务电话：400-888-8888
+                </li>
+            </div>
+            <div class="l_370">
+            	<span>请扫码关注微信公众平台</span>
+                <i><img src="images/main70.jpg" width="111" height="110"></i>
+                <span>微信公众号：有为空间</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=0jz7CuaQAxFkoH7XumKlrhk3"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/getscript?v=2.0&amp;ak=0jz7CuaQAxFkoH7XumKlrhk3&amp;services=&amp;t=20140825185308"></script>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+    //创建地图函数：
+    function createMap() {
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(125.297207, 43.912689);//定义一个中心点坐标
+        map.setMaxZoom(18)
+        map.centerAndZoom(point, 18);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+
+        var mapStyle = {
+            //features: ["road", "building", "water", "land"],//隐藏地图上的poi
+            style: "grayscale"  //设置地图风格为高端黑,目前支持normal（默认样式）,dark（深色样式）,light（浅色样式）
+        }
+        map.setMapStyle(mapStyle);
+    }
+    //地图事件设置函数：
+    function setMapEvent() {
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    //地图控件添加函数：
+    function addMapControl() {
+        //向地图中添加缩放控件
+        var ctrl_nav = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_TOP_LEFT, type: BMAP_NAVIGATION_CONTROL_LARGE });
+        map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+        var ctrl_ove = new BMap.OverviewMapControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: 0 });
+        map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+        var ctrl_sca = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_LEFT });
+        map.addControl(ctrl_sca);
+    }
+    //标注点数组
+    var markerArr = [{title: "有为空间", content: "地址：某省某市某某路****号<br/>电话：021-******* / 021-*******", point: "125.297207|43.912689", isOpen: 1, icon: { w: 21, h: 21, l: 0, t: 0, x: 6, lb: 5 }}];
+    //创建marker
+    function addMarker() {
+        for (var i = 0; i < markerArr.length; i++) {
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0, p1);
+            var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point, { icon: iconImg });
+            var iw = createInfoWindow(i);
+            var label = new BMap.Label(json.title, { "offset": new BMap.Size(json.icon.lb - json.icon.x + 10, -20) });
+            marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                borderColor: "#dddddd",
+                color: "#666666",
+                cursor: "pointer"
+            });
+            (function () {
+                var index = i;
+                var _iw = createInfoWindow(i);
+                var _marker = marker;
+                _marker.addEventListener("click", function () {
+                    this.openInfoWindow(_iw);
+                });
+                _iw.addEventListener("open", function () {
+                    _marker.getLabel().hide();
+                })
+                _iw.addEventListener("close", function () {
+                    _marker.getLabel().show();
+                })
+                label.addEventListener("click", function () {
+                    _marker.openInfoWindow(_iw);
+                })
+                if (!!json.isOpen) {
+                    label.hide();
+                    _marker.openInfoWindow(_iw);
+                }
+            })()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i) {
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>" + json.content + "</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json) {
+		var icon = new BMap.Icon("bdmap.png", new BMap.Size(59, 44), { anchor: new BMap.Size(50, 0) })
+        return icon;
+	}
+    initMap();//创建和初始化地图
+</script>
+
+</body>
+</html>

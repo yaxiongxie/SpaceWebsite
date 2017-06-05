@@ -1,0 +1,106 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_banner">
+    <div style="height:340px; position:relative;">
+    	<div class="bann_bg"></div>
+    	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
+            <img src="{% static "images/banner7.jpg" %}" width="1920" height="340">
+		</div>
+    </div>
+</div>
+<div class="pz_main">
+	<div class="w_1200">
+    	<div class="Bus_Serv_tit">
+        	<div class="twgg">图文广告</div>
+            <div class="my_serv"><a href="javascript:;" onclick="$('#Form').fadeIn()">我要服务</a></div>
+        </div>
+    	<div class="Bus_Serv_cont">
+        	<div class="pic_131"><img src="{% static "images/main109.png" %}" width="131" height="131"></div>
+        	<div class="text_131">
+            	广告，即广而告之之意。广告是为了某种特定的需要，通过一定形式的媒体，公开而广泛地向公众传递信息的宣传手段，广告有广义和狭义之分。广义广告包括非经济广告和经济广告，非经济广告指不以盈利为目的的广告，又称效应广告，如政府行政部门、社会事业单位乃至个人的各种公告、启事、声明等，主要目的是推广
+            </div>
+        </div>
+        <div class="Bus_Serv_tit1"><span>上架商户</span></div>
+        <div class="Bus_Serv_scrool">
+        	<a class="next"></a>
+            <a class="prev"></a>
+        	<div class="bd">
+            	<ul>
+                    <li>
+                        <div class="pic_108"><a href="#"><img src="{% static "images/img1.jpg" %}" width="108" height="108" alt=""></a></div>
+                        <div class="text_108">
+                            <h1><a href="#">企业名称</a></h1>
+                            <h2>坐标位置</h2>
+                            <h3>成交：1122&nbsp;&nbsp;&nbsp;&nbsp;关注：2233</h3>
+                            <h4><a href="#">查看详情</a></h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pic_108"><a href="#"><img src="{% static "images/img1.jpg" %}" width="108" height="108" alt=""></a></div>
+                        <div class="text_108">
+                            <h1><a href="#">企业名称</a></h1>
+                            <h2>坐标位置</h2>
+                            <h3>成交：1122&nbsp;&nbsp;&nbsp;&nbsp;关注：2233</h3>
+                            <h4><a href="#">查看详情</a></h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pic_108"><a href="#"><img src="{% static "images/img1.jpg" %}" width="108" height="108" alt=""></a></div>
+                        <div class="text_108">
+                            <h1><a href="#">企业名称</a></h1>
+                            <h2>坐标位置</h2>
+                            <h3>成交：1122&nbsp;&nbsp;&nbsp;&nbsp;关注：2233</h3>
+                            <h4><a href="#">查看详情</a></h4>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="pic_108"><a href="#"><img src="{% static "images/img1.jpg" %}" width="108" height="108" alt=""></a></div>
+                        <div class="text_108">
+                            <h1><a href="#">企业名称</a></h1>
+                            <h2>坐标位置</h2>
+                            <h3>成交：1122&nbsp;&nbsp;&nbsp;&nbsp;关注：2233</h3>
+                            <h4><a href="#">查看详情</a></h4>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script>jQuery(".Bus_Serv_scrool").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",vis:3});</script>
+    </div>
+</div>
+<div class="my_serv_btn" id="Form">
+	<div class="pf_btn">
+    	<div class="pf_btn1">
+        	<div class="pf_btn1_1">服务内容提交</div>
+            <div class="pf_btn1_2">
+            	<form>
+                	<label><span class="btn2">联系姓名</span><input type="text" class="btn1" placeholder="请输入姓名"></label>
+                    <label><span class="btn2">联系姓名</span><input type="text" class="btn1" placeholder="请输入手机号码"></label>
+                    <label><span class="btn2">联系姓名</span><textarea type="text" class="btn3" placeholder="需求描述"></textarea></label>
+                    <label><span class="btn2">&nbsp;</span><input type="button" class="btn4" value="立即提交"></label>
+                </form>
+            </div>
+        	<div class="tent_out"><a href="javascript:;" onclick="$('#Form').fadeOut()"><img src="{% static "images/img3.png" %}" ></a></div>
+		</div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+</body>
+</html>

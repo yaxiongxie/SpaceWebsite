@@ -37,8 +37,8 @@ class OfficeBuildingList(models.Model):
         return u'%s' % self.title
 
     class Meta:
-        verbose_name = '写字楼'
-        verbose_name_plural = '写字楼'
+        verbose_name = '写字大厦'
+        verbose_name_plural = '写字大厦'
 
 
 class OfficeList(models.Model):

@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main" style=" position:relative;">
+	<div class="bann_bg"></div>
+    <div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">个人中心</a></div>
+    	<div class="member">
+        	{% include "frontsite/personalNav.html" %}
+             <script>
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+				</script>
+            <div class="r_799">
+                <div class="t_798">
+                    <div class="l_jf ico3">我的企业</div>
+                    <div class="r_tc"><a href="#">退出登录</a></div>
+                </div>
+                <div class="Availability_one" style=" background:url(images/main54_1.jpg) right bottom no-repeat #f6f6f6;">
+                	<h1><img src="{% static "images/main55_1.png" %}" width="192" height="29"></h1>
+                    <h2>免费帮助入驻商家匹配订单及推广</h2>
+                    <h3><a href="#" style=" background:#f2853d;">立即入驻</a></h3>
+                </div>	
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+</body>
+</html>

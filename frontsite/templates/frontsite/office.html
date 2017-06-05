@@ -1,0 +1,271 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main" style=" position:relative;">
+	<div class="bann_bg"></div>
+    <div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#">热门写字楼</a> - <a href="#" class="on">世界城广场 写字楼出售出租随时看房</a></div>
+        <div class="fyxq_pic">
+        	<div class="xq_750">
+                <div class="xq_1">世界城广场 写字楼出售出租随时看房</div>
+                <div class="xq_2">
+                    <a href="#">100㎡</a>
+                    <a href="#">180㎡</a>
+                    <a href="#">250㎡</a>
+                    <a href="#">1000㎡</a>
+                </div>
+                <div class="fyxq_pic_l">
+                	<a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a>
+                    <div class="fy_sc">收藏 236</div>
+                	<div class="fy_86"><img src="{% static "images/img12.png" %}" width="86" height="83"></div>
+                    <div class="bd">
+                        <ul>
+                            <li>
+                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
+                            </li>
+                            <li>
+                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
+                            </li>
+                            <li>
+                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <script>jQuery(".fyxq_pic_l").slide({mainCell:".bd ul",autoPlay:false,mouseOverStop:false});</script>
+            </div>
+            <div class="fyxq_pic_r">
+                <div class="fy_share">
+                    <div class="bshare-custom" style=" float:right;">
+                        <a title="分享到QQ空间" class="bshare-qzone"></a>
+                        <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+                        <a title="分享到人人网" class="bshare-renren"></a>
+                        <a title="分享到腾讯微博" class="bshare-qqmb"></a>
+                        <a title="分享到网易微博" class="bshare-neteasemb"></a>
+                        <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+                        <span class="BSHARE_COUNT bshare-share-count">0</span>
+                    </div>
+                    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+                    <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+                </div>
+                <div class="fyxq_pic_r1">
+                    <li>所属区域： 滨江区</li>
+                    <li>楼盘地址： 东湖高新区光谷光谷步行街</li>
+                    <li>建筑面积： 260200㎡</li>
+                    <li>总 楼 层： 25层</li>
+                    <li>附近交通： 15路、23路公交，近2号线</li>
+                </div>
+                <div class="fyxq_pic_r2">
+                	<div class="w_0100">
+                        <div class="xq_3"><img src="{% static "images/img10.jpg" %}" width="86" height="86"></div>
+                        <div class="xq_4">
+                        	<h1>世纪城广场写字楼</h1>
+                            <h2>一座有工作氛围的大厦</h2>
+                        </div>
+                    </div>
+                    <div class="w_0100" style=" margin-top:32px;">
+                    	<div class="xq_5"><strong>100~130</strong><br/><span>/㎡/月</span></div>
+                        <div class="xq_6"><a href="#">预约看房</a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fyxq_tab">
+        	<div class="fyxq_hd">
+            	<ul>
+                	<li class="hd"><a href="javascript:scrollTo('#tab3',-50,300)">房源相册</a></li>
+                    <li class="hd on"><a href="javascript:scrollTo('#tab1',-50,300)">房源信息</a></li>
+                    <li class="hd"><a href="javascript:scrollTo('#tab2',-50,300)">房源描述</a></li>
+                    <li class="hd"><a href="javascript:scrollTo('#tab4',-50,300)">小区周边</a></li>
+                    <li class="hd"><a href="javascript:scrollTo('#tab5',-50,300)">月供参考</a></li>
+                </ul>
+            </div>
+            <div class="zbpt bd" id="tab3" style=" margin-top:0;">
+                <div class="zbpt_tit"><span>房源相册</span></div>
+                <div class="fyxc">
+                	<a class="prev" href="javascript:void(0)"></a>
+                    <a class="next" href="javascript:void(0)"></a>
+                	<div class="bd">
+                        <ul>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img7.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡</div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img8.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡ 朝南</div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img7.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡</div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img8.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡ 朝南</div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img7.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡</div>
+                            </a></li>
+                            <li><a href="#">
+                                <div class="pic_275"><img src="{% static "images/img8.jpg" %}" width="275" height="206"></div>
+                                <div class="text_275">三层150㎡ 朝南</div>
+                            </a></li>
+                        </ul>
+                    </div>
+                </div>
+                <script>
+                	jQuery(".fyxc").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",vis:4});
+                </script>
+            </div>
+            <div class="fyxq_bd bd" id="tab1" style=" margin-top:10px;">
+                <div class="zbpt_tit"><span>房源信息</span></div>
+                <div class="fyxq_cont">
+                    <p>东亿国际传媒产业园是北京市重点支持的文化产业项目，由北京中视东升文化传媒有限公司开发建设，占地130亩，规划建设面积近30万平方米。园区地处高碑店地区高井村，东距中国传媒
+大学只有1.6公里，与中央电视台、北京电视台、凤凰卫视以及北京CBD核心区不到8公里，拥有包括办公楼、公寓楼、酒店、传媒培训基地、演播厅、传媒文化产品交易平台等功能齐全的
+设备设施</p>
+                    <p style=" margin-top:22px;"><span style=" float:left; width:66px; height:21px; line-height:20px; color:#fff; font-size:14px; font-weight:bold; background:#090909; text-align:center;">房源特色</span></p><br/>
+                    <p>该项目位于长岭居核心居住区，享长岭居+科学城千亿配套。作为万科东部第12个明星项目，出了家楼下7千㎡商业配套外，还可享1.4万㎡万科商业配套</p>
+                    <p><span style=" float:left; height:1px; width:100%; border-bottom:1px dashed #cccccc; margin-top:12px;"></span></p>
+                    <p style=" float:left; width:100%; margin-top:15px;"><span style=" float:left; width:66px; height:21px; line-height:20px; color:#fff; font-size:14px; font-weight:bold; background:#090909; text-align:center;">房源配套</span></p><br/>
+                    <p>公交总站、23号永和地铁站、麦当劳、一步跨境电商等</p>
+                    <p><span style=" float:left; height:1px; width:100%; border-bottom:1px dashed #cccccc; margin-top:12px;"></span></p>
+                </div>
+            </div>
+            <div class="fyxq_bd bd" id="tab2" style=" margin-top:10px;">
+                <div class="zbpt_tit"><span>房源描述</span></div>
+                <div class="fyxq_cont">
+                    租赁方式：整租 <br/>付款方式： 年付 <br/> 房屋现状：目前闲置 <br/>供暖方式：暂无数据
+                    <br/>
+                    1：该房在小区中间位置，无遮挡，采光超好，是正规的两居，格局合理，利用率很高，无任何浪费的空间，适合投资房产，该地段升值无限。小区东边是XX路（开车五分钟即到），西边是XX路（步行3分钟），BRT公交站牌就在小区旁边，最多有半站地，有30多条公交经过，出行非常方便。周边设施齐全完善，有银行，各大知名超市，医院，邮局，各种餐馆，幼儿园，小学，中学，卫生学校，电力学校，娱乐场所，公园等等应有尽有，非常方便。<br/>
+2：房源信息绝对真实有效！该房屋满五年是唯一住宅！室内照片真实有效！该社区地理位置优越，这里环境幽雅，人文气息浓厚，紧邻上千平米的公园，空气清新，非常舒适！房间内采光好，南北通透，干净整洁，布局合理！通风采光极佳！真是难得的精品房源！小区环境幽雅，设施齐全，非常适合居住！周边设施完善，紧邻各大超市，商场等。
+                </div>
+            </div>
+            <div class="zbpt bd" id="tab4">
+                <div class="zbpt_tit"><span>周边配套</span></div>
+                <div class="zbpt_list">
+                    <li class="on"><a href="#">学校</a></li>
+                    <li><a href="#">医院</a></li>
+                    <li><a href="#">商场</a></li>
+                    <li><a href="#">餐饮</a></li>
+                    <li><a href="#">住宿</a></li>
+                    <li><a href="#">公园</a></li>
+                    <li><a href="#">娱乐</a></li>
+                </div>
+                <div id="bdmap1">加载中...</div>
+            </div>
+            <div class="fyxq_bd bd" id="tab5" style=" margin-top:10px;">
+                <div class="zbpt_tit"><span>月供参考</span></div>
+                <div class="fyxq_cont">
+                   还款系数是指贷款1万元,每个月所要还的月供是多少,这个数就是还款系数。主要是用于买房者办理按揭贷款是参考所用。<br/><br/>
+                    注：<br/>
+                    房贷按揭<br/>
+                    等额本息贷款买房时，每月还款额计算公式为：<br/>
+                    [贷款本金×月利率×（1+月利率）^还款月数]÷[（1+月利率）^还款月数－1]<br/>
+                    计算原则：银行从每月月供款中，先收剩余本金利息，后收本金；利息在月供款中的比例中随剩余本金的减少而降低，本金在月供款中的比例因增加而升高，但月供总额保持不变。
+                </div>
+            </div>
+        </div>    
+    	<div class="fjfyzs"><span>附近房源展示</span></div>
+    	<div class="tab_list_one tab_list_two">
+            <ul>
+                <li class=""><a href="#">
+                    <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                    <div class="tab_pf2">
+                        <h1>中心五牛大厦</h1>
+                        <p>浦东大道1101号-1205号</p>
+                        <h2><span>待租房源：14个</span><time>210</time></h2>
+                    </div>
+                </a></li>
+                <li><a href="#">
+                    <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                    <div class="tab_pf2">
+                        <h1>中心五牛大厦</h1>
+                        <p>浦东大道1101号-1205号</p>
+                        <h2><span>待租房源：14个</span><time>210</time></h2>
+                    </div>
+                </a></li>
+                <li><a href="#">
+                    <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                    <div class="tab_pf2">
+                        <h1>中心五牛大厦</h1>
+                        <p>浦东大道1101号-1205号</p>
+                        <h2><span>待租房源：14个</span><time>210</time></h2>
+                    </div>
+                </a></li>
+                <li><a href="#">
+                    <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                    <div class="tab_pf2">
+                        <h1>中心五牛大厦</h1>
+                        <p>浦东大道1101号-1205号</p>
+                        <h2><span>待租房源：14个</span><time>210</time></h2>
+                    </div>
+                </a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+<script type="text/javascript" src="{%  static "js/maodian.0.2.js" %}"></script>
+<script>
+	
+  $(function(){
+	$(window).scroll(function(){
+	  var ht = $(".pz_top").height() + $(".listings_tit").height() + $(".fyxq_pic").height() + 30;	
+	  if($(window).scrollTop()> ht ){
+		  $(".fyxq_hd").addClass("fyxq_hd1");
+		  $(".fyxq_hd1").removeClass("fyxq_hd");
+	  }else{
+		  $(".fyxq_hd1").addClass("fyxq_hd");
+		  $(".fyxq_hd").removeClass("fyxq_hd1");
+	  };
+   });
+  });
+</script>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=0jz7CuaQAxFkoH7XumKlrhk3"></script>
+<script>
+	maodian('.hd', '.bd', 500);
+</script>
+<script>
+	//创建百度地图实例（底图不可点选）
+	var oMap = new BMap.Map("bdmap1", { enableMapClick: false }); //JSON
+	//创建中心点坐标
+	var oPoint = new BMap.Point(117.11803,40.146526);
+	//初始化地图,设置中心点和地图级别
+	oMap.centerAndZoom(oPoint, 18);
+	//创建地图标注
+	//var marker = new BMap.Marker(oPoint, { title: '', icon: new BMap.Icon('', new BMap.Size(40, 40), { anchor: new BMap.Size(27, 70) }) });
+	//给标注绑定事件
+	marker.addEventListener('click', function () {
+		//alert('我被点击了，好难过！！！');
+		openInfoWindow();
+	})
+	////将标注插入地图
+	oMap.addOverlay(marker);
+	////设置标注动画效果。如果参数为null，则取消动画效果。该方法需要在addOverlay方法后设置
+	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
+	//设置地图风格（http://developer.baidu.com/map/custom/list.htm）
+	oMap.setMapStyle({ style: 'normal' });
+	//创建文字标注
+	
+	//将标注插入地图
+	oMap.addOverlay(label);
+</script>
+</body>
+</html>

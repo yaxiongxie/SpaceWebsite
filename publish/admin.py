@@ -13,8 +13,19 @@ from django.contrib import admin
 
 from .models import OfficeBuildingList,OfficeList,News
 
+
+class NewAdmin(admin.ModelAdmin):
+
+    class Media:
+        js = (
+            'kindeditor/kindeditor-all.js',
+            'kindeditor/lang.zh_CN.js',
+            'kindeditor/config.js',
+        )
+
+
 admin.site.register(OfficeBuildingList)
 admin.site.register(OfficeList)
-admin.site.register(News)
+admin.site.register(News,NewAdmin)
 
 
