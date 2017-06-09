@@ -23,9 +23,6 @@
     	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">个人中心</a></div>
     	<div class="member">
         	{% include "frontsite/personalNav.html" %}
-            <script>
-					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
-				</script>
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico3">我的企业</div>
@@ -52,17 +49,21 @@
                     	<label>
                         	<div class="fm_name1"><span>*</span>营业执照</div>
                             <div class="fm_input1 fm_input4">
-                            	<div class="fm_input1_1" style=" margin-bottom:0;">	
-                            		<input placeholder="" class="fm11" type="text"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            	<div class="fm_input1_1" style=" margin-bottom:0;">
+                            		<input class="fm11" type="text" id="showvalue">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change(this)"></a>
                                 </div>
                             </div>
                         </label>
                         <label>
                         	<div class="fm_name1"><span>*</span>法人证件</div>
                             <div class="fm_input1 fm_input4">	
-                            	<div class="fm_input1_1" style=" margin-bottom:0;">	
-                            		<input placeholder="" class="fm11" type="text"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            	<!-- 20170606修改开始-->
+                            	<div class="fm_input1_1" style=" margin-bottom:0;">
+                            		<input class="fm11" type="text" id="showvalue1">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change1(this)"></a>
                                 </div>
+                                <!-- 20170606修改结束-->
                             </div>
                         </label>
                         <label>
@@ -82,10 +83,25 @@
                         </label>
                     </form>
                 </div>
+                <!-- 20170606修改开始-->
+                <script>
+					function _change(_files){
+						document.getElementById('showvalue').value = _files.value;
+					}
+					function _change1(_files){
+						document.getElementById('showvalue1').value = _files.value;
+					}
+				</script>
+                <!-- 20170606修改结束-->
             </div>
         </div>
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<script>
+        jQuery("#h5").addClass("on");
+        jQuery("#h52").addClass("on");
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+				</script>
 </body>
 </html>

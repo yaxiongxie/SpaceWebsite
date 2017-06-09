@@ -24,16 +24,32 @@
             	<div class="_btn"></div>
                 <div class="_pic">
                     <ul>
+                        <!--
                         <li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
                        	<li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
                         <li><a href="#"><img src="{% static "images/banner.jpg" %}" width="1920" height="700"/></a></li>
+                        -->
+                        <!--20170607修改开始-->
+                        <li><a href="#">
+                        	<img src="{% static "images/banner.jpg" %}" width="1920" height="700" alt=""/>
+                            <img src="{% static "images/bann_tx.png" %}" alt="" class="bann_tx">
+                        </a></li>
+                       	 <li><a href="#">
+                        	<img src="{% static "images/banner.jpg" %}" width="1920" height="700" alt=""/>
+                            <img src="{% static "images/bann_tx.png" %}" alt="" class="bann_tx">
+                        </a></li>
+                         <li><a href="#">
+                        	<img src="{% static "images/banner.jpg" %}" width="1920" height="700" alt=""/>
+                            <img src="{% static "images/bann_tx.png" %}" alt="" class="bann_tx">
+                        </a></li>
+                        <!--20170607修改结束-->
                     </ul>
                 </div>
                 <a class="prev" href="javascript:void(0)"></a>
                 <a class="next" href="javascript:void(0)"></a>
           	</div>
 		  	<script>
-				  var s_count = $(".pz_slides_3 ._pic img").length;
+				  var s_count = $(".pz_slides_3 ._pic img").length/2;
 				  var s_li = "";
 				  for (j = 1; j <= s_count; j++) { s_li += "<li></li>"; }
 				  $(".pz_slides_3 > ._btn").html("<ul>" + s_li + "</ul>");

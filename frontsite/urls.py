@@ -43,7 +43,11 @@ url(r'^requirement/', views.requirement),
 url(r'^service/', views.service),
 url(r'^services/', views.services),
 url(r'^mysourse/', views.mysourse),
+url(r'^sendcheckcode/', views.sendcheckcode),
 
 
+
+
+url(r'^accounts/captcha/$', views.captcha),
 
 ]

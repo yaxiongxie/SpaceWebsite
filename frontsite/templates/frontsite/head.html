@@ -23,7 +23,11 @@
                 <script>
                      jQuery(".menu").slide({ type: "menu", titCell: ".nli", targetCell: ".sub", effect: "slideDown", delayTime:200, triggerTime: 0,returnDefault: true });
                 </script>
-                <div class="login"><a href="/frontsite/login">登录</a>&nbsp;/&nbsp;<a href="/frontsite/registe">注册</a></div>
+                {% if request.session.login %}
+                    <div class="login"><a href="/frontsite/personal/">{{ request.session.login }}</a>&nbsp;/&nbsp;<a href="/frontsite/exit/">退出</a></div>
+                {% else %}
+                    <div class="login"><a href="/frontsite/login/?returnUrl={{ request.path }}">登录</a>&nbsp;/&nbsp;<a href="/frontsite/registe/?returnUrl={{ request.path }}">注册</a></div>
+                {% endif %}
                 <div class="Castspace"><a href="#">投放空间</a><a href="#">委托找房</a></div>
             </div>
         </div>

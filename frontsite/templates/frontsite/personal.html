@@ -22,9 +22,6 @@
     	<div class="listings_tit"><a href="#">首页</a> - <a href="/frontsite/personal" class="on">个人中心</a></div>
     	<div class="member">
         	{% include "frontsite/personalNav.html" %}
-            <script>
-					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
-				</script>
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico1">个人信息&nbsp;<span>基本信息</span></div>
@@ -70,5 +67,10 @@
     </div>
 </div>
 {% include "frontsite/foot2.html" %}
+<script>
+        jQuery("#h1").addClass("on");
+        jQuery("#l11").addClass("on");
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+				</script>
 </body>
 </html>

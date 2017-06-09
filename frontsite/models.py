@@ -17,7 +17,7 @@ class Account(models.Model):
     age = models.IntegerField('年龄')
     card = models.CharField('银行卡号',max_length=200)
     address = models.CharField('地址',max_length=200)
-    createTime = models.DateTimeField('时间','date published')
+    createTime = models.DateTimeField('时间','date published',auto_now=True)
     status = models.ForeignKey(Status,verbose_name='状态', default=1)
 
     def __unicode__(self):

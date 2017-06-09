@@ -90,10 +90,11 @@
                             	<input type="text" placeholder="请选择装修程度" class="fm8">
                             </div>
                         </label>
-                        <label>
+                        <!-- 20170606修改开始-->
+                        <label class='add_box'>
                         	<div class="fm_name1"><span>*</span>出租户型</div>
-                            <div class="fm_input1">	
-                            	<div class="fm_input1_2">
+                            <div class="fm_input1">
+                            	<div class="fm_input1_2" style=" margin-top:0;">
                             		<input type="text" placeholder="" class="fm12">
                                     <div class="fm_pf">㎡</div>
                                     <div class="fm_name1 fm_name2"><span>*</span>楼层</div>
@@ -102,7 +103,7 @@
                                     <input type="text" placeholder="" class="fm12">
                                     <div class="fm_pf">㎡/月</div>
                                 </div>
-                                <div class="fm_input1_2" style=" margin-top:20px;">
+                                <div class="fm_input1_2">
                             		<input type="text" placeholder="" class="fm12">
                                     <div class="fm_pf">㎡</div>
                                     <div class="fm_name1 fm_name2"><span>*</span>楼层</div>
@@ -110,10 +111,24 @@
                                     <div class="fm_name1 fm_name2"><span>*</span>租金</div>
                                     <input type="text" placeholder="" class="fm12">
                                     <div class="fm_pf">㎡/月</div>
-                                    <a class="fm_tjhx" style=" position:relative;"><input style="position: absolute; width:83px; height:29px;font-size:0;right: 0;top: 0;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file">添加户型</a>
                                 </div>
+                                <a class="fm_tjhx">添加户型</a>
                             </div>
+
+                           	<script>
+
+								$(".fm_tjhx").on("click",function(){
+									var htm="";
+									htm+="<div class="+'fm_input1_2'+">";
+									htm+=$(".fm_input1_2").html();
+									htm+="</div>";
+									console.log(htm)
+									$(".add_box .fm_input1").append(htm)
+								})
+
+                            </script>
                         </label>
+                        <!--20170606修改结束-->
                         <label>
                         	<div class="fm_name1"><span>*</span>附近交通</div>
                             <div class="fm_input1">	
@@ -140,23 +155,30 @@
                         </label>
                         <label>
                         	<div class="fm_name1"><span>*</span>房源图片</div>
-                            <div class="fm_input1">	
+                            <!-- 20170606修改开始-->
+                            <div class="fm_input1">
                             	<div class="fm_input1_1">
-                            		<input  type="text" placeholder="" class="fm11"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            		<input  type="text" class="fm11" id="showvalue">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change(this)"></a>
                                 </div>
                                 <div class="fm_input1_1">
-                            		<input  type="text" placeholder="" class="fm11"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            		<input  type="text" class="fm11" id="showvalue1">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change1(this)"></a>
                                 </div>
                                 <div class="fm_input1_1">
-                            		<input  type="text" placeholder="" class="fm11"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            		<input  type="text" class="fm11" id="showvalue2">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change2(this)"></a>
                                 </div>
                                 <div class="fm_input1_1">
-                            		<input  type="text" placeholder="" class="fm11"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            		<input  type="text" class="fm11" id="showvalue3">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change3(this)"></a>
                                 </div>
                                 <div class="fm_input1_1">
-                            		<input  type="text" placeholder="" class="fm11"><a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file"></a>
+                            		<input  type="text" class="fm11" id="showvalue4">
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change4(this)"></a>
                                 </div>
                             </div>
+                            <!-- 20170606修改结束-->
                         </label>
                         <label>
                         	<div class="fm_name1">&nbsp;&nbsp;</div>
@@ -166,12 +188,33 @@
                         </label>
                     </form>
                 </div>
+                <!-- 20170606修改开始-->
+                <script>
+					function _change(_files){
+						document.getElementById('showvalue').value = _files.value;
+					}
+					function _change1(_files){
+						document.getElementById('showvalue1').value = _files.value;
+					}
+					function _change2(_files){
+						document.getElementById('showvalue2').value = _files.value;
+					}
+					function _change3(_files){
+						document.getElementById('showvalue3').value = _files.value;
+					}
+					function _change4(_files){
+						document.getElementById('showvalue4').value = _files.value;
+					}
+				</script>
+                <!-- 20170606修改结束-->
             </div>
         </div>
     </div>
 </div>
 {% include "frontsite/foot.html" %}
 <script>
+        jQuery("#h2").addClass("on");
+        jQuery("#l21").addClass("on");
 					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
 				</script>
 

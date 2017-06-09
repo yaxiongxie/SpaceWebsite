@@ -19,51 +19,145 @@
 <div class="pz_main back6">
 	<div class="w_1200">
         <div class="m_484">
-            <form class="fm_mt1">
+            <form class="fm_mt1" action="/frontsite/registe/?returnUrl={{ returnUrl }}" id="formid" method="post">
+                {% csrf_token %}
             	<label>
                 	<div class="fm_tit">会员注册</div>
                 </label>
                 <label>
                 	<div class="fm_input" style=" position:relative;">
-                        <span class="fm_name"><img src="images/main44.png" width="18" height="21"></span>
-                        <input type="text" placeholder="请输入手机号" class="fm1">
-                        <div class="Validform_checktip yzc_ti">*&nbsp;手机号码已注册</div>
+                        <span class="fm_name"><img src="{% static "images/main44.png" %}" width="18" height="21"></span>
+                        <input type="text" id="telephone" name="telephone" placeholder="请输入手机号" class="fm1" value="{{ telephone }}">
+                        <div class="Validform_checktip yzc_ti" id="telephonet">*&nbsp;手机号码已注册</div>
                     </div>
                 </label>
                 <label>
                 	<div class="fm_input">
-                        <input type="text" placeholder="请输入验证码" class="fm5">
-                        <input type="button" value="发送验证码" class="fm4 submit">
+                        <input type="text" placeholder="请输入验证码" id="checkcode" name="checkcode" class="fm5" value="{{ checkcode }}">
+                        <input type="button" id="sendcheckcode" value="发送验证码" class="fm4 submit">
+                        <div class="Validform_checktip yzc_ti" id="checkcodet">*&nbsp;验证码输入不正确</div>
                     </div>
                 </label>
                 <label>
                 	<div class="fm_input">
-                        <span class="fm_name"><img src="images/main43.png" width="18" height="21"></span>
-                        <input type="text" placeholder="请输入密码" class="fm1">
+                        <span class="fm_name"><img src="{% static "images/main43.png" %}" width="18" height="21"></span>
+                        <input type="password" placeholder="请输入密码" id="password" name="password" class="fm1" value="{{ password }}">
+                        <div class="Validform_checktip yzc_ti" id="passwordt">*&nbsp;验证码输入不正确</div>
                     </div>
                 </label>
                 <label>
                 	<div class="fm_input">
-                        <span class="fm_name"><img src="images/main43.png" width="18" height="21"></span>
-                        <input type="text" placeholder="确认密码" class="fm1">
+                        <span class="fm_name"><img src="{% static "images/main43.png" %}" width="18" height="21"></span>
+                        <input type="password" placeholder="确认密码" id="passwordConfirm" class="fm1" value="{{ password }}">
+                        <div class="Validform_checktip yzc_ti" id="passwordConfirmt">*&nbsp;验证码输入不正确</div>
                     </div>
                 </label>
+                <!--
                 <label>
                 	<div class="fm_input">
                         <input type="text" placeholder="请输入图形验证码" class="fm6">
-                        <img src="images/main45.png" width="104" height="54" class="fm7">
+                        <img onclick="this.setAttribute('src','/frontsite/accounts/captcha/?nocache='+Math.random());" src="/frontsite/accounts/captcha/" alt="Captcha" width="104" height="54" class="fm7">
                     </div>
                 </label>
+                -->
                 <label>
-                    <input type="button" value="注册" class="fm2 submit" style="margin-top:30px;">
+                    <input type="button" value="注册" id="submitButton" class="fm2 submit" style="margin-top:30px;">
                 </label>
                 <label>
-                    <div class="fm3">已有账号，<a href="#">立即登录</a></div>
+                    <div class="fm3">已有账号，<a href="/frontsite/login?returnUrl={{ returnUrl }}">立即登录</a></div>
                 </label>
             </form>
         </div>
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<script>
+    var telephoneError="{{ telephoneError }}"
+    var checkcodeError="{{ checkcodeError }}"
+    if(telephoneError!=""){
+         $("#telephonet").css("display","block")
+            $("#telephonet").html("* 手机号已注册");
+    }
+    if(checkcodeError!=""){
+         $("#checkcodet").css("display","block")
+            $("#checkcodet").html("* 验证码输入不正确");
+    }
+    var token="{{ token }}"
+    jQuery("#sendcheckcode").click(function(){
+        var telephone=$("#telephone").val();
+        if($.trim(telephone).length!=11){
+            $("#telephonet").css("display","block")
+            $("#telephonet").html("* 手机号输入错误");
+            return ;
+        }else{
+            $("#telephonet").css("display","none")
+        }
+        $.get("/frontsite/sendcheckcode?telephone="+telephone+"&token="+token+"&extra=y", function(result){
+                var message="";
+                if(result=="success"){
+                    message="发送成功"
+                }else{
+                    message="发送失败"
+                }
+                $("#sendcheckcode").attr("disabled","disabled");
+                $("#sendcheckcode").val(message+" 59")
+                var timesRun = 59;
+                var interval = setInterval(function(){
+                    timesRun =timesRun-1;
+                    msg=message+" "+timesRun;
+                    $("#sendcheckcode").val(msg)
+                    if(timesRun === 1){
+                        clearInterval(interval);
+                        $("#sendcheckcode").removeAttr("disabled");
+                        $("#sendcheckcode").val("发送验证码");
+                    }
+                }, 1000);
+          });
+    })
+
+    $("#submitButton").click(function(){
+        var telephone =$("#telephone").val();
+        var checkcode= $("#checkcode").val();
+        var password=$("#password").val();
+        var passwordConfirm=$("#passwordConfirm").val();
+        if($.trim(telephone)==''){
+             $("#telephonet").css("display","block")
+            $("#telephonet").html("* 请输入手机号")
+            return;
+        }else{
+             $("#telephonet").css("display","none")
+        }
+        if($.trim(telephone).length!=11){
+            $("#telephonet").css("display","block")
+            $("#telephonet").html("* 手机号输入错误")
+            return ;
+        }else{
+             $("#telephonet").css("display","none")
+        }
+        if($.trim(checkcode)==''){
+            $("#checkcodet").css("display","block")
+            $("#checkcodet").html("* 请输入验证码")
+            return;
+        }else{
+            $("#checkcodet").css("display","none")
+        }
+        if($.trim(password)==''){
+            $("#passwordt").css("display","block")
+            $("#passwordt").html("* 请输入密码")
+            return;
+        }else{
+            $("#passwordt").css("display","none")
+        }
+        if(password!=passwordConfirm){
+             $("#passwordConfirmt").css("display","block")
+            $("#passwordConfirmt").html("* 两次输入密码不一致")
+            return;
+        }else{
+            $("#passwordConfirmt").css("display","none")
+        }
+        $("#formid").submit();
+
+    })
+</script>
 </body>
 </html>

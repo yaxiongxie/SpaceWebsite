@@ -19,32 +19,41 @@
 <div class="pz_main back6">
 	<div class="w_1200">
         <div class="m_484">
-            <form class="fm_mt">
+            <form class="fm_mt" action="/frontsite/login/?returnUrl={{ returnUrl }}" method="post">
+                {% csrf_token %}
             	<label>
                 	<div class="fm_tit">会员登录</div>
                 </label>
                 <label>
                 	<div class="fm_input">
-                        <span class="fm_name"><img src="images/main42.png" width="18" height="21"></span>
-                        <input type="text" placeholder="请输入用户名" class="fm1">
+                        <span class="fm_name"><img src="{% static "images/main42.png" %}" width="18" height="21"></span>
+                        <input type="text" placeholder="请输入手机号" name="telephone" class="fm1" value="{{ telephone }}">
+                        <div class="Validform_checktip yzc_ti" id="telephonet">*&nbsp;用户名或密码错误</div>
                     </div>
                 </label>
                 <label>
                 	<div class="fm_input">
-                        <span class="fm_name"><img src="images/main43.png" width="18" height="21"></span>
-                        <input type="text" placeholder="请输入密码" class="fm1">
+                        <span class="fm_name"><img src="{% static "images/main43.png" %}" width="18" height="21"></span>
+                        <input type="password" placeholder="请输入密码" class="fm1" name="password" value="{{ password }}">
                     </div>
                 </label>
                 <label>
-                    <input type="button" value="登录" class="fm2">
+                    <input type="submit" value="登录" class="fm2">
                 </label>
                 <label>
-                    <div class="fm3">还没有账号，<a href="#">立即注册</a></div>
+                    <div class="fm3">还没有账号，<a href="/frontsite/registe?returnUrl={{ returnUrl }}">立即注册</a></div>
                 </label>
             </form>
         </div>
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<script>
+    var checkError="{{ checkError }}"
+    if(checkError!=""){
+         $("#telephonet").css("display","block")
+            $("#telephonet").html("* 用户名或密码错误");
+    }
+</script>
 </body>
 </html>
