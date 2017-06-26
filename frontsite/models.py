@@ -40,7 +40,7 @@ class HouseSource(models.Model):
     description = models.CharField('房源描述',max_length=200)
     corporationList = models.CharField('入信企业', max_length=200)
     userid=models.ForeignKey(Account, verbose_name='创建用户',default=1)
-    createTime = models.DateTimeField('时间', 'date published')
+    createTime = models.DateTimeField('时间', 'date published',auto_now=True)
     status = models.ForeignKey(Status,verbose_name='状态',  default=1)
 
     image1 = models.ImageField('图片1', upload_to='pic_folder/', default='pic_folder/None/no-img.jpg')
@@ -64,7 +64,7 @@ class HouseRequirement(models.Model):
     description = models.CharField('需求描述',max_length=200)
 
     userid=models.ForeignKey(Account, verbose_name='创建用户',default=1)
-    createTime = models.DateTimeField('时间', 'date published')
+    createTime = models.DateTimeField('时间', 'date published',auto_now=True)
     status = models.ForeignKey(Status,verbose_name='状态',  default=1)
 
     def __unicode__(self):
@@ -78,9 +78,10 @@ class HouseRequirement(models.Model):
 class ServiceRequirement(models.Model):
     name = models.CharField('用户姓名',max_length=200)
     telephone = models.CharField('用户手机号',max_length=200)
-    description = models.CharField('需求描述',max_length=200)
+    description = models.CharField('需求描述',max_length=500)
+    servicetype = models.CharField('需求类型', max_length=200,default='')
 
-    createTime = models.DateTimeField('时间', 'date published')
+    createTime = models.DateTimeField('时间', 'date published',auto_now=True)
     status = models.ForeignKey(Status, verbose_name='状态', default=1)
 
     def __unicode__(self):
@@ -94,7 +95,7 @@ class ServiceRequirement(models.Model):
 class Order(models.Model):
     officeBuilding=models.ForeignKey(OfficeBuildingList,verbose_name="房源",default=1)
     userid=models.ForeignKey(Account, verbose_name='创建用户',default=1)
-    createTime = models.DateTimeField('时间', 'date published')
+    createTime = models.DateTimeField('时间', 'date published',auto_now=True)
     status = models.ForeignKey(Status, verbose_name='状态', default=1)
 
     def __unicode__(self):
@@ -114,7 +115,7 @@ class Corporation(models.Model):
 
     userid = models.ForeignKey(Account, verbose_name="创建人", default=1)
 
-    createTime = models.DateTimeField('信息发布时间','date published')
+    createTime = models.DateTimeField('信息发布时间','date published',auto_now=True)
 
     def __unicode__(self):
         return u'%s' % self.telephone
@@ -132,7 +133,7 @@ class Messages(models.Model):
 
     userid = models.ForeignKey(Account,verbose_name="创建人",related_name="message_userid_account")
 
-    createTime = models.DateTimeField('信息发布时间','date published')
+    createTime = models.DateTimeField('信息发布时间','date published',auto_now=True)
     status= models.ForeignKey(Status,verbose_name='状态')
 
     def __unicode__(self):

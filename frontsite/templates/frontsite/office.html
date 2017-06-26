@@ -22,12 +22,11 @@
     	<div class="listings_tit"><a href="#">首页</a> - <a href="#">热门写字楼</a> - <a href="#" class="on">世界城广场 写字楼出售出租随时看房</a></div>
         <div class="fyxq_pic">
         	<div class="xq_750">
-                <div class="xq_1">世界城广场 写字楼出售出租随时看房</div>
+                <div class="xq_1">{{ office.title }}</div>
                 <div class="xq_2">
-                    <a href="#">100㎡</a>
-                    <a href="#">180㎡</a>
-                    <a href="#">250㎡</a>
-                    <a href="#">1000㎡</a>
+                    <!--
+                    <a href="#">{{ office.areaNum }}㎡</a>
+                    -->
                 </div>
                 <div class="fyxq_pic_l">
                 	<a class="prev" href="javascript:void(0)"></a>
@@ -36,15 +35,12 @@
                 	<div class="fy_86"><img src="{% static "images/img12.png" %}" width="86" height="83"></div>
                     <div class="bd">
                         <ul>
-                            <li>
-                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
-                            </li>
-                            <li>
-                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
-                            </li>
-                            <li>
-                                <img src="{% static "images/img9.jpg" %}" width="750" height="562">
-                            </li>
+                            <li><img src="/{{ office.image1 }}" width="750" height="562"></li>
+                            <li><img src="/{{ office.image2 }}" width="750" height="562"></li>
+                            <li><img src="/{{ office.image3 }}" width="750" height="562"></li>
+                            <li><img src="/{{ office.image4 }}" width="750" height="562"></li>
+                            <li><img src="/{{ office.image5 }}" width="750" height="562"></li>
+                            <li><img src="/{{ office.image6 }}" width="750" height="562"></li>
                         </ul>
                     </div>
                 </div>
@@ -65,22 +61,22 @@
                     <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
                 </div>
                 <div class="fyxq_pic_r1">
-                    <li>所属区域： 滨江区</li>
-                    <li>楼盘地址： 东湖高新区光谷光谷步行街</li>
-                    <li>建筑面积： 260200㎡</li>
-                    <li>总 楼 层： 25层</li>
-                    <li>附近交通： 15路、23路公交，近2号线</li>
+                    <li>所属区域： {{ office.officeBuilding.area_type.country_name }}</li>
+                    <li>楼盘地址： {{ office.officeBuilding.address }}</li>
+                    <li>建筑面积： {{ office.areaNum }}㎡</li>
+                    <li>楼 层： {{ office.floorNum }}层</li>
+                    <li>附近交通： {{ office.officeBuilding.transport }}</li>
                 </div>
                 <div class="fyxq_pic_r2">
                 	<div class="w_0100">
-                        <div class="xq_3"><img src="{% static "images/img10.jpg" %}" width="86" height="86"></div>
+                        <div class="xq_3"><img src="/{{ office.officeBuilding.image1 }}" width="86" height="86"></div>
                         <div class="xq_4">
-                        	<h1>世纪城广场写字楼</h1>
+                        	<h1>{{ office.officeBuilding.title }}</h1>
                             <h2>一座有工作氛围的大厦</h2>
                         </div>
                     </div>
                     <div class="w_0100" style=" margin-top:32px;">
-                    	<div class="xq_5"><strong>100~130</strong><br/><span>/㎡/月</span></div>
+                    	<div class="xq_5"><strong>{{ office.officeBuilding.rent_min_price }}~{{ office.officeBuilding.rent_max_price }}</strong><br/><span>/㎡/月</span></div>
                         <div class="xq_6"><a href="#">预约看房</a></div>
                     </div>
                 </div>
@@ -89,13 +85,14 @@
         <div class="fyxq_tab">
         	<div class="fyxq_hd">
             	<ul>
-                	<li class="hd"><a href="javascript:scrollTo('#tab3',-50,300)">房源相册</a></li>
+                	<!--<li class="hd"><a href="javascript:scrollTo('#tab3',-50,300)">房源相册</a></li>-->
                     <li class="hd on"><a href="javascript:scrollTo('#tab1',-50,300)">房源信息</a></li>
                     <li class="hd"><a href="javascript:scrollTo('#tab2',-50,300)">房源描述</a></li>
                     <li class="hd"><a href="javascript:scrollTo('#tab4',-50,300)">小区周边</a></li>
                     <li class="hd"><a href="javascript:scrollTo('#tab5',-50,300)">月供参考</a></li>
                 </ul>
             </div>
+            <!--
             <div class="zbpt bd" id="tab3" style=" margin-top:0;">
                 <div class="zbpt_tit"><span>房源相册</span></div>
                 <div class="fyxc">
@@ -134,6 +131,7 @@
                 	jQuery(".fyxc").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",vis:4});
                 </script>
             </div>
+            -->
             <div class="fyxq_bd bd" id="tab1" style=" margin-top:10px;">
                 <div class="zbpt_tit"><span>房源信息</span></div>
                 <div class="fyxq_cont">
@@ -160,13 +158,13 @@
             <div class="zbpt bd" id="tab4">
                 <div class="zbpt_tit"><span>周边配套</span></div>
                 <div class="zbpt_list">
-                    <li class="on"><a href="#">学校</a></li>
-                    <li><a href="#">医院</a></li>
-                    <li><a href="#">商场</a></li>
-                    <li><a href="#">餐饮</a></li>
-                    <li><a href="#">住宿</a></li>
-                    <li><a href="#">公园</a></li>
-                    <li><a href="#">娱乐</a></li>
+                    <li id="m1" class="on"><a href="javascript:schoolSearch({{ office.officeBuilding.location }})">学校</a></li>
+                    <li id="m2"><a href="javascript:hospitalSearch({{ office.officeBuilding.location }})">医院</a></li>
+                    <li id="m3"><a href="javascript:shopSearch({{ office.officeBuilding.location }})">商场</a></li>
+                    <li id="m4"><a href="javascript:repastSearch({{ office.officeBuilding.location }})">餐饮</a></li>
+                    <li id="m5"><a href="javascript:rentSearch({{ office.officeBuilding.location }})">住宿</a></li>
+                    <li id="m6"><a href="javascript:gardenSearch({{ office.officeBuilding.location }})">公园</a></li>
+                    <li id="m7"><a href="javascript:ktvSearch({{ office.officeBuilding.location }})">娱乐</a></li>
                 </div>
                 <div id="bdmap1">加载中...</div>
             </div>
@@ -181,7 +179,9 @@
                     计算原则：银行从每月月供款中，先收剩余本金利息，后收本金；利息在月供款中的比例中随剩余本金的减少而降低，本金在月供款中的比例因增加而升高，但月供总额保持不变。
                 </div>
             </div>
-        </div>    
+        </div>
+        <div class="fjfyzs"></div>
+        <!--
     	<div class="fjfyzs"><span>附近房源展示</span></div>
     	<div class="tab_list_one tab_list_two">
             <ul>
@@ -219,6 +219,7 @@
                 </a></li>
             </ul>
         </div>
+        -->
     </div>
 </div>
 {% include "frontsite/foot.html" %}
@@ -239,33 +240,12 @@
   });
 </script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=0jz7CuaQAxFkoH7XumKlrhk3"></script>
+<script type="text/javascript" src="{% static "frontsite/baidumap.js" %}"
 <script>
 	maodian('.hd', '.bd', 500);
 </script>
 <script>
-	//创建百度地图实例（底图不可点选）
-	var oMap = new BMap.Map("bdmap1", { enableMapClick: false }); //JSON
-	//创建中心点坐标
-	var oPoint = new BMap.Point(117.11803,40.146526);
-	//初始化地图,设置中心点和地图级别
-	oMap.centerAndZoom(oPoint, 18);
-	//创建地图标注
-	//var marker = new BMap.Marker(oPoint, { title: '', icon: new BMap.Icon('', new BMap.Size(40, 40), { anchor: new BMap.Size(27, 70) }) });
-	//给标注绑定事件
-	marker.addEventListener('click', function () {
-		//alert('我被点击了，好难过！！！');
-		openInfoWindow();
-	})
-	////将标注插入地图
-	oMap.addOverlay(marker);
-	////设置标注动画效果。如果参数为null，则取消动画效果。该方法需要在addOverlay方法后设置
-	marker.setAnimation(BMAP_ANIMATION_BOUNCE);
-	//设置地图风格（http://developer.baidu.com/map/custom/list.htm）
-	oMap.setMapStyle({ style: 'normal' });
-	//创建文字标注
-	
-	//将标注插入地图
-	oMap.addOverlay(label);
+	schoolSearch({{ office.officeBuilding.location }})
 </script>
 </body>
 </html>

@@ -16,9 +16,15 @@ Including another URLconf
 from django.conf.urls import url,include
 from django.contrib import admin
 import django
+from django.conf.urls import handler404, handler500
+from frontsite import views
+
+handler404=views.page_not_found
+handler500=views.page_error
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^frontsite/', include('frontsite.urls')),
+    url(r'^pic_folder/(?P<path>.*)', django.views.static.serve, {'document_root':'/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder'}),
 
 ]

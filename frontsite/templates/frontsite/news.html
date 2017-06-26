@@ -8,6 +8,8 @@
 <meta name="keywords" content="">          
 <meta name="description" content=""> 
 <title>有为空间</title>
+    {% load pagination_tags %}
+    {% autopaginate newlist 3 %}
 {% load static %}
 <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
@@ -20,7 +22,7 @@
     <div style="height:400px; position:relative;">
     	<div class="bann_bg"></div>
     	<div style=" position:absolute; width:1920px; left:50%; margin-left:-960px;">
-            <img src="images/banner5.jpg" width="1920" height="400"/>
+            <img src="{% static "images/banner5.jpg" %}" width="1920" height="400"/>
 		</div>
     </div>
 </div>
@@ -28,63 +30,28 @@
 	<div class="w_1200">
     	<div class="side_pz">
         	<div class="pz_SideLayer mt_auto">
-                <li class="l1 on"><a href="#">行业新闻</a></li>
-                <li class="l1"><a href="#">活动动态</a></li>
-                <li class="l1"><a href="#">最新要闻</a></li>
+                <li class="l1 {% if type == '1' %} on {% endif %}"><a href="/frontsite/news/1">行业新闻</a></li>
+                <li class="l1 {% if type == '2' %} on {% endif %}"><a href="/frontsite/news/2">活动动态</a></li>
+                <li class="l1 {% if type == '3' %} on {% endif %}"><a href="/frontsite/news/3">最新要闻</a></li>
             </div>
         </div>
     	<div class="newslist">
         	<ul>
-            	<li>
-                	<div class="pic_news"><a href="#"><img src="images/main77.jpg" width="221" height="155"></a></div>
-                    <div class="text_news">
-                    	<h1><a href="#">装修施工最应紧扣哪五大环节?</a></h1>
-                        <time>2017/05/09</time>
-                        <p>装修施工最应紧扣哪五大环节?装修施工环节是居室装修的质量保证书，而且施工环节的技巧性也成为了优劣工程的直观因素。在装修施工中，存在五大环节，密不可分。那么，装修施工最应紧扣哪五大环节?</p>
-                    </div>
-                </li>
-                <li>
-                	<div class="pic_news"><a href="#"><img src="images/main78.jpg" width="221" height="155"></a></div>
-                    <div class="text_news">
-                    	<h1><a href="#">服务式办公室设计理念，人性化选择</a></h1>
-                        <time>2017/05/09</time>
-                        <p>装修施工最应紧扣哪五大环节?装修施工环节是居室装修的质量保证书，而且施工环节的技巧性也成为了优劣工程的直观因素。在装修施工中，存在五大环节，密不可分。那么，装修施工最应紧扣哪五大环节?</p>
-                    </div>
-                </li>
-                <li>
-                	<div class="pic_news"><a href="#"><img src="images/main77.jpg" width="221" height="155"></a></div>
-                    <div class="text_news">
-                    	<h1><a href="#">装修施工最应紧扣哪五大环节?</a></h1>
-                        <time>2017/05/09</time>
-                        <p>装修施工最应紧扣哪五大环节?装修施工环节是居室装修的质量保证书，而且施工环节的技巧性也成为了优劣工程的直观因素。在装修施工中，存在五大环节，密不可分。那么，装修施工最应紧扣哪五大环节?</p>
-                    </div>
-                </li>
-                <li>
-                	<div class="pic_news"><a href="#"><img src="images/main78.jpg" width="221" height="155"></a></div>
-                    <div class="text_news">
-                    	<h1><a href="#">服务式办公室设计理念，人性化选择</a></h1>
-                        <time>2017/05/09</time>
-                        <p>装修施工最应紧扣哪五大环节?装修施工环节是居室装修的质量保证书，而且施工环节的技巧性也成为了优劣工程的直观因素。在装修施工中，存在五大环节，密不可分。那么，装修施工最应紧扣哪五大环节?</p>
-                    </div>
-                </li>
-                <li>
-                	<div class="pic_news"><a href="#"><img src="images/main77.jpg" width="221" height="155"></a></div>
-                    <div class="text_news">
-                    	<h1><a href="#">装修施工最应紧扣哪五大环节?</a></h1>
-                        <time>2017/05/09</time>
-                        <p>装修施工最应紧扣哪五大环节?装修施工环节是居室装修的质量保证书，而且施工环节的技巧性也成为了优劣工程的直观因素。在装修施工中，存在五大环节，密不可分。那么，装修施工最应紧扣哪五大环节?</p>
-                    </div>
-                </li>
+                {% for new in newlist %}
+                    <li>
+                        <div class="pic_news"><a href="/frontsite/new/{{ new.id }}"><img src="/{{ new.image1 }}" width="221" height="155"></a></div>
+                        <div class="text_news">
+                            <h1><a href="/frontsite/new/{{ new.id }}">{{ new.title }}</a></h1>
+                            <time>2017/05/09</time>
+                            <p>{{ new.abstractText }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+
              </ul>
-        </div>    
+        </div>
        <div class="wack1">
-          <div class="pz_fy">
-              <a href="#">&lt;</a>
-              <a href="#" class="on">1</a>
-              <a href="#">2</a>
-              <a href="#">3</a>
-              <a href="#">&gt;</a>
-          </div> 
+            {% paginate using "frontsite/pagination.html" %}
       </div>
    </div>
 </div>

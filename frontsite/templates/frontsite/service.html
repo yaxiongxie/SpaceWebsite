@@ -11,9 +11,11 @@
 {% load static %}
 <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+        <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
 <script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+     <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -85,16 +87,18 @@
         <script>jQuery(".Bus_Serv_scrool").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",vis:3});</script>
     </div>
 </div>
-<div class="my_serv_btn" id="Form">
+<div class="my_serv_btn" style="display: none" id="Form">
 	<div class="pf_btn">
     	<div class="pf_btn1">
         	<div class="pf_btn1_1">服务内容提交</div>
             <div class="pf_btn1_2">
-            	<form>
-                	<label><span class="btn2">联系姓名</span><input type="text" class="btn1" placeholder="请输入姓名"></label>
-                    <label><span class="btn2">联系姓名</span><input type="text" class="btn1" placeholder="请输入手机号码"></label>
-                    <label><span class="btn2">联系姓名</span><textarea type="text" class="btn3" placeholder="需求描述"></textarea></label>
-                    <label><span class="btn2">&nbsp;</span><input type="button" class="btn4" value="立即提交"></label>
+            	<form action="/frontsite/service/" method="post" id="serviceForm">
+                    {% csrf_token %}
+                	<label><span class="btn2">联系电话</span><input type="text" name="telephone" id="telephone" class="btn1" placeholder="请输入手机号"></label>
+                    <label><span class="btn2">联系姓名</span><input type="text" class="btn1" name="username" placeholder="请输入姓名"></label>
+                    <label><span class="btn2">需求描述</span><textarea type="text" name="content" class="btn3" placeholder="需求描述"></textarea></label>
+                    <label><span class="btn2">&nbsp;</span><input type="button" id="submitButton" class="btn4" value="立即提交"></label>
+                    <input type="hidden" name="servicetype" value="装修设计"/>
                 </form>
             </div>
         	<div class="tent_out"><a href="javascript:;" onclick="$('#Form').fadeOut()"><img src="{% static "images/img3.png" %}" ></a></div>
@@ -102,5 +106,35 @@
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<div id="messageBox"></div>
+<script>
+    $("#submitButton").click(function(){
+        var telephone=$("#telephone").val();
+        if(telephone.length!=11){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '手机号输入错误，请重新输入'
+					});
+            return;
+        }
+        $("#serviceForm").submit();
+    })
+
+    var checkError="{{ status }}"
+        if(checkError!=""){
+             $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '提交成功，我们将会尽快为您处理'
+					});
+        }
+</script>
 </body>
 </html>

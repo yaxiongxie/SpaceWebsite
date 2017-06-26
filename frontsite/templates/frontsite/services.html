@@ -14,6 +14,22 @@
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
 <script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
+    <script>
+        function popWindow(){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '正在开发中，敬请期待'
+					});
+        }
+
+
+    </script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -41,7 +57,7 @@
                             <div class="bs_pic2">装修设计</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main88.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main88_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -49,7 +65,7 @@
                             <div class="bs_pic2">图文广告</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-right:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main89.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main89_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -57,7 +73,7 @@
                             <div class="bs_pic2">包装设计</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main90.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main90_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -65,7 +81,7 @@
                             <div class="bs_pic2">视频制作</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main91.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main91_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -73,7 +89,7 @@
                             <div class="bs_pic2">文案撰写</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-right:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main92.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main92_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -81,21 +97,21 @@
                             <div class="bs_pic2">网站建设</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main93.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main93_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
                             </div>
                             <div class="bs_pic2">软件开发</div>
                         </a>
-                        <a href="#" style=" border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main94.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main94_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
                             </div>
                             <div class="bs_pic2">微信开发</div>
                         </a>
-                        <a href="#" style=" border-right:none;  border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;  border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main95.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main95_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -108,7 +124,7 @@
                 	<h1>运营支持</h1>
                     <p>企业策划包括企业的发展战略、盈利模式、运营模式、业务规划、营销策略、组织机构、财务预算等内容。</p>
                     <div class="bs_pic">
-                    	<a href="#">
+                    	<a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main96.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main96_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -116,7 +132,7 @@
                             <div class="bs_pic2">工商代办</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main97.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main97_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -124,7 +140,7 @@
                             <div class="bs_pic2">社保代办</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-right:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main98.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main98_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -132,7 +148,7 @@
                             <div class="bs_pic2">人事外包</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main99.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main99_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -140,7 +156,7 @@
                             <div class="bs_pic2">版权培训</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main100.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main100_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -148,7 +164,7 @@
                             <div class="bs_pic2">企业培训</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-right:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main101.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main101_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -156,21 +172,21 @@
                             <div class="bs_pic2">版权培训</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main102.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main102_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
                             </div>
                             <div class="bs_pic2">法律服务</div>
                         </a>
-                        <a href="#" style=" border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main103.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main103_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
                             </div>
                             <div class="bs_pic2">专利服务</div>
                         </a>
-                        <a href="#" style=" border-right:none;  border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;  border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main104.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main104_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -183,7 +199,7 @@
                 	<h1>配套共赢</h1>
                     <p>企业策划包括企业的发展战略、盈利模式、运营模式、业务规划、营销策略、组织机构、财务预算等内容。</p>
                     <div class="bs_pic">
-                    	<a href="#">
+                    	<a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main105.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main105_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -191,7 +207,7 @@
                             <div class="bs_pic2">办公用品租售</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#">
+                        <a href="javascript:popWindow()">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main106.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main106_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -199,7 +215,7 @@
                             <div class="bs_pic2">职业工服</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-right:none;">
+                        <a href="javascript:popWindow()" style=" border-right:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main107.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main107_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -207,7 +223,7 @@
                             <div class="bs_pic2">办公绿植</div>
                             <div class="bs_pic3"></div>
                         </a>
-                        <a href="#" style=" border-bottom:none;">
+                        <a href="javascript:popWindow()" style=" border-bottom:none;">
                         	<div class="bs_pic1">
                             	<img src="{% static "images/main108.png" %}" width="48" height="39" alt="" class="bs_pic1_1">
                                 <img src="{% static "images/main108_1.png" %}" width="48" height="39" alt="" class="bs_pic1_2">
@@ -221,5 +237,6 @@
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<div id="messageBox"></div>
 </body>
 </html>

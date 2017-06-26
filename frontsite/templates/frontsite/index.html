@@ -13,6 +13,22 @@
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
+    <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
+    <script>
+        function popWindow(){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '正在开发中，敬请期待'
+					});
+        }
+
+
+    </script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -72,7 +88,8 @@
                     <div class="bann_tit">选择区域</div>
                     <div class="bann_lsit1">
                         <li><a href="#">不限</a></li>
-                        <li class="on"><a href="#">武昌区</a></li>
+                        <li><a href="#">武昌区</a></li>
+                        <!-- <li class="on"><a href="#">武昌区</a></li> -->
                         <li><a href="#">江汉区</a></li>
                         <li><a href="#">江岸区</a></li>
                         <li><a href="#">洪山区</a></li>
@@ -85,7 +102,9 @@
                         <li><a href="#">丁字桥</a></li>
                         <li><a href="#">东亭</a></li>
                     </div>
+
                     <div class="bann_lsit2">
+                        <!--
                         <span><strong>B</strong><a href="#">白沙洲</a></span>|
                         <span><strong>C</strong><a href="#">陈家湾</a></span>|
                         <span>
@@ -97,10 +116,12 @@
                         <span><strong>H</strong><a href="#">洪山周边</a></span>|
                         <span><strong>J</strong><a href="#">街道口</a></span>|
                         <span><strong>L</strong><a href="#">珞狮南路</a></span>
+                        -->
                     </div>
                     <div class="bann_tit" style=" background:url({% static "images/bann4.png" %}) left center no-repeat;">选择面积</div>
                     <div class="bann_lsit3">
-                        <li class="on"><a href="#">不限</a></li>
+                        <li><a href="#">不限</a></li>
+                        <!-- <li class="on"><a href="#">不限</a></li> -->
                         <li><a href="#">0-100㎡</a></li>
                         <li><a href="#">100-200㎡</a></li>
                         <li><a href="#">200-300㎡</a></li>
@@ -237,7 +258,7 @@
     	<div class="w_1200">
         	<div class="home_tit">
                 <h1><img src="{% static "images/main2.png" %}" width="1200" height="38" alt=""></h1>
-                <div class="more"><a href="#">read more</a></div>
+                <div class="more"><a href="/frontsite/services">read more</a></div>
             </div>
             <div class="home_tab home_tab_two">
             	<div class="hd">
@@ -250,7 +271,7 @@
                 <div class="bd">
                 	<div class="bd_ul_two">
                     	<ul>
-                        	<li><a href="#">
+                        	<li><a href="/frontsite/service">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
@@ -259,7 +280,7 @@
                                 </div>
                                 <div class="tab_text2">装修设计</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
@@ -268,7 +289,7 @@
                                 </div>
                                 <div class="tab_text2">工商代账服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
@@ -277,7 +298,7 @@
                                 </div>
                                 <div class="tab_text2">社保人力资源服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
@@ -286,7 +307,7 @@
                                 </div>
                                 <div class="tab_text2">商务咨询服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
@@ -295,7 +316,7 @@
                                 </div>
                                 <div class="tab_text2">办公用品租售服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
@@ -308,7 +329,7 @@
                     </div>
                     <div class="bd_ul_two">
                     	<ul>
-                        	<li><a href="#">
+                        	<li><a href="/frontsite/service">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
@@ -317,7 +338,7 @@
                                 </div>
                                 <div class="tab_text2">装修设计</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
@@ -326,7 +347,7 @@
                                 </div>
                                 <div class="tab_text2">工商代账服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
@@ -335,7 +356,7 @@
                                 </div>
                                 <div class="tab_text2">社保人力资源服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
@@ -344,7 +365,7 @@
                                 </div>
                                 <div class="tab_text2">商务咨询服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
@@ -353,7 +374,7 @@
                                 </div>
                                 <div class="tab_text2">办公用品租售服务</div>
                             </a></li>
-                            <li><a href="#">
+                            <li><a href="javascript:popWindow()">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
@@ -383,7 +404,7 @@
             <div class="l_540 l_pf">
             	<h1>销售管理系统<i></i></h1>
                 <p>人事管理系统，属于ERP的一个部分。它单指汇集成功企业先进的人力资源管理理念、人力资源管理实践、人力资源信息化...</p>
-                <span>more</span>
+                <span onclick="popWindow()">more</span>
             </div>
         </div>
         <div class="r_ty">
@@ -391,19 +412,24 @@
             <div class="l_540 r_pf">
             	<h1>销售管理系统<i></i></h1>
                 <p>人事管理系统，属于ERP的一个部分。它单指汇集成功企业先进的人力资源管理理念、人力资源管理实践、人力资源信息化...</p>
-                <span>more</span>
+                <span onclick="popWindow()">more</span>
             </div>
         </div>
     </div>
     <div class="w_1200">
         <div class="home_tit">
             <h1><img src="{% static "images/main4.png" %}" width="1200" height="38" alt=""></h1>
-            <div class="more"><a href="#">read more</a></div>
+            <div class="more"><a href="/frontsite/news/1">read more</a></div>
         </div>
         <div class="home_new">
         	<div class="news_scrool">
             	<div class="bd">
                 	<ul>
+                        <li class="news_pic"><a href="/frontsite/new/{{ newlist.0.id }}">
+                            <img src="/{{ newlist.0.image1 }}" width="380" height="370" alt="">
+                            <span>{{ newlist.0.title }}</span>
+                        </a></li>
+                        <!--
                         <li class="news_pic"><a href="#">
                             <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
                             <span>有为空间——一站式企业服务</span>
@@ -412,43 +438,45 @@
                             <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
                             <span>有为空间——一站式企业服务</span>
                         </a></li>
-                        <li class="news_pic"><a href="#">
-                            <img src="{% static "images/main27.jpg" %}" width="380" height="370" alt="">
-                            <span>有为空间——一站式企业服务</span>
-                        </a></li>
+                        -->
                     </ul>
                 </div>
             </div>
             <script>jQuery(".news_scrool").slide({mainCell:".bd ul",effect:"left",autoPlay:true,delayTime: 1500, interTime: 3000 });</script>
             <div class="news_list">
             	<div class="news_pic">
-                	<img src="{% static "images/main30.jpg" %}" width="380" height="160" alt="">
-                    <span>看了少奋斗十年，升职加薪办公室风水</span>
+                    <a href="/frontsite/new/{{ newlist.1.id }}">
+                	<img src="/{{ newlist.1.image1 }}" width="380" height="160" alt="">
+                    <span>{{ newlist.1.title }}</span>
+                    </a>
                 </div>
                 <div class="news_text">
-                	<li><a href="#">古代建筑选址是如何看风水的?</a><time>04-22</time></li>
-                    <li><a href="#">看进来，专家投资写字楼的散步要诀</a><time>04-22</time></li>
-                    <li><a href="#">企业厂房选址的六大秘籍</a><time>04-22</time></li>
-                    <li><a href="#">入驻写字楼对企业有什么好处？</a><time>04-22</time></li>
-                    <li><a href="#">再背景企业选址为什么如此重要</a><time>04-22</time></li>
+                	<li><a href="/frontsite/new/{{ newlist.3.id }}">{{ newlist.3.title }}</a><time>{{ newlist.3.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.4.id }}">{{ newlist.4.title }}</a><time>{{ newlist.3.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.5.id }}">{{ newlist.5.title }}</a><time>{{ newlist.3.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.6.id }}">{{ newlist.6.title }}</a><time>{{ newlist.3.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.7.id }}">{{ newlist.7.title }}</a><time>{{ newlist.3.createTime|date:"m-d"}}</time></li>
                 </div>
             </div>
             <div class="news_list">
-            	<div class="news_pic"><a href="#">
-                	<img src="{% static "images/main31.jpg" %}" width="380" height="160" alt="">
-                    <span>选对写字楼，对企业形象很重要</span>
-                </a></div>
+            	<div class="news_pic">
+                    <a href="/frontsite/new/{{ newlist.2.id }}">
+                	<img src="/{{ newlist.2.image1 }}" width="380" height="160" alt="">
+                    <span>{{ newlist.2.title }}</span>
+                    </a>
+                </div>
                 <div class="news_text">
-                	<li><a href="#">古代建筑选址是如何看风水的?</a><time>04-22</time></li>
-                    <li><a href="#">看进来，专家投资写字楼的散步要诀</a><time>04-22</time></li>
-                    <li><a href="#">企业厂房选址的六大秘籍</a><time>04-22</time></li>
-                    <li><a href="#">入驻写字楼对企业有什么好处？</a><time>04-22</time></li>
-                    <li><a href="#">再背景企业选址为什么如此重要</a><time>04-22</time></li>
+                	<li><a href="/frontsite/new/{{ newlist.8.id }}">{{ newlist.8.title }}</a><time>{{ newlist.8.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.9.id }}">{{ newlist.9.title }}</a><time>{{ newlist.9.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.10.id }}">{{ newlist.10.title }}</a><time>{{ newlist.10.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.11.id }}">{{ newlist.11.title }}</a><time>{{ newlist.11.createTime|date:"m-d"}}</time></li>
+                    <li><a href="/frontsite/new/{{ newlist.12.id }}">{{ newlist.12.title }}</a><time>{{ newlist.12.createTime|date:"m-d"}}</time></li>
                 </div>
             </div>
         </div>
     </div>
 </div>
 {% include "frontsite/foot.html" %}
+<div id="messageBox"></div>
 </body>
 </html>

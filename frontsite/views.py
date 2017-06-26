@@ -1,3 +1,5 @@
+# coding: UTF-8
+
 from django.shortcuts import render,HttpResponseRedirect
 from PIL import Image, ImageDraw, ImageFont
 from django.http.response import HttpResponse
@@ -6,16 +8,37 @@ import cStringIO, string, os, random
 import json
 import uuid
 from models import Account
+from publish.models import News
+from models import ServiceRequirement,OfficeBuildingList,OfficeList
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from commonData.models import SourceType,Subway,Area,District
 
 
 def aboutus(request):
     return render(request, 'frontsite/aboutus.html', {})
 
-def building(request):
-    return render(request, 'frontsite/building.html', {})
+def building(request,id):
+    build =OfficeBuildingList.objects.get(pk=id)
+    officelist=OfficeList.objects.filter(officeBuilding_id=id)
+    buildinglist=OfficeBuildingList.objects.all()[0:4]
+    return render(request, 'frontsite/building.html', {"building":build,"officelist":officelist,"buildinglist":buildinglist})
 
-def buildinglist(request):
-    return render(request, 'frontsite/buildinglist.html', {})
+def buildinglist(request,*args,**kargs):
+    print kargs
+    for arg in kargs:
+        if kargs[arg] != None:
+            kargs[arg]=int(kargs[arg])
+
+    buildinglist=OfficeBuildingList.objects.all()
+    sourceTypeList=SourceType.objects.all()
+    subwayList=Subway.objects.all()
+    areaList=Area.objects.all()
+    map={"buildinglist":buildinglist,"sourceTypeList":sourceTypeList,"subwayList":subwayList,"areaList":areaList}
+    newmap=dict(kargs.items()+map.items())
+    if kargs["country"] != None:
+        newmap["districtList"]=District.objects.filter(area_type_id=kargs["country"])
+    print newmap
+    return render(request, 'frontsite/buildinglist.html', newmap)
 
 def contactus(request):
     return render(request, 'frontsite/contactus.html', {})
@@ -30,7 +53,8 @@ def houseSource(request):
     return render(request, 'frontsite/houseSource.html', {})
 
 def index(request):
-    return render(request, 'frontsite/index.html', {})
+    newlist=list(News.objects.all()[0:13])
+    return render(request, 'frontsite/index.html', {"newlist":newlist})
 
 
 def login(request):
@@ -57,17 +81,32 @@ def messages(request):
     return render(request, 'frontsite/messages.html', {})
 
 
-def new(request):
-    return render(request, 'frontsite/new.html', {})
+def new(request,newid):
+    new = News.objects.get(pk=newid)
+    htmlcontent=new.htmlContent
+    if new.image1.name.find('no-img.jpg') ==-1:
+        htmlcontent=htmlcontent.replace("[p1]","<img src='/"+new.image1.name+"' />")
+    if new.image2.name.find('no-img.jpg') ==-1:
+        htmlcontent=htmlcontent.replace("[p2]","<img src='"+new.image2.name+"' />")
+    if new.image3.name.find('no-img.jpg') ==-1:
+        htmlcontent=htmlcontent.replace("[p3]","<img src='"+new.image3.name+"' />")
+    if new.image4.name.find('no-img.jpg') ==-1:
+        htmlcontent=htmlcontent.replace("[p4]","<img src='"+new.image4.name+"' />")
+    if new.image5.name.find('no-img.jpg') ==-1:
+        htmlcontent=htmlcontent.replace("[p5]","<img src='"+new.image5.name+"' />")
+    new.htmlContent=htmlcontent
+    return render(request, 'frontsite/new.html', {"new":new})
 
-def news(request):
-    return render(request, 'frontsite/news.html', {})
+def news(request,type):
+    newlist=News.objects.filter(new_type=type)
+    return render(request, 'frontsite/news.html', {"newlist":newlist,"type":type})
 
 def oa(request):
     return render(request, 'frontsite/oa.html', {})
 
-def office(request):
-    return render(request, 'frontsite/office.html', {})
+def office(request,id):
+    office = OfficeList.objects.get(pk=id)
+    return render(request, 'frontsite/office.html', {"office":office})
 
 def orders(request):
     return render(request, 'frontsite/orders.html', {})
@@ -115,7 +154,22 @@ def requirement(request):
     return render(request, 'frontsite/requirement.html', {})
 
 def service(request):
-    return render(request, 'frontsite/service.html', {})
+    if request.method == "POST":
+        telephone = request.POST.get("telephone")
+        username = request.POST.get("username")
+        content=request.POST.get("content")
+        servicetype=request.POST.get("servicetype")
+        requireService=ServiceRequirement()
+        requireService.name=username
+        requireService.telephone=telephone
+        requireService.description=content
+        requireService.servicetype=servicetype
+        requireService.save()
+        return render(request, 'frontsite/service.html', {"status":"success"})
+
+    else:
+        return render(request, 'frontsite/service.html', {})
+
 
 def services(request):
     return render(request, 'frontsite/services.html', {})
@@ -172,3 +226,9 @@ def test(request):
     context = {"nav_flag": 4}
     return render(request, 'frontsite/bak/services.html', context)
 
+
+def page_not_found(request):
+    return render(request,'frontsite/404.html',{})
+
+def page_error(request):
+    return render(request,'frontsite/404.html',{})
