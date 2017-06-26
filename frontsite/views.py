@@ -12,6 +12,7 @@ from publish.models import News
 from models import ServiceRequirement,OfficeBuildingList,OfficeList
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from commonData.models import SourceType,Subway,Area,District
+from django.db.models import Q
 
 
 def aboutus(request):
@@ -26,17 +27,59 @@ def building(request,id):
 def buildinglist(request,*args,**kargs):
     print kargs
     for arg in kargs:
-        if kargs[arg] != None:
+        if (kargs[arg] != None) & (arg != "search"):
             kargs[arg]=int(kargs[arg])
 
     buildinglist=OfficeBuildingList.objects.all()
+    if kargs.get("type") != None :
+        buildinglist=buildinglist.filter(building_type_id=kargs.get("type"))
+    if kargs.get("country") != None :
+        buildinglist=buildinglist.filter(area_type_id=kargs.get("country"))
+    if kargs.get("district") != None :
+        buildinglist=buildinglist.filter(district_type_id=kargs.get("district"))
+    if kargs.get("search") != None :
+        if kargs.get("search") != "":
+            buildinglist=buildinglist.filter(Q(title__icontains=kargs.get("search")) | Q(address__icontains=kargs.get("search")) | Q(transport__icontains=kargs.get("search")))
+    if kargs.get("areanum") != None :
+        areanum=kargs.get("areanum")
+        minvalue=0;
+        maxvalue=0;
+        if areanum == 1:
+            minvalue=0;
+            maxvalue=100;
+        elif areanum == 2:
+            minvalue=100;
+            maxvalue=200;
+        elif areanum == 3:
+            minvalue=200;
+            maxvalue=300;
+        elif areanum == 4:
+            minvalue=300;
+            maxvalue=500;
+        elif areanum == 5:
+            minvalue=500;
+            maxvalue=800;
+        elif areanum == 6:
+            minvalue=800;
+            maxvalue=1000;
+        else:
+            minvalue=1000;
+            maxvalue=100000;
+        buildinglist = buildinglist.filter(~(Q(rent_min_area__gt=maxvalue)|Q(rent_max_area__lt=minvalue)))
     sourceTypeList=SourceType.objects.all()
     subwayList=Subway.objects.all()
     areaList=Area.objects.all()
     map={"buildinglist":buildinglist,"sourceTypeList":sourceTypeList,"subwayList":subwayList,"areaList":areaList}
     newmap=dict(kargs.items()+map.items())
     if kargs["country"] != None:
-        newmap["districtList"]=District.objects.filter(area_type_id=kargs["country"])
+        # newmap["districtList"]=District.objects.filter(area_type_id=kargs["country"])
+        districtList=District.objects.filter(area_type_id=kargs["country"])
+        for index in range(len(districtList)):
+            if index >0:
+                if(districtList[index].district_firstChar==districtList[index-1].district_firstChar):
+                    districtList[index].district_firstChar=''
+
+        newmap["districtList"]=districtList
     print newmap
     return render(request, 'frontsite/buildinglist.html', newmap)
 
@@ -54,7 +97,8 @@ def houseSource(request):
 
 def index(request):
     newlist=list(News.objects.all()[0:13])
-    return render(request, 'frontsite/index.html', {"newlist":newlist})
+    areaList = Area.objects.all()
+    return render(request, 'frontsite/index.html', {"newlist":newlist,"arealist":areaList})
 
 
 def login(request):

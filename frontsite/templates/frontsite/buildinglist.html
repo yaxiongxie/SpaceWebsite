@@ -8,11 +8,18 @@
 <meta name="keywords" content="">          
 <meta name="description" content=""> 
 <title>有为空间</title>
+    {% load pagination_tags %}
+    {% autopaginate buildinglist 3 %}
 {% load static %}
 <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+    <style>
+        #clickD{
+            color: #2c8eda;
+        }
+    </style>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -50,9 +57,9 @@
             	<div class="tit_name">区域：</div>
            		<div class="bann_lsit1 m_t_2">
                     {% if country == None %}
-                        <li class="on"><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if district != None %}d{{ district }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}">不限</a></li>
+                        <li class="on"><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}">不限</a></li>
                     {% else %}
-                        <li><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if district != None %}d{{ district }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}">不限</a></li>
+                        <li><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}">不限</a></li>
                     {% endif %}
 
                     {% for area in areaList %}
@@ -64,22 +71,19 @@
                     {% endfor %}
 
                 </div>
-            {% if type != None %}
+            {% if country != None %}
                 <div class="bann_lsit2 m_t_1">
                     {% for d in districtList %}
-                        <span><strong>{{ d.district_firstChar }}</strong><a href="#">{{ d.district_name }}</a></span>|
+                        {% if d.district_firstChar == '' %}
+                            <a {% if d.id == district %}id="clickD"{% endif %} href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}d{{ d.id }}{% if areanum != None %}a{{ areanum }}{% endif %}">{{ d.district_name }}</a>
+                        {% else %}
+                            {% if forloop.counter0 == 0 %}
+                                <span><strong>{{ d.district_firstChar }}</strong><a {% if d.id == district %}id="clickD"{% endif %} href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}d{{ d.id }}{% if areanum != None %}a{{ areanum }}{% endif %}">{{ d.district_name }}
+                            {% else %}
+                                </a></span>|<span><strong>{{ d.district_firstChar }}</strong><a {% if d.id == district %}id="clickD"{% endif %} href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}d{{ d.id }}{% if areanum != None %}a{{ areanum }}{% endif %}">{{ d.district_name }}
+                            {% endif %}
+                        {% endif %}
                     {% endfor %}
-                    <span><strong>B</strong><a href="#">白沙洲</a></span>|
-                    <span><strong>C</strong><a href="#">陈家湾</a></span>|
-                    <span>
-                        <strong>G</strong>
-                        <a href="#">广阜屯</a>
-                        <a href="#">光谷</a>
-                        <a href="#">关山</a>
-                    </span>|
-                    <span><strong>H</strong><a href="#">洪山周边</a></span>|
-                    <span><strong>J</strong><a href="#">街道口</a></span>|
-                    <span><strong>L</strong><a href="#">珞狮南路</a></span>
                 </div>
             {% endif %}
 
@@ -87,21 +91,21 @@
         	<div class="listings_list_1">
             	<div class="tit_name">面积：</div>
            		<div class="bann_lsit3 m_t_0">
-                    <li class="on"><a href="#">不限</a></li>
-                    <li><a href="#">0-100㎡</a></li>
-                    <li><a href="#">100-200㎡</a></li>
-                    <li><a href="#">200-300㎡</a></li>
-                    <li><a href="#">300-500㎡</a></li>
-                    <li><a href="#">500-800㎡</a></li>
-                    <li><a href="#">800-1000㎡</a></li>
-                    <li><a href="#">1000㎡ 以上</a></li>  
+                    <li {% if areanum == None %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}">不限</a></li>
+                    <li {% if areanum == 1 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a1">0-100㎡</a></li>
+                    <li {% if areanum == 2 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a2">100-200㎡</a></li>
+                    <li {% if areanum == 3 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a3">200-300㎡</a></li>
+                    <li {% if areanum == 4 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a4">300-500㎡</a></li>
+                    <li {% if areanum == 5 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a5">500-800㎡</a></li>
+                    <li {% if areanum == 6 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a6">800-1000㎡</a></li>
+                    <li {% if areanum == 7 %}class="on"{% endif %}><a href="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}a7">1000㎡ 以上</a></li>
                 </div>
             </div>
         	<div class="listings_list_2">
             	<div class="Map_search Map_search1"><a href="#">地图搜索</a></div>
             	<div class="so so1">
-                    <input type="text" class="Search" placeholder="">
-                    <input type="button" value="开始搜索" class="sear_sub">
+                    <input type="text" class="Search" id="searchText" placeholder="" value="{% if search != None %}{{ search }} {% endif %}">
+                    <input type="button" id="seachButton" value="开始搜索" class="sear_sub">
                 </div>
             </div>
         </div>
@@ -135,13 +139,7 @@
             </ul>
         </div>
     	<div class="wack1">
-            <div class="pz_fy">
-                <a href="#"><</a>
-                <a href="#" class="on">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">></a>
-            </div> 
+            {% paginate using "frontsite/pagination.html" %}
         </div>
     </div>
 </div>
@@ -156,6 +154,18 @@
         }
         $(this).html(html)
     })
+    $("#seachButton").click(function(){
+        var searchText=$("#searchText").val().trim();
+        var url="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}s"+searchText;
+        window.location.href=url;
+    })
+    $('#searchText').keydown(function(e){
+        if(e.keyCode==13){
+          var searchText=$("#searchText").val().trim();
+            var url="/frontsite/buildinglist/{% if type != None %}t{{ type }}{% endif %}{% if country != None %}c{{ country }}{% endif %}{% if district != None %}d{{ district }}{% endif %}{% if areanum != None %}a{{ areanum }}{% endif %}s"+searchText;
+            window.location.href=url;
+        }
+    });
 </script>
 </body>
 </html>

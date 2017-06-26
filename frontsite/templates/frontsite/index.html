@@ -87,53 +87,31 @@
                 <ul>
                     <div class="bann_tit">选择区域</div>
                     <div class="bann_lsit1">
-                        <li><a href="#">不限</a></li>
-                        <li><a href="#">武昌区</a></li>
-                        <!-- <li class="on"><a href="#">武昌区</a></li> -->
-                        <li><a href="#">江汉区</a></li>
-                        <li><a href="#">江岸区</a></li>
-                        <li><a href="#">洪山区</a></li>
-                        <li><a href="#">硚口区</a></li>
-                        <li><a href="#">汉阳区</a></li>
-                        <li><a href="#">江夏区</a></li>
-                        <li><a href="#">青山区</a></li>
-                        <li><a href="#">黄陂区</a></li>
-                        <li><a href="#">东湖高新区</a></li>
-                        <li><a href="#">丁字桥</a></li>
-                        <li><a href="#">东亭</a></li>
+                        <li><a href="/frontsite/buildinglist/">不限</a></li>
+                        {% for area in arealist %}
+                            <li><a href="/frontsite/buildinglist/c{{ area.id }}">{{ area.country_name }}</a></li>
+                        {% endfor %}
                     </div>
 
                     <div class="bann_lsit2">
-                        <!--
-                        <span><strong>B</strong><a href="#">白沙洲</a></span>|
-                        <span><strong>C</strong><a href="#">陈家湾</a></span>|
-                        <span>
-                            <strong>G</strong>
-                            <a href="#">广阜屯</a>
-                            <a href="#">光谷</a>
-                            <a href="#">关山</a>
-                        </span>|
-                        <span><strong>H</strong><a href="#">洪山周边</a></span>|
-                        <span><strong>J</strong><a href="#">街道口</a></span>|
-                        <span><strong>L</strong><a href="#">珞狮南路</a></span>
-                        -->
+
                     </div>
                     <div class="bann_tit" style=" background:url({% static "images/bann4.png" %}) left center no-repeat;">选择面积</div>
                     <div class="bann_lsit3">
-                        <li><a href="#">不限</a></li>
+                        <li><a href="/frontsite/buildinglist/">不限</a></li>
                         <!-- <li class="on"><a href="#">不限</a></li> -->
-                        <li><a href="#">0-100㎡</a></li>
-                        <li><a href="#">100-200㎡</a></li>
-                        <li><a href="#">200-300㎡</a></li>
-                        <li><a href="#">300-500㎡</a></li>
-                        <li><a href="#">500-800㎡</a></li>
-                        <li><a href="#">800-1000㎡</a></li>
-                        <li><a href="#">1000㎡ 以上</a></li>  
+                        <li><a href="/frontsite/buildinglist/a1">0-100㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a2">100-200㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a3">200-300㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a4">300-500㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a5">500-800㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a6">800-1000㎡</a></li>
+                        <li><a href="/frontsite/buildinglist/a7">1000㎡ 以上</a></li>
                     </div>
                     <div class="bann_so">
                         <div class="so">
-                            <input type="text" class="Search" placeholder="">
-                            <input type="button" value="开始搜索" class="sear_sub">
+                            <input type="text" class="Search" id="searchText" placeholder="">
+                            <input type="button" value="开始搜索" id="searchButton" class="sear_sub">
                         </div>
                         <div class="Map_search"><a href="#">地图搜索</a></div>
                     </div>
@@ -478,5 +456,20 @@
 </div>
 {% include "frontsite/foot.html" %}
 <div id="messageBox"></div>
+<script>
+    $("#searchButton").click(function(){
+        var searchText=$("#searchText").val().trim();
+        var url="/frontsite/buildinglist/s"+searchText;
+        window.location.href=url;
+    })
+    $('#searchText').keydown(function(e){
+        if(e.keyCode==13){
+          var searchText=$("#searchText").val().trim();
+            var url="/frontsite/buildinglist/s"+searchText;
+            window.location.href=url;
+        }
+    });
+
+</script>
 </body>
 </html>

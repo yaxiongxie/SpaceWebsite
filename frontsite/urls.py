@@ -21,7 +21,7 @@ url(r'^test/', views.test),
 
 url(r'^aboutus/', views.aboutus),
 url(r'^building/(\d+)/$', views.building),
-url(r'^buildinglist/(t(?P<type>\d+))*(c(?P<country>\d+))*(d(?P<district>\d+))*(a(?P<areanum>\d+))*', views.buildinglist),
+url(r'^buildinglist/(t(?P<type>\d+))*(c(?P<country>\d+))*(d(?P<district>\d+))*(a(?P<areanum>\d+))*(s(?P<search>[\s\S]+))*', views.buildinglist),
 url(r'^contactus/', views.contactus),
 url(r'^enterprise/', views.enterprise),
 url(r'^enterpriseRegiste/', views.enterpriseRegiste),
