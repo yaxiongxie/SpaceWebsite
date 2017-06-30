@@ -8,7 +8,10 @@
 <meta name="keywords" content="">          
 <meta name="description" content=""> 
 <title>有为空间</title>
+    {% load pagination_tags %}
+    {% autopaginate orderlist 10 %}
 {% load static %}
+
 <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
@@ -26,7 +29,7 @@
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico4">我的订单&nbsp;<span>全部订单</span></div>
-                    <div class="r_tc"><a href="#">退出登录</a></div>
+                    <div class="r_tc"></div>
                 </div>
                 <div class="MyOrder">
                 	<ul>
@@ -43,146 +46,32 @@
                                 </tr>
                             </table>
                          </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main56.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">查看</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main57.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">等待付款</td>
-                                  <td width="114"><a href="#" class="Toview" style=" background:#2c8eda;">去付款</a><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main56.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main57.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main56.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main57.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main56.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main57.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main56.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
-                         <li>
-                         	<table width="100%" border="0" cellspacing="0" cellpadding="0">
-                                <tr>
-                                  <td width="152"><img src="{% static "images/main57.jpg" %}" width="110" height="83"></td>
-                                  <td width="133">中关村写字楼出租</td>
-                                  <td width="130">2017/05/03</td>
-                                  <td width="192">020394938943323</td>
-                                  <td width="126">4500</td>
-                                  <td width="94">咨询中</td>
-                                  <td width="114"><a href="#" class="Toview">删除</a></td>
-                                </tr>
-                            </table>
-                    	 </li>
+                        {% for order in orderlist %}
+                            <li>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                      <td width="152"><img src="/{{ order.officeBuilding.image1 }}" width="110" height="83"></td>
+                                      <td width="133">{{ order.title }}</td>
+                                      <td width="130">{{ order.createTime|date:"y/m/d"}}</td>
+                                      <td width="192">{{ order.orderid }}</td>
+                                      <td width="126">{% if order.money == '' %}待定{% else %}{{ order.money }}{% endif %}</td>
+                                      <td width="94">{{ order.status.status_name }}</td>
+                                      <td width="114">
+                                          {% if order.status_id == 4 %}
+                                            <a href="javascript:void(0)" class="Toview" style=" background:#2c8eda;">去付款</a>
+                                          {% endif %}
+                                          <a href="/frontsite/building/{{ order.officeBuilding_id }}" class="Toview">查看</a></td>
+                                    </tr>
+                                </table>
+                             </li>
+                        {% endfor %}
+
                      </ul>
                 </div>
                 <div class="wack1">
                     <div class="pz_fy">
-                        <a href="#">&lt;</a>
-                        <a href="#" class="on">1</a>
-                        <a href="#">2</a>
-                        <a href="#">3</a>
-                        <a href="#">&gt;</a>
-                    </div> 
+                        {% paginate using "frontsite/pagination.html" %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,8 +79,24 @@
 </div>
 {% include "frontsite/foot.html" %}
 <script>
-        jQuery("#h3").addClass("on");
-        jQuery("#l31").addClass("on");
+        var type="{{ type }}";
+        if(type=="10"){
+            jQuery("#h3").addClass("on");
+            jQuery("#l31").addClass("on");
+        }
+        if(type=="3"){
+            jQuery("#h3").addClass("on");
+            jQuery("#l32").addClass("on");
+        }
+        if(type=="4"){
+            jQuery("#h3").addClass("on");
+            jQuery("#l33").addClass("on");
+        }
+        if(type=="5"){
+            jQuery("#h3").addClass("on");
+            jQuery("#l34").addClass("on");
+        }
+
 					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
 				</script>
 </body>

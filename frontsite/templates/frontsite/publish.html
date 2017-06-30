@@ -26,165 +26,32 @@
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico2">房源服务&nbsp;<span>发布房源</span></div>
-                    <div class="r_tc"><a href="#">退出登录</a></div>
+                    <div class="r_tc"></div>
                 </div>
                 <div class="Availability">
-                	<form>
+                	<form class="l_623"  action="/frontsite/addSource/?returnUrl={{ request.path }}" method="post" id="form">
+                        {% csrf_token %}
                     	<label>
-                        	<div class="fm_name1"><span>*</span>房源名称</div>
-                            <div class="fm_input1">	
-                            	<input type="text" placeholder="" class="fm8">
+                        	<div class="fm_name1 fm_name3"><span>*</span>联系人</div>
+                            <div class="fm_input1 fm_input3">
+                            	<input type="text" placeholder="联系人" class="fm13" name="username">
                             </div>
                         </label>
                         <label>
-                        	<div class="fm_name1"><span>*</span>房子所在地区</div>
-                            <div class="fm_input1">	
-                            	<div class="h_searchbox" pzdatatype="select">
-                                    <input type="hidden" value="请选择问题分类">
-                                    <div class="titcon" pzdatatype="title">请选择问题分类</div>
-                                    <ul class="serul" pzdatatype="content">
-                                       <li class=""><a href="#">请选择问题分类</a></li>
-                                       <li class="on"><a href="#">请选择问题分类</a></li>
-                                    </ul>
-                                </div>
-                                <div class="h_searchbox" pzdatatype="select">
-                                    <input type="hidden" value="请选择城市">
-                                    <div class="titcon" pzdatatype="title">请选择城市</div>
-                                    <ul class="serul" pzdatatype="content">
-                                       <li class=""><a href="#">请选择城市</a></li>
-                                       <li class="on"><a href="#">请选择城市</a></li>
-                                    </ul>
-                                </div>
-                                <div class="h_searchbox" pzdatatype="select">
-                                    <input type="hidden" value="请选择所在区域">
-                                    <div class="titcon" pzdatatype="title">请选择所在区域</div>
-                                    <ul class="serul" pzdatatype="content">
-                                       <li class=""><a href="#">请选择所在区域</a></li>
-                                       <li class="on"><a href="#">请选择所在区域</a></li>
-                                    </ul>
-                                </div>
+                        	<div class="fm_name1 fm_name3"><span>*</span>联系电话</div>
+                            <div class="fm_input1 fm_input3">
+                            	<input type="text" placeholder="联系电话" class="fm13" id="telephone" name="telephone">
                             </div>
                         </label>
                         <label>
-                        	<div class="fm_name1"><span>*</span>详细地址</div>
-                            <div class="fm_input1">	
-                            	<input type="text" placeholder="" class="fm8">
+                        	<div class="fm_name1 fm_name3"><span>*</span>写字楼</div>
+                            <div class="fm_input1 fm_input3">
+                            	<input type="text" placeholder="写字楼名称" class="fm13" name="title">
                             </div>
                         </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>房源用途</div>
-                            <div class="fm_input1">	
-                            	<div class="h_searchbox h_searchbox1" pzdatatype="select">
-                                    <input type="hidden" value="请选择房源用途">
-                                    <div class="titcon" pzdatatype="title">请选择房源用途</div>
-                                    <ul class="serul" pzdatatype="content">
-                                       <li class=""><a href="#">请选择房源用途</a></li>
-                                       <li class="on"><a href="#">请选择房源用途</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>建筑面积</div>
-                            <div class="fm_input1">	
-                            	<input type="text" placeholder="请选择装修程度" class="fm8">
-                            </div>
-                        </label>
-                        <!-- 20170606修改开始-->
-                        <label class='add_box'>
-                        	<div class="fm_name1"><span>*</span>出租户型</div>
-                            <div class="fm_input1">
-                            	<div class="fm_input1_2" style=" margin-top:0;">
-                            		<input type="text" placeholder="" class="fm12">
-                                    <div class="fm_pf">㎡</div>
-                                    <div class="fm_name1 fm_name2"><span>*</span>楼层</div>
-                                    <input type="text" placeholder="" class="fm12">
-                                    <div class="fm_name1 fm_name2"><span>*</span>租金</div>
-                                    <input type="text" placeholder="" class="fm12">
-                                    <div class="fm_pf">㎡/月</div>
-                                </div>
-                                <div class="fm_input1_2">
-                            		<input type="text" placeholder="" class="fm12">
-                                    <div class="fm_pf">㎡</div>
-                                    <div class="fm_name1 fm_name2"><span>*</span>楼层</div>
-                                    <input type="text" placeholder="" class="fm12">
-                                    <div class="fm_name1 fm_name2"><span>*</span>租金</div>
-                                    <input type="text" placeholder="" class="fm12">
-                                    <div class="fm_pf">㎡/月</div>
-                                </div>
-                                <a class="fm_tjhx">添加户型</a>
-                            </div>
 
-                           	<script>
-
-								$(".fm_tjhx").on("click",function(){
-									var htm="";
-									htm+="<div class="+'fm_input1_2'+">";
-									htm+=$(".fm_input1_2").html();
-									htm+="</div>";
-									console.log(htm)
-									$(".add_box .fm_input1").append(htm)
-								})
-
-                            </script>
-                        </label>
-                        <!--20170606修改结束-->
                         <label>
-                        	<div class="fm_name1"><span>*</span>附近交通</div>
-                            <div class="fm_input1">	
-                            	<input type="text" placeholder="请选择装修程度" class="fm8">
-                            </div>
-                        </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>房源描述</div>
-                            <div class="fm_input1">	
-                            	<textarea  type="text" placeholder="请介绍合作房源邻里好友" class="fm9"></textarea>
-                            </div>
-                        </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>入住企业</div>
-                            <div class="fm_input1">	
-                            	<textarea  type="text" placeholder="请介绍合作房源邻里好友" class="fm9"></textarea>
-                            </div>
-                        </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>入住企业</div>
-                            <div class="fm_input1">	
-                            	<input  type="text" placeholder="请介绍合作房源邻里好友" class="fm9">
-                            </div>
-                        </label>
-                        <label>
-                        	<div class="fm_name1"><span>*</span>房源图片</div>
-                            <!-- 20170606修改开始-->
-                            <div class="fm_input1">
-                            	<div class="fm_input1_1">
-                            		<input  type="text" class="fm11" id="showvalue">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change(this)"></a>
-                                </div>
-                                <div class="fm_input1_1">
-                            		<input  type="text" class="fm11" id="showvalue1">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change1(this)"></a>
-                                </div>
-                                <div class="fm_input1_1">
-                            		<input  type="text" class="fm11" id="showvalue2">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change2(this)"></a>
-                                </div>
-                                <div class="fm_input1_1">
-                            		<input  type="text" class="fm11" id="showvalue3">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change3(this)"></a>
-                                </div>
-                                <div class="fm_input1_1">
-                            		<input  type="text" class="fm11" id="showvalue4">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change4(this)"></a>
-                                </div>
-                            </div>
-                            <!-- 20170606修改结束-->
-                        </label>
-                        <label>
-                        	<div class="fm_name1">&nbsp;&nbsp;</div>
-                            <div class="fm_input1">	
-                            	<input  type="button" value="上传房源" class="fm10">
-                            </div>
+                        	<input  type="button" id="submitButton" value="立即提交" class="fm10 fm16">
                         </label>
                     </form>
                 </div>
@@ -216,7 +83,25 @@
         jQuery("#h2").addClass("on");
         jQuery("#l21").addClass("on");
 					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
-				</script>
+
+$("#submitButton").click(function(){
+        var telephone=$("#telephone").val();
+        if(telephone.length!=11){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '手机号输入错误，请重新输入'
+					});
+            return;
+        }
+        $("#form").submit();
+    });
+
+</script>
+
 
 </body>
 </html>

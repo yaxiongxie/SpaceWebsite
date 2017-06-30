@@ -17,6 +17,35 @@ class Subway(models.Model):
         verbose_name = '地铁'
         verbose_name_plural = '地铁'
 
+class ServiceType(models.Model):
+    service_type_name = models.CharField('服务类别',max_length=200)
+    information = models.TextField('服务类别内容', max_length=2000,default='')
+    sort_int = models.IntegerField('排序号')
+
+    def __unicode__(self):
+        return u'%s' % self.service_type_name
+
+    class Meta:
+        verbose_name = '商业服务类别'
+        verbose_name_plural = '商业服务类别'
+
+
+class Services(models.Model):
+    service_name = models.CharField('服务名称',max_length=200)
+    information = models.TextField('服务内容', max_length=2000)
+    small_image = models.CharField('小图标',max_length=200,default='')
+    small_image_color = models.CharField('小图标_彩色',max_length=200, default='')
+    large_image = models.CharField('大图标',max_length=200, default='')
+    sort_int = models.IntegerField('排序号')
+    service_type = models.ForeignKey(ServiceType, verbose_name='所属类型')
+
+    def __unicode__(self):
+        return u'%s' % self.service_name
+
+    class Meta:
+        verbose_name = '商业服务'
+        verbose_name_plural = '商业服务'
+
 
 class Area(models.Model):
     country_name = models.CharField('区名',max_length=200)

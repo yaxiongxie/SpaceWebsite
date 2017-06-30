@@ -1,0 +1,95 @@
+<!DOCTYPE html>  
+<html lang="zh-cn">      
+<head>          
+<meta charset="utf-8">          
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="author" content="">          
+<meta name="title" content="">          
+<meta name="keywords" content="">          
+<meta name="description" content=""> 
+<title>有为空间</title>
+{% load static %}
+<link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
+<script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
+<script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+<script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
+</head>
+<body>
+{% include "frontsite/head.html" %}
+<div class="pz_main" style=" position:relative;">
+	<div class="bann_bg"></div>
+    <div class="w_1200">
+    	<div class="listings_tit"><a href="#">首页</a> - <a href="#" class="on">个人中心</a></div>
+    	<div class="member">
+        	{% include "frontsite/personalNav.html" %}
+            <div class="r_799">
+                <div class="t_798">
+                    <div class="l_jf ico3">我的企业</div>
+                    <div class="r_tc"></div>
+                </div>
+                <div class="Mybusiness" style="padding: 20px 0;">
+                    <!--
+                	<ul>
+                    	<li class="l1"><a>
+                        	<img src="{% static "images/main61.png" %}" width="30" height="28">
+                            <span>注册商户</span>
+                        </a></li>
+                        <li class="l2"><a>
+                        	<img src="{% static "images/main62.png" %}" width="30" height="28">
+                            <span>申请成为合作商</span>
+                        </a></li>
+                        <li class="l3"><a>
+                        	<img src="{% static "images/main63.png" %}" width="30" height="28">
+                            <span>付费上架</span>
+                        </a></li>
+                    </ul>
+                    -->
+                </div>
+                <div class="Availability Availability_three">
+                    	<label>
+                        	<div class="fm_name1">营业执照：</div>
+                            <div class="fm_input1 fm_input4">
+                            	<div class="fm_input1_1" style=" margin-bottom:0;">
+                                    <img width="500" height="300" src="{{ corporation.businessLicence }}"/>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                        	<div class="fm_name1">法人证件：</div>
+                            <div class="fm_input1 fm_input4">	
+                            	<!-- 20170606修改开始-->
+                            	<div class="fm_input1_1" style=" margin-bottom:0;">
+                            		<img width="500" height="300" src="{{ corporation.corporateCharter }}"/>
+                                </div>
+                                <!-- 20170606修改结束-->
+                            </div>
+                        </label>
+                        <label>
+                        	<div class="fm_name1">对接人电话：</div>
+                            <div class="fm_input1 fm_input4" style="line-height: 45px;">
+                            	{{ corporation.telephone }}
+                            </div>
+                        </label>
+                        <label>
+                        	<div class="fm_name1">主要服务内容：</div>
+                            <div class="fm_input1 fm_input4" style="line-height: 45px;">
+                            	{{ corporation.serviceContent }}
+                            </div>
+                        </label>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% include "frontsite/foot.html" %}
+<script>
+        jQuery("#h5").addClass("on");
+        jQuery("#h52").addClass("on");
+					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
+
+
+</script>
+</body>
+</html>

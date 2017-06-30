@@ -13,8 +13,6 @@
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
-    <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
-    <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
     <script>
         function popWindow(){
             $('#messageBox').dialogBox({
@@ -113,7 +111,7 @@
                             <input type="text" class="Search" id="searchText" placeholder="">
                             <input type="button" value="开始搜索" id="searchButton" class="sear_sub">
                         </div>
-                        <div class="Map_search"><a href="#">地图搜索</a></div>
+                        <div class="Map_search"><a href="javascript:popWindow()">地图搜索</a></div>
                     </div>
                 </ul>
             </div>

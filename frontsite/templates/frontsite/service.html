@@ -11,11 +11,9 @@
 {% load static %}
 <link rel="icon" href="{% static "images/favicon.ico" %}" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
-        <link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
 <script type="text/javascript" src="{% static "js/pzselect.1.0.js" %}"></script>
-     <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -30,13 +28,13 @@
 <div class="pz_main">
 	<div class="w_1200">
     	<div class="Bus_Serv_tit">
-        	<div class="twgg">图文广告</div>
+        	<div class="twgg">{{ service.service_name }}</div>
             <div class="my_serv"><a href="javascript:;" onclick="$('#Form').fadeIn()">我要服务</a></div>
         </div>
     	<div class="Bus_Serv_cont">
-        	<div class="pic_131"><img src="{% static "images/main109.png" %}" width="131" height="131"></div>
+        	<div class="pic_131"><img src="/static/images/{{ service.large_image }}" width="131" height="131"></div>
         	<div class="text_131">
-            	广告，即广而告之之意。广告是为了某种特定的需要，通过一定形式的媒体，公开而广泛地向公众传递信息的宣传手段，广告有广义和狭义之分。广义广告包括非经济广告和经济广告，非经济广告指不以盈利为目的的广告，又称效应广告，如政府行政部门、社会事业单位乃至个人的各种公告、启事、声明等，主要目的是推广
+                {{ service.information }}
             </div>
         </div>
         <div class="Bus_Serv_tit1"><span>上架商户</span></div>
@@ -92,13 +90,12 @@
     	<div class="pf_btn1">
         	<div class="pf_btn1_1">服务内容提交</div>
             <div class="pf_btn1_2">
-            	<form action="/frontsite/service/" method="post" id="serviceForm">
+            	<form action="/frontsite/service/{{ service.id }}/" method="post" id="serviceForm">
                     {% csrf_token %}
                 	<label><span class="btn2">联系电话</span><input type="text" name="telephone" id="telephone" class="btn1" placeholder="请输入手机号"></label>
                     <label><span class="btn2">联系姓名</span><input type="text" class="btn1" name="username" placeholder="请输入姓名"></label>
                     <label><span class="btn2">需求描述</span><textarea type="text" name="content" class="btn3" placeholder="需求描述"></textarea></label>
                     <label><span class="btn2">&nbsp;</span><input type="button" id="submitButton" class="btn4" value="立即提交"></label>
-                    <input type="hidden" name="servicetype" value="装修设计"/>
                 </form>
             </div>
         	<div class="tent_out"><a href="javascript:;" onclick="$('#Form').fadeOut()"><img src="{% static "images/img3.png" %}" ></a></div>

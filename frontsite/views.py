@@ -9,20 +9,80 @@ import json
 import uuid
 from models import Account
 from publish.models import News
-from models import ServiceRequirement,OfficeBuildingList,OfficeList
+from models import ServiceRequirement,OfficeBuildingList,OfficeList,HouseSource,HouseRequirement,Corporation,Order,Messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from commonData.models import SourceType,Subway,Area,District
+from commonData.models import SourceType,Subway,Area,District,ServiceType,Services
 from django.db.models import Q
+import time
 
+
+def clearSession(request):
+    request.session["headSubmit"] = ""
+    return HttpResponse("success")
+
+def exit(request):
+    del request.session["login"]
+    return HttpResponseRedirect(request.GET["returnUrl"])
+
+def addSource(request):
+    if request.method == "POST":
+        title=request.POST.get("title")
+        telephone = request.POST.get("telephone")
+        username = request.POST.get("username")
+        area_type=request.POST.get("area_type")
+
+        houseSource = HouseSource()
+        houseSource.telephone=telephone
+        houseSource.username=username
+        houseSource.title=title
+
+        houseSource.save()
+        request.session["headSubmit"] = "yes"
+        return HttpResponseRedirect(request.GET["returnUrl"])
+
+
+def addRequest(request):
+    if request.method == "POST":
+        telephone = request.POST.get("telephone")
+        username = request.POST.get("username")
+        description = request.POST.get("description")
+
+        houseRequirement=HouseRequirement();
+        houseRequirement.telephone=telephone
+        houseRequirement.name = username
+        houseRequirement.description=description
+
+        houseRequirement.save()
+        request.session["headSubmit"] = "yes"
+        return HttpResponseRedirect(request.GET["returnUrl"])
 
 def aboutus(request):
     return render(request, 'frontsite/aboutus.html', {})
 
 def building(request,id):
-    build =OfficeBuildingList.objects.get(pk=id)
-    officelist=OfficeList.objects.filter(officeBuilding_id=id)
-    buildinglist=OfficeBuildingList.objects.all()[0:4]
-    return render(request, 'frontsite/building.html', {"building":build,"officelist":officelist,"buildinglist":buildinglist})
+    build = OfficeBuildingList.objects.get(pk=id)
+    officelist = OfficeList.objects.filter(officeBuilding_id=id)
+    buildinglist = OfficeBuildingList.objects.all()[0:4]
+    isAppoint="false"
+    if request.method == "POST":
+        order=Order()
+        order.title=build.title
+        order.telephone=request.session['login']
+        order.officeBuilding_id=build.id
+        order.orderid=uuid.uuid1()
+        order.status_id=3
+        order.save()
+        isAppoint="true"
+        return render(request, 'frontsite/building.html',
+                      {"building": build, "officelist": officelist, "buildinglist": buildinglist,"appoint":"success","isAppoint":isAppoint})
+
+    else:
+        if request.session.has_key("login"):
+            count = Order.objects.filter(officeBuilding_id=id).filter(telephone=request.session['login']).filter(
+                buildingOrService='building').count()
+            if (count > 0):
+                isAppoint = "true"
+        return render(request, 'frontsite/building.html', {"building":build,"officelist":officelist,"buildinglist":buildinglist,"isAppoint":isAppoint})
 
 def buildinglist(request,*args,**kargs):
     print kargs
@@ -87,10 +147,69 @@ def contactus(request):
     return render(request, 'frontsite/contactus.html', {})
 
 def enterprise(request):
-    return render(request, 'frontsite/enterprise.html', {})
+    if request.session.has_key('login'):
+        account = Account.objects.get(telephone=request.session['login'])
+        count = Corporation.objects.filter(userid_id=account.id).count()
+        if count > 0:
+            corporation = Corporation.objects.get(userid_id=account.id)
+            return render(request, 'frontsite/enterprise.html', {"corporation":corporation})
+        return render(request, 'frontsite/enterprise.html', {})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/enterprise/')
+
 
 def enterpriseRegiste(request):
-    return render(request, 'frontsite/enterpriseRegiste.html', {})
+    if request.method == "POST":
+        telephone = request.POST.get("telephone")
+        servicetype = request.POST.getlist("servicetype")
+        content=''
+        for s in servicetype:
+            content=content+s+','
+        print servicetype
+        pic1=request.FILES['pic1']
+        pic2 = request.FILES['pic2']
+        pic1_path=""
+        pic2_path=""
+        if pic1:
+            phototime = request.user.username + str(time.time()).split('.')[0]
+            photo_last = str(pic1).split('.')[-1]
+            photoname = 'photos/%s.%s' % (phototime, photo_last)
+            img = Image.open(pic1)
+            img.save('/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder/' + photoname)
+            pic1_path='/pic_folder/' + photoname
+        if pic2:
+            phototime = request.user.username + str(time.time()).split('.')[0]
+            photo_last = str(pic2).split('.')[-1]
+            photoname = 'photos/%s.%s' % (phototime, photo_last)
+            img = Image.open(pic2)
+            img.save('/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder/' + photoname)
+            pic2_path='/pic_folder/' + photoname
+
+        corporation=Corporation()
+        corporation.telephone=telephone
+        corporation.businessLicence=pic1_path
+        corporation.serviceContent=content
+        corporation.corporateCharter=pic2_path
+        account=Account.objects.get(telephone=request.session['login'])
+        corporation.userid_id=account.id
+        corporation.save()
+
+        corporation=Corporation.objects.get(userid_id=account.id)
+        return render(request, 'frontsite/enterpriseDisplay.html', {"corporation": corporation})
+
+    else:
+        if request.session.has_key('login'):
+            account = Account.objects.get(telephone=request.session['login'])
+            count=Corporation.objects.filter(userid_id=account.id).count()
+            if count>0:
+                corporation = Corporation.objects.get(userid_id=account.id)
+                return render(request, 'frontsite/enterpriseDisplay.html',{"corporation": corporation})
+            else:
+                serviceTypes=ServiceType.objects.all()
+                services=Services.objects.all()
+                return render(request, 'frontsite/enterpriseRegiste.html', {"servicetypes":serviceTypes,"services":services})
+        else:
+            return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/enterpriseRegiste/')
 
 def houseSource(request):
     return render(request, 'frontsite/houseSource.html', {})
@@ -113,17 +232,36 @@ def login(request):
             return render(request, 'frontsite/login.html', map)
 
         request.session["login"]=telephone
+        request.session["nickname"]=Account.objects.get(telephone=telephone).nickname
         return HttpResponseRedirect(request.GET["returnUrl"])
 
     else:
-        return render(request, 'frontsite/login.html', {"returnUrl":request.GET["returnUrl"]})
+        returnUrl = request.GET["returnUrl"]
+        if "login" in returnUrl:
+            returnUrl = "/frontsite/index/"
+        if "registe" in returnUrl:
+            returnUrl = "/frontsite/index/"
+        return render(request, 'frontsite/login.html', {"returnUrl":returnUrl})
 
 def map(request):
     return render(request, 'frontsite/map.html', {})
 
 def messages(request):
-    return render(request, 'frontsite/messages.html', {})
+    if request.session.has_key('login'):
+        account=Account.objects.get(telephone=request.session['login'])
+        messagelist=Messages.objects.filter(toUser_id=account.id).order_by('-id')
+        return render(request, 'frontsite/messages.html', {'messagelist':messagelist})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/messages/')
 
+def deleteMessage(request,id):
+    try:
+         Messages.objects.get(pk=id).delete()
+    except:
+        print 'error'
+    account = Account.objects.get(telephone=request.session['login'])
+    messagelist = Messages.objects.filter(toUser_id=account.id).order_by('-id')
+    return render(request, 'frontsite/messages.html', {'messagelist': messagelist})
 
 def new(request,newid):
     new = News.objects.get(pk=newid)
@@ -152,14 +290,31 @@ def office(request,id):
     office = OfficeList.objects.get(pk=id)
     return render(request, 'frontsite/office.html', {"office":office})
 
-def orders(request):
-    return render(request, 'frontsite/orders.html', {})
+def orders(request,type):
+    if request.session.has_key('login'):
+        if int(type) == 10:
+            orderlist = Order.objects.filter(telephone=request.session['login'])
+            return render(request, 'frontsite/orders.html', {'orderlist': orderlist, "type": type})
+        else:
+            orderlist = Order.objects.filter(telephone=request.session['login']).filter(status_id=type)
+            return render(request, 'frontsite/orders.html', {'orderlist': orderlist, "type": type})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/orders/')
+
 
 def personal(request):
-    return render(request, 'frontsite/personal.html', {})
+    if request.session.has_key("login"):
+        q = Account.objects.get(telephone=request.session["login"])
+        return render(request, 'frontsite/personal.html', {"account":q})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/personal/')
+
 
 def publish(request):
-    return render(request, 'frontsite/publish.html', {})
+    if request.session.has_key('login'):
+        return render(request, 'frontsite/publish.html', {})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/publish/')
 
 def recruitment(request):
     return render(request, 'frontsite/recruitment.html', {})
@@ -192,31 +347,43 @@ def registe(request):
         request.session['token']=ustring
         print 'ssss'
         print ustring
-        return render(request, 'frontsite/registe.html', {"token":ustring,"returnUrl":request.GET["returnUrl"]})
+        returnUrl=request.GET["returnUrl"]
+        if "login" in returnUrl:
+            returnUrl = "/frontsite/index/"
+        if "registe" in returnUrl:
+            returnUrl = "/frontsite/index/"
+        return render(request, 'frontsite/registe.html', {"token":ustring,"returnUrl":returnUrl})
 
 def requirement(request):
-    return render(request, 'frontsite/requirement.html', {})
+    if request.session.has_key('login'):
+        return render(request, 'frontsite/requirement.html', {})
+    else:
+        return HttpResponseRedirect('/frontsite/login/?returnUrl=/frontsite/requirement/')
 
-def service(request):
+def service(request,id):
     if request.method == "POST":
         telephone = request.POST.get("telephone")
         username = request.POST.get("username")
         content=request.POST.get("content")
-        servicetype=request.POST.get("servicetype")
         requireService=ServiceRequirement()
         requireService.name=username
         requireService.telephone=telephone
         requireService.description=content
-        requireService.servicetype=servicetype
+        requireService.servicetype_id=id
         requireService.save()
-        return render(request, 'frontsite/service.html', {"status":"success"})
+        service = Services.objects.get(pk=id)
+        return render(request, 'frontsite/service.html', {"service":service,"status":"success"})
 
     else:
-        return render(request, 'frontsite/service.html', {})
+        service=Services.objects.get(pk=id)
+        return render(request, 'frontsite/service.html', {"service":service})
 
 
 def services(request):
-    return render(request, 'frontsite/services.html', {})
+    services1=Services.objects.filter(service_type_id=1)
+    services2 = Services.objects.filter(service_type_id=2)
+    services3 = Services.objects.filter(service_type_id=3)
+    return render(request, 'frontsite/services.html', {"services1":services1,"services2":services2,"services3":services3})
 
 def mysourse(request):
     return render(request, 'frontsite/mysourse.html', {})

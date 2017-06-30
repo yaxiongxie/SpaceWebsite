@@ -26,9 +26,10 @@
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico3">我的企业</div>
-                    <div class="r_tc"><a href="#">退出登录</a></div>
+                    <div class="r_tc"></div>
                 </div>
                 <div class="Mybusiness">
+                    <!--
                 	<ul>
                     	<li class="l1"><a>
                         	<img src="{% static "images/main61.png" %}" width="30" height="28">
@@ -43,15 +44,17 @@
                             <span>付费上架</span>
                         </a></li>
                     </ul>
+                    -->
                 </div>
                 <div class="Availability Availability_three">
-                	<form>
+                	<form action="/frontsite/enterpriseRegiste/" method="post" id="form" enctype="multipart/form-data">
+                        {% csrf_token %}
                     	<label>
                         	<div class="fm_name1"><span>*</span>营业执照</div>
                             <div class="fm_input1 fm_input4">
                             	<div class="fm_input1_1" style=" margin-bottom:0;">
                             		<input class="fm11" type="text" id="showvalue">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change(this)"></a>
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" name="pic1" onchange="_change(this)"></a>
                                 </div>
                             </div>
                         </label>
@@ -61,7 +64,7 @@
                             	<!-- 20170606修改开始-->
                             	<div class="fm_input1_1" style=" margin-bottom:0;">
                             		<input class="fm11" type="text" id="showvalue1">
-                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" onchange="_change1(this)"></a>
+                                    <a href="#" style=" position:relative;">浏览<input style="position: absolute; width:28px; height:21px;font-size:0;right: 0;top: 12px;opacity: 0;filter: alpha(opacity=0); cursor:pointer;" type="file" name="pic2" onchange="_change1(this)"></a>
                                 </div>
                                 <!-- 20170606修改结束-->
                             </div>
@@ -69,17 +72,26 @@
                         <label>
                         	<div class="fm_name1"><span>*</span>对接人电话</div>
                             <div class="fm_input1 fm_input4">	
-                            	<input placeholder="" class="fm11" type="text">
+                            	<input placeholder="" class="fm11" type="text" name="telephone" id="telephone">
                             </div>
                         </label>
                         <label>
                         	<div class="fm_name1"><span>*</span>主要服务内容</div>
                             <div class="fm_input1 fm_input4">	
-                            	<textarea type="text" placeholder="" class="fm15"></textarea>
+                            	{% for servicetype in servicetypes %}
+                                    <h5>{{ servicetype.service_type_name }}</h5><br/>
+                                    {% for service in services %}
+                                        {% if service.service_type_id == servicetype.id %}
+                                            <input name="servicetype" type="checkbox" value="{{ service.service_name }}" />&nbsp;{{ service.service_name }}&nbsp;
+                                        {% endif %}
+                                    {% endfor %}
+                                    <br/><br/>
+
+                                {% endfor %}
                             </div>
                         </label>
                         <label>
-                        	<input value="提交申请" class="fm10" type="button" style=" margin-left:183px;">
+                        	<input value="提交申请" class="fm10" id="submitButton" type="button" style=" margin-left:183px;">
                         </label>
                     </form>
                 </div>
@@ -102,6 +114,47 @@
         jQuery("#h5").addClass("on");
         jQuery("#h52").addClass("on");
 					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
-				</script>
+
+        $("#submitButton").click(function(){
+        var telephone=$("#telephone").val();
+        var pic1=$("#showvalue").val();
+        var pic2=$("#showvalue1").val();
+        if(pic1==""){
+                $('#messageBox').dialogBox({
+                            hasClose: true,
+                            hasMask: true,
+                            autoHide: true,
+                            time: 3000,
+                            title: '温馨提示',
+                            content: '请上传营业执照'
+                        });
+                return;
+            }
+            if(pic2==""){
+                $('#messageBox').dialogBox({
+                            hasClose: true,
+                            hasMask: true,
+                            autoHide: true,
+                            time: 3000,
+                            title: '温馨提示',
+                            content: '请上传法人证件'
+                        });
+                return;
+            }
+
+            if(telephone.length!=11){
+                $('#messageBox').dialogBox({
+                            hasClose: true,
+                            hasMask: true,
+                            autoHide: true,
+                            time: 3000,
+                            title: '温馨提示',
+                            content: '手机号输入错误，请重新输入'
+                        });
+                return;
+            }
+            $("#form").submit();
+        })
+</script>
 </body>
 </html>

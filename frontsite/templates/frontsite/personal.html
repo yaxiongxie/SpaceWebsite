@@ -25,39 +25,51 @@
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico1">个人信息&nbsp;<span>基本信息</span></div>
-                    <div class="r_tc"><a href="#">退出登录</a></div>
+                    <div class="r_tc"></div>
                 </div>
                 <div class="Personal_content">
                 	<ul>
                     	<li>
                         	<div class="l1">
-                        		<h1>昵称</h1><h2>五月租房</h2><a href="#">修改</a>
+                        		<h1>昵称</h1><h2>{{ account.nickname }}</h2><a href="#">修改</a>
                             </div>
                         </li>
                         <li>
                         	<div class="l1">
-                        		<h1>真实姓名</h1><h2>王海燕 | 4****************7 已认证</h2><a href="#" class="on">查看</a>
+                        		<h1>真实姓名</h1><h2>
+                                    {% if account.realname == '' %}
+                                        未填写
+                                    {% else %}
+                                        {{ account.realname }}
+                                    {% endif %}
+                                </h2><a href="#" class="on">查看</a>
                             </div>
                             <div class="l1">
-                        		<h1>性别</h1><h2>女</h2><a href="#" class="on">查看</a>
+                        		<h1>性别</h1><h2>男</h2><a href="#" class="on">查看</a>
                             </div>
                         </li>
                         <li>
                         	<div class="l1">
-                        		<h1>绑定手机</h1><h2>158****8888</h2><a href="#" class="on">修改</a>
+                        		<h1>绑定手机</h1><h2>{{ account.telephone }}</h2><a href="#" class="on">修改</a>
                             </div>
                             <div class="l1">
                         		<h1>银行卡账户</h1><h2>未设置</h2><a href="#" class="on">设置</a>
                             </div>
                         </li>
+                        <!--
                         <li>
                         	<div class="l1">
                         		<h1>问题验证</h1><h2>未设置</h2><a href="#">设置</a>
                             </div>
                         </li>
+                        -->
                         <li>
                         	<div class="l1">
-                        		<h1>地址</h1><h2>中国  上海市  黄浦区人民大道200号 </h2><a href="#">修改</a>
+                        		<h1>地址</h1><h2>{% if account.address == '' %}
+                                        未填写
+                                    {% else %}
+                                        {{ account.address }}
+                                    {% endif %}</h2><a href="#">修改</a>
                             </div>
                         </li>
                     </ul>

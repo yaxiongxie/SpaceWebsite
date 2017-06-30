@@ -1,4 +1,6 @@
  {% load static %}
+
+ <div id="messageBox"></div>
 <div class="pz_down">
 	<div class="back4">
     	<div class="w_1200">
@@ -48,50 +50,3 @@
         </div>
     </div>
 </div>
-<!--右侧漂浮-->
-<div class="right_78">
-	<div class="t_76">
-    	<div class="img_42"><a href="#" class="bg1"></a></div>
-        <div class="tit_76"><a href="#">委托选址</a></div>
-	</div>
-    <div class="t_76">
-    	<div class="img_42"><a href="#" class="bg2"></a></div>
-        <div class="tit_76"><a href="#">房源投放</a></div>
-	</div>
-    <div class="t_76">
-    	<div class="img_42"><a class="bg3"></a></div>
-        <div class="tit_76"><a>在线服务</a></div>
-        <div class="pf_269" style="width: 0px; overflow: hidden; left: 0px;"><span class="text">在线服务：000-000-0000</span></div>
-   </div>
-    <div class="t_76">
-    	<div class="img_42"><a class="bg4"></a></div>
-        <div class="tit_76"><a>电话客服</a></div>
-        <div class="pf_269" style="width: 0px; overflow: hidden; left: 0px;"><span class="text">电话客服：000-000-0000</span></div>
-	</div>
-    <div class="t_76 renter">
-    	<div class="img_42"><a class="bg5"></a></div>
-        <div class="tit_76"><a>回到顶部</a></div>
-    </div>
-</div>
-<script>
-$(document).ready(function(){
-	$('.right_78 .t_76').on('mouseenter',function(){
-		$(this).children('.pf_269').stop().animate({
-			width:'198px',
-			left:'-200px'
-			})
-
-	})
-	$('.right_78 .t_76').on('mouseleave',function(){
-		$(this).children('.pf_269').stop().animate({
-			width:'0px',
-			left:'0'
-			})
-
-	})
-	$(".right_78 .renter").on("click", function () {
-		$('body,html').animate({ scrollTop: 0 });
-	})
-
-})
-</script>

@@ -26,30 +26,31 @@
             <div class="r_799">
                 <div class="t_798">
                     <div class="l_jf ico2">房源服务&nbsp;<span>发布需求</span></div>
-                    <div class="r_tc"><a href="#">退出登录</a></div>
+                    <div class="r_tc"></div>
                 </div>
                 <div class="Availability Availability_two">
-                	<form class="l_623">
+                	<form class="l_623" action="/frontsite/addRequest/?returnUrl={{ request.path }}" method="post" id="form">
+                        {% csrf_token %}
                     	<label>
-                        	<div class="fm_name1 fm_name3"><span>*</span>姓名</div>
+                        	<div class="fm_name1 fm_name3"><span>*</span>联系人</div>
                             <div class="fm_input1 fm_input3">	
-                            	<input type="text" placeholder="" class="fm13">
+                            	<input type="text" placeholder="联系人" name="username" class="fm13">
                             </div>
                         </label>
                         <label>
-                        	<div class="fm_name1 fm_name3"><span>*</span>电话</div>
+                        	<div class="fm_name1 fm_name3"><span>*</span>联系电话</div>
                             <div class="fm_input1 fm_input3">	
-                            	<input type="text" placeholder="" class="fm13">
+                            	<input type="text" placeholder="联系电话" class="fm13" name="telephone" id="telephone">
                             </div>
                         </label>
                         <label>
                         	<div class="fm_name1 fm_name3"><span>*</span>需求描述</div>
                             <div class="fm_input1 fm_input3">	
-                            	<textarea  type="text" placeholder="" class="fm14"></textarea>
+                            	<textarea  type="text" placeholder="需求描述" name="description" class="fm14"></textarea>
                             </div>
                         </label>
                         <label>
-                        	<input  type="button" value="发布需求" class="fm10 fm16">
+                        	<input  type="button" id="submitButton" value="提交需求" class="fm10 fm16">
                         </label>
                     </form>
                 </div>
@@ -62,6 +63,23 @@
         jQuery("#h2").addClass("on");
         jQuery("#l22").addClass("on");
 					jQuery(".sideMen").slide({titCell:".l1", targetCell:".l2",defaultIndex:1,effect:"slideDown",delayTime:300,trigger:"click"});
-				</script>
+
+					$("#submitButton").click(function(){
+        var telephone=$("#telephone").val();
+        if(telephone.length!=11){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '手机号输入错误，请重新输入'
+					});
+            return;
+        }
+        $("#form").submit();
+    });
+
+</script>
 </body>
 </html>

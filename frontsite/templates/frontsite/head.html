@@ -1,4 +1,6 @@
  {% load static %}
+<link rel="stylesheet" type="text/css" href="{% static "css/jquery.dialogbox.css" %}">
+     <script type="text/javascript" src="{% static "js/jquery.dialogBox.js" %}"></script>
 <div class="pz_top">
 	<div class="back1">
         <div class="w_1200">
@@ -24,12 +26,153 @@
                      jQuery(".menu").slide({ type: "menu", titCell: ".nli", targetCell: ".sub", effect: "slideDown", delayTime:200, triggerTime: 0,returnDefault: true });
                 </script>
                 {% if request.session.login %}
-                    <div class="login"><a href="/frontsite/personal/">{{ request.session.login }}</a>&nbsp;/&nbsp;<a href="/frontsite/exit/">退出</a></div>
+                    <div class="login"><a href="/frontsite/personal/">{{ request.session.login }}</a>&nbsp;/&nbsp;<a href="/frontsite/exit/?returnUrl={{ request.path }}">退出</a></div>
                 {% else %}
                     <div class="login"><a href="/frontsite/login/?returnUrl={{ request.path }}">登录</a>&nbsp;/&nbsp;<a href="/frontsite/registe/?returnUrl={{ request.path }}">注册</a></div>
                 {% endif %}
-                <div class="Castspace"><a href="#">投放空间</a><a href="#">委托找房</a></div>
+                <div class="Castspace"><a href="javascript:showSpaceDiv()">投放空间</a><a href="javascript:showRequirementDiv()">委托找房</a></div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="my_serv_btn" style="display: none" id="addSpaceDiv">
+	<div class="pf_btn">
+    	<div class="pf_btn1">
+        	<div class="pf_btn1_1">投放空间</div>
+            <div class="pf_btn1_2">
+            	<form action="/frontsite/addSource/?returnUrl={{ request.path }}" method="post" id="addSpace">
+                    {% csrf_token %}
+                    <label><span class="btn2">联系人</span><input type="text" class="btn1" name="username" placeholder="联系人"></label>
+                	<label><span class="btn2">联系电话</span><input type="text" name="telephone" id="telephone1" class="btn1" placeholder="请输入手机号"></label>
+                    <label><span class="btn2">写字楼</span><input type="text" name="title" class="btn1" placeholder="写字楼名称"></label>
+                    <label><span class="btn2">&nbsp;</span><input type="button" id="submitSpace" class="btn4" value="立即提交"></label>
+                    <input type="hidden" name="servicetype" value="装修设计"/>
+                </form>
+            </div>
+        	<div class="tent_out"><a href="javascript:;" onclick="$('#addSpaceDiv').fadeOut()"><img src="{% static "images/img3.png" %}" ></a></div>
+		</div>
+    </div>
+</div>
+
+<div class="my_serv_btn" style="display: none" id="addRequirementDiv">
+	<div class="pf_btn">
+    	<div class="pf_btn1">
+        	<div class="pf_btn1_1">委托找房</div>
+            <div class="pf_btn1_2">
+            	<form action="/frontsite/addRequest/?returnUrl={{ request.path }}" method="post" id="addRequirement">
+                    {% csrf_token %}
+                    <label><span class="btn2">联系人</span><input type="text" class="btn1" name="username" placeholder="联系人"></label>
+                	<label><span class="btn2">联系电话</span><input type="text" name="telephone" id="telephone2" class="btn1" placeholder="请输入手机号"></label>
+                    <label><span class="btn2">需求描述</span><textarea type="text" name="description" class="btn3" placeholder="需求描述"></textarea></label>
+                    <label><span class="btn2">&nbsp;</span><input type="button" id="submitRequirement" class="btn4" value="立即提交"></label>
+                </form>
+            </div>
+        	<div class="tent_out"><a href="javascript:;" onclick="$('#addRequirementDiv').fadeOut()"><img src="{% static "images/img3.png" %}" ></a></div>
+		</div>
+    </div>
+</div>
+<!--右侧漂浮-->
+
+<div class="right_78">
+	<div class="t_76">
+    	<div class="img_42"><a href="javascript:showRequirementDiv()" class="bg1"></a></div>
+        <div class="tit_76"><a href="javascript:showRequirementDiv()">委托选址</a></div>
+	</div>
+    <div class="t_76">
+    	<div class="img_42"><a href="javascript:showSpaceDiv()" class="bg2"></a></div>
+        <div class="tit_76"><a href="javascript:showSpaceDiv()">房源投放</a></div>
+	</div>
+    <div class="t_76">
+    	<div class="img_42"><a class="bg3"></a></div>
+        <div class="tit_76"><a>在线服务</a></div>
+        <div class="pf_269" style="width: 0px; overflow: hidden; left: 0px;"><span class="text">在线服务：000-000-0000</span></div>
+   </div>
+    <div class="t_76">
+    	<div class="img_42"><a class="bg4"></a></div>
+        <div class="tit_76"><a>电话客服</a></div>
+        <div class="pf_269" style="width: 0px; overflow: hidden; left: 0px;"><span class="text">电话客服：000-000-0000</span></div>
+	</div>
+    <div class="t_76 renter">
+    	<div class="img_42"><a class="bg5"></a></div>
+        <div class="tit_76"><a>回到顶部</a></div>
+    </div>
+</div>
+<script>
+$(document).ready(function(){
+	$('.right_78 .t_76').on('mouseenter',function(){
+		$(this).children('.pf_269').stop().animate({
+			width:'198px',
+			left:'-200px'
+			})
+
+	})
+	$('.right_78 .t_76').on('mouseleave',function(){
+		$(this).children('.pf_269').stop().animate({
+			width:'0px',
+			left:'0'
+			})
+
+	})
+	$(".right_78 .renter").on("click", function () {
+		$('body,html').animate({ scrollTop: 0 });
+	})
+
+})
+</script>
+
+<script>
+    function showSpaceDiv(){
+        $('#addSpaceDiv').fadeIn()
+    }
+    function showRequirementDiv(){
+        $('#addRequirementDiv').fadeIn()
+    }
+    $("#submitSpace").click(function(){
+        var telephone=$("#telephone1").val();
+        if(telephone.length!=11){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '手机号输入错误，请重新输入'
+					});
+            return;
+        }
+        $("#addSpace").submit();
+    });
+
+    $("#submitRequirement").click(function(){
+        var telephone=$("#telephone2").val();
+        if(telephone.length!=11){
+            $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '手机号输入错误，请重新输入'
+					});
+            return;
+        }
+        $("#addRequirement").submit();
+    });
+    $(document).ready(function(){
+        var checkError="{{ request.session.headSubmit }}";
+        if(checkError!=""){
+            $.ajax({url:"/frontsite/clearSession"})
+             $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '提交成功，我们将会尽快为您处理'
+					});
+        }
+    })
+
+
+</script>

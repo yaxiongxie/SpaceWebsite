@@ -6,7 +6,7 @@ from django.contrib import admin
 # Register your models here.
 from django.contrib import admin
 
-from .models import Subway,Area,District,SourceType,UseType,DecorateDegree,NewType,Sex,Status
+from .models import Subway,Area,District,SourceType,UseType,DecorateDegree,NewType,Sex,Status,ServiceType,Services
 
 
 admin.site.register(Subway)
@@ -18,5 +18,7 @@ admin.site.register(DecorateDegree)
 admin.site.register(NewType)
 admin.site.register(Sex)
 admin.site.register(Status)
+admin.site.register(ServiceType)
+admin.site.register(Services)
 
 

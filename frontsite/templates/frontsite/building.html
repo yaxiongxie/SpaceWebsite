@@ -56,7 +56,19 @@
                         </div>
                     </li>
                     <li style=" border-bottom:none;">
-                		<div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="#">预约看房</a></div>
+                        {% if request.session.login %}
+                            <form action="{{ request.path  }}" method="post" id="form">
+                                {% csrf_token %}
+                            </form>
+                            {% if isAppoint == 'true' %}
+                                <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="javascript:void(0)">已预约</a></div>
+                            {% else %}
+                                <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="javascript:submitForm()">预约看房</a></div>
+                            {% endif %}
+
+                        {% else %}
+                            <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="/frontsite/login/?returnUrl={{ request.path }}">预约看房</a></div>
+                        {% endif %}
                     </li>
                 </div>
             </div>
@@ -280,6 +292,21 @@ $(document).ready(function(){
 <script type="text/javascript" src="{% static "js/tms-0.4.1.js" %}" ></script>
 
 <script type="text/javascript" src="{% static "js/swiper.min.js" %}"></script>
-
+<script>
+    function submitForm(){
+        $("#form").submit()
+    }
+    var appoint="{{ appoint }}"
+    if(appoint!=""){
+         $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '预约成功，我们将会尽快为您处理'
+					});
+    }
+</script>
 </body>
 </html>
