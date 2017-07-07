@@ -18,6 +18,7 @@ from django.contrib import admin
 import django
 from django.conf.urls import handler404, handler500
 from frontsite import views
+from django.views import static
 
 handler404=views.page_not_found
 handler500=views.page_error
@@ -25,6 +26,6 @@ handler500=views.page_error
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^frontsite/', include('frontsite.urls')),
-    url(r'^pic_folder/(?P<path>.*)', django.views.static.serve, {'document_root':'/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder'}),
+    url(r'^pic_folder/(?P<path>.*)', static.serve, {'document_root':'/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder'}),
 
 ]
