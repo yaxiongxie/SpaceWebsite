@@ -135,7 +135,9 @@
                         </div>
                     </li>
                 {% endfor %}
-
+                {% if buildinglist|length == 0 %}
+                    <li style="color:#898989;font-size: 24px;text-align: center;border: hidden;margin-top: 50px;"><p>没有找到相关内容，请您换个条件试试吧~</p></li>
+                {% endif %}
             </ul>
         </div>
     	<div class="wack1">

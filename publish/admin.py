@@ -24,8 +24,21 @@ class NewAdmin(admin.ModelAdmin):
         )
 
 
-admin.site.register(OfficeBuildingList)
-admin.site.register(OfficeList)
+class OfficeBuildingListAdmin(admin.ModelAdmin):
+    list_display = ('title','area_type','district_type', 'createTime')
+    list_filter = ['createTime']
+    search_fields = ['title','area_type__country_name','district_type__district_name']
+    raw_id_fields = ('district_type',)
+
+class OfficeListAdmin(admin.ModelAdmin):
+    list_display = ('title','officeBuilding','ownerName','ownerTelephone', 'createTime')
+    list_filter = ['createTime']
+    search_fields = ['title']
+    raw_id_fields = ('officeBuilding',)
+
+
+admin.site.register(OfficeBuildingList,OfficeBuildingListAdmin)
+admin.site.register(OfficeList,OfficeListAdmin)
 admin.site.register(News,NewAdmin)
 
 

@@ -133,7 +133,7 @@ def buildinglist(request,*args,**kargs):
     newmap=dict(kargs.items()+map.items())
     if kargs["country"] != None:
         # newmap["districtList"]=District.objects.filter(area_type_id=kargs["country"])
-        districtList=District.objects.filter(area_type_id=kargs["country"])
+        districtList=District.objects.filter(area_type_id=kargs["country"]).order_by("sort_int")
         for index in range(len(districtList)):
             if index >0:
                 if(districtList[index].district_firstChar==districtList[index-1].district_firstChar):
@@ -215,9 +215,10 @@ def houseSource(request):
     return render(request, 'frontsite/houseSource.html', {})
 
 def index(request):
+    buildinglist=OfficeBuildingList.objects.all()[0:5]
     newlist=list(News.objects.all()[0:13])
     areaList = Area.objects.all()
-    return render(request, 'frontsite/index.html', {"newlist":newlist,"arealist":areaList})
+    return render(request, 'frontsite/index.html', {"newlist":newlist,"arealist":areaList,"buildinglist":buildinglist})
 
 
 def login(request):
@@ -443,3 +444,29 @@ def page_not_found(request):
 
 def page_error(request):
     return render(request,'frontsite/404.html',{})
+
+
+
+def updatePersonal(request):
+    if request.method == "POST":
+        q = Account.objects.get(telephone=request.session["login"])
+        nickname = request.POST.get("nickname")
+        realname=request.POST.get("realname")
+        sex=request.POST.get("sex")
+        address=request.POST.get("address")
+
+        if nickname:
+            q.nickname=nickname
+            q.save()
+        if realname:
+            q.realname=realname
+            q.save()
+        if sex:
+            q.sex_id=int(sex)
+            q.save()
+        if address:
+            q.address=address
+            q.save()
+
+        return render(request, 'frontsite/personal.html', {"account": q})
+

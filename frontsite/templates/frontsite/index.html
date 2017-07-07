@@ -140,88 +140,92 @@
                 	<div class="bd_ul_one">
                     	<div class="tab_list_one">
                             <ul>
-                                <li><a href="#">
+                                <li style="height: 420px;"><a href="/frontsite/building/{{ buildinglist.0.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main8.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img src="/{{ buildinglist.0.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.0.title }}</h1><h2>待租房源：<span>{{ buildinglist.0.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.1.id }}">
                                 	<div class="l1">
-                                        <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.1.image1 }}" width="100%" alt=""></div>
                                         <div class="tab_pf2">
-                                            <h1>中心五牛大厦</h1>
-                                            <p>浦东大道1101号-1205号</p>
-                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                            <h1>{{ buildinglist.1.title }}</h1>
+                                            <p>{{ buildinglist.1.address }}</p>
+                                            <h2><span>待租房源：{{ buildinglist.1.rent_count }}个</span><time>210</time></h2>
                                         </div>
                                     </div>
-                                    <div class="l1" style=" float:right;">
-                                        <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                                </a>
+                                    <a href="/frontsite/building/{{ buildinglist.2.id }}">
+                                    <div class="l1" style="float:right;">
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.2.image1 }}" width="100%" alt=""></div>
                                         <div class="tab_pf2">
-                                            <h1>中心五牛大厦</h1>
-                                            <p>浦东大道1101号-1205号</p>
-                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                            <h1>{{ buildinglist.2.title }}</h1>
+                                            <p>{{ buildinglist.2.address }}</p>
+                                            <h2><span>待租房源：{{ buildinglist.2.rent_count }}个</span><time>210</time></h2>
                                         </div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.3.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main11.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.3.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.3.title }}</h1><h2>待租房源：<span>{{ buildinglist.3.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.4.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main12.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img style="height:285px;"  src="/{{ buildinglist.4.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.4.title }}</h1><h2>待租房源：<span>{{ buildinglist.4.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
                             </ul>
                         </div>
-                        <div class="more"><a href="#">read more</a></div>
+                        <div class="more"><a href="/frontsite/buildinglist/t1">read more</a></div>
                     </div>
                     <div class="bd_ul_one">
                     	<div class="tab_list_one">
                             <ul>
-                                <li><a href="#">
+                                <li style="height: 420px;"><a href="/frontsite/building/{{ buildinglist.0.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main8.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img src="/{{ buildinglist.0.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.0.title }}</h1><h2>待租房源：<span>{{ buildinglist.0.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.1.id }}">
                                 	<div class="l1">
-                                        <div class="tab_pic"><img src="{% static "images/main9.jpg" %}" width="100%" alt=""></div>
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.1.image1 }}" width="100%" alt=""></div>
                                         <div class="tab_pf2">
-                                            <h1>中心五牛大厦</h1>
-                                            <p>浦东大道1101号-1205号</p>
-                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                            <h1>{{ buildinglist.1.title }}</h1>
+                                            <p>{{ buildinglist.1.address }}</p>
+                                            <h2><span>待租房源：{{ buildinglist.1.rent_count }}个</span><time>210</time></h2>
                                         </div>
                                     </div>
-                                    <div class="l1" style=" float:right;">
-                                        <div class="tab_pic"><img src="{% static "images/main10.jpg" %}" width="100%" alt=""></div>
+                                </a>
+                                    <a href="/frontsite/building/{{ buildinglist.2.id }}">
+                                    <div class="l1" style="float:right;">
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.2.image1 }}" width="100%" alt=""></div>
                                         <div class="tab_pf2">
-                                            <h1>中心五牛大厦</h1>
-                                            <p>浦东大道1101号-1205号</p>
-                                            <h2><span>待租房源：14个</span><time>210</time></h2>
+                                            <h1>{{ buildinglist.2.title }}</h1>
+                                            <p>{{ buildinglist.2.address }}</p>
+                                            <h2><span>待租房源：{{ buildinglist.2.rent_count }}个</span><time>210</time></h2>
                                         </div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.3.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main11.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img style="height:285px;" src="/{{ buildinglist.3.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.3.title }}</h1><h2>待租房源：<span>{{ buildinglist.3.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
-                                <li><a href="#">
+                                <li><a href="/frontsite/building/{{ buildinglist.4.id }}">
                                 	<div class="l2">
-                                        <div class="tab_pic"><img src="{% static "images/main12.jpg" %}" width="100%" alt=""></div>
-                                        <div class="tab_pf1"><h1>海泰时代大厦</h1><h2>待租房源：<span>24</span>个</h2></div>
+                                        <div class="tab_pic"><img style="height:285px;"  src="/{{ buildinglist.4.image1 }}" width="100%" alt=""></div>
+                                        <div class="tab_pf1"><h1>{{ buildinglist.4.title }}</h1><h2>待租房源：<span>{{ buildinglist.4.rent_count }}</span>个</h2></div>
                                     </div>
                                 </a></li>
                             </ul>
                         </div>
-                        <div class="more"><a href="#">read more</a></div>
+                        <div class="more"><a href="/frontsite/buildinglist/t1">read more</a></div>
                     </div>
                 </div>
             </div>
@@ -245,9 +249,10 @@
                     </ul>
                 </div>
                 <div class="bd">
-                	<div class="bd_ul_two">
+
+                    <div class="bd_ul_two">
                     	<ul>
-                        	<li><a href="/frontsite/service">
+                        	<li><a href="/frontsite/service/1">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
@@ -256,109 +261,152 @@
                                 </div>
                                 <div class="tab_text2">装修设计</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/2">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main18_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">工商代账服务</div>
+                                <div class="tab_text2">图文广告</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/3">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main19_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">社保人力资源服务</div>
+                                <div class="tab_text2">包装设计</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/4">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main20_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">商务咨询服务</div>
+                                <div class="tab_text2">视频制作</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/5">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main21_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">办公用品租售服务</div>
+                                <div class="tab_text2">方案撰写</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/6">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main22_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">办公用品租售服务</div>
+                                <div class="tab_text2">网站建设</div>
                             </a></li>
                         </ul>
                     </div>
+
                     <div class="bd_ul_two">
                     	<ul>
-                        	<li><a href="/frontsite/service">
+                        	<li><a href="/frontsite/service/10">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main17_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">装修设计</div>
+                                <div class="tab_text2">工商代办</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/11">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main18_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">工商代账服务</div>
+                                <div class="tab_text2">社保代办</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/12">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main19_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">社保人力资源服务</div>
+                                <div class="tab_text2">人事外包</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/13">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main20_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">商务咨询服务</div>
+                                <div class="tab_text2">版权培训</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/14">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main21.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main21_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">办公用品租售服务</div>
+                                <div class="tab_text2">企业培训</div>
                             </a></li>
-                            <li><a href="javascript:popWindow()">
+                            <li><a href="/frontsite/service/15">
                             	<div class="tab_pic2">
                                 	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
                                     <img src="{% static "images/main22.png" %}" width="100%" alt="" class="pic2">
                                     <img src="{% static "images/main22_1.png" %}" width="100%" alt="" class="pic3">
                                     <i></i>
                                 </div>
-                                <div class="tab_text2">办公用品租售服务</div>
+                                <div class="tab_text2">版权培训</div>
                             </a></li>
+                        </ul>
+                    </div>
+
+                    <div class="bd_ul_two">
+                    	<ul>
+                        	<li><a href="/frontsite/service/19">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main17.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main17_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公用品租售</div>
+                            </a></li>
+                            <li><a href="/frontsite/service/20">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main18.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main18_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">职业工服</div>
+                            </a></li>
+                            <li><a href="/frontsite/service/21">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main19.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main19_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">办公绿植</div>
+                            </a></li>
+                            <li><a href="/frontsite/service/22">
+                            	<div class="tab_pic2">
+                                	<img src="{% static "images/main16.png" %}" width="100%" alt="" class="pic1">
+                                    <img src="{% static "images/main20.png" %}" width="100%" alt="" class="pic2">
+                                    <img src="{% static "images/main20_1.png" %}" width="100%" alt="" class="pic3">
+                                    <i></i>
+                                </div>
+                                <div class="tab_text2">活动布展用品</div>
+                            </a></li>
+
                         </ul>
                     </div>
                 </div>

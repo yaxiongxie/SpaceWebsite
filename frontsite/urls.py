@@ -50,6 +50,7 @@ url(r'^service/(\d+)/$', views.service),
 url(r'^services/', views.services),
 url(r'^mysourse/', views.mysourse),
 url(r'^sendcheckcode/', views.sendcheckcode),
+url(r'^updatePersonal/', views.updatePersonal),
 
 
 

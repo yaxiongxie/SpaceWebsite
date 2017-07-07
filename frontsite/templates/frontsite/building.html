@@ -85,6 +85,7 @@
             </div>
             <div class="fyxq_bd bd" id="tab1">
                 <div class="zbpt_tit"><span>出租房源</span></div>
+            <!--
                 <div class="listings_list_1">
                     <div class="tit_name">面积：</div>
                     <div class="bann_lsit3 m_t_0">
@@ -108,12 +109,13 @@
                         <li><a href="#">5-7万元/㎡-月(1)</a></li>
                     </div>
                 </div>
+                -->
                 <!--20170606--修改开始-->
-                <div class="xq_list">
+                <div class="xq_list" style="height: auto;">
                 	<li class="l1">
                     	<table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
-                              <td width="162"><strong>全部（25套）</strong></td>
+                              <td width="162"><strong>全部（{{ officelist|length }}套）</strong></td>
                               <td width="168" align="center">面积</td>
                               <td width="220" align="center">价钱</td>
                               <td width="374" align="center">特色</td>
@@ -136,7 +138,12 @@
                     {% endfor %}
 
                 </div>
-                <div class="more1"><a>查看所有出租房源</a></div>
+                {% if officelist|length > 5 %}
+                    <div class="more1"><a>查看所有出租房源</a></div>
+                {% else %}
+                    <div class="more1"><a>已加载全部</a></div>
+                {% endif %}
+
             </div>
             <script>
             	$(".more1 a").click(function(){
