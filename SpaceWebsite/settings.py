@@ -84,9 +84,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SpaceWebsite',
-        'USER': 'root',
-        'PASSWORD': 'xyx',
-        'HOST': '127.0.0.1',
+        'USER': 'root_xyx',
+        'PASSWORD': 'Xieyaxiong9',
+        'HOST': '118.31.46.32',
         'PORT': '3306',
     }
 }
