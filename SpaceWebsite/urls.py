@@ -27,5 +27,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^frontsite/', include('frontsite.urls')),
     url(r'^pic_folder/(?P<path>.*)', static.serve, {'document_root':'/Users/xieyaxiong/PycharmProjects/SpaceWebsite/pic_folder'}),
+    url(r'^$', views.index),
 
 ]
