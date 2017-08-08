@@ -32,7 +32,7 @@
                     </div>
                 </label>
                 <label>
-                	<div class="fm_input">
+                	<div class="fm_input" style="display: none">
                         <input type="text" placeholder="请输入验证码" id="checkcode" name="checkcode" class="fm5" value="{{ checkcode }}">
                         <input type="button" id="sendcheckcode" value="发送验证码" class="fm4 submit">
                         <div class="Validform_checktip yzc_ti" id="checkcodet">*&nbsp;验证码输入不正确</div>
@@ -134,13 +134,13 @@
         }else{
              $("#telephonet").css("display","none")
         }
-        if($.trim(checkcode)==''){
-            $("#checkcodet").css("display","block")
-            $("#checkcodet").html("* 请输入验证码")
-            return;
-        }else{
-            $("#checkcodet").css("display","none")
-        }
+{#        if($.trim(checkcode)==''){#}
+{#            $("#checkcodet").css("display","block")#}
+{#            $("#checkcodet").html("* 请输入验证码")#}
+{#            return;#}
+{#        }else{#}
+{#            $("#checkcodet").css("display","none")#}
+{#        }#}
         if($.trim(password)==''){
             $("#passwordt").css("display","block")
             $("#passwordt").html("* 请输入密码")

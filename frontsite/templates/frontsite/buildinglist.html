@@ -117,8 +117,8 @@
                         <div class="text_508">
                             <h1><a href="/frontsite/building/{{ building.id }}">{{ building.title }}</a></h1>
                             <h2>
-                                <span class="ico1">{{ building.address }}</span>
-                                <span class="ico2">{{ building.transport }}</span>
+                                <span class="ico1">{{ building.area_type.country_name }}-{{ building.district_type.district_name }}-{{ building.address }}</span>
+                                <span class="ico2">{{ building.rent_count }}套房源符合条件</span>
                             </h2>
                             <h3 class="rent_area" title="{{ building.rent_area }}">
                                 <!--
@@ -130,7 +130,7 @@
                             </h3>
                         </div>
                         <div class="text_380">
-                            <h1><strong>{{ building.rent_min_price }}~{{ building.rent_max_price }} </strong>/㎡/月万</h1>
+                            <h1><strong>{{ building.rent_min_price }}~{{ building.rent_max_price }} </strong>/㎡/月</h1>
                             <h2><a href="/frontsite/building/{{ building.id }}">马上预约看房</a></h2>
                         </div>
                     </li>
@@ -152,7 +152,9 @@
         var arr=value.split(",");
         var html="";
         for(var i in arr){
-            html=html+"<a href='javascript:void(0)'>"+arr[i]+"㎡</a>";
+            if(arr[i]!=''){
+                html=html+"<a href='javascript:void(0)'>"+arr[i]+"㎡</a>";
+            }
         }
         $(this).html(html)
     })

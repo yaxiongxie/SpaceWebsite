@@ -15,6 +15,10 @@
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
     <link rel="stylesheet" type="text/css" href="{% static "css/viewer.min.css" %}">
     <script type="text/javascript" src="{% static "js/viewer.min.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/flavr/style.css" %}" />
+     <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/flavr.css" %}" />
+    <script type="text/javascript" src="{% static "js/flavr.min.js" %}"></script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -26,15 +30,15 @@
             	<div class="fyxq_pic_l l_614">
                 	<a class="prev" href="javascript:void(0)"></a>
                     <a class="next" href="javascript:void(0)"></a>
-                    <div class="fy_sc">收藏 236</div>
+                    <!--<div class="fy_sc">收藏 236</div>-->
                 	<div class="bd">
                         <ul id="dowebok">
                             <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image1 }}" width="614" height="460"></a></li>
-                            <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image2 }}" width="614" height="460"></a></li>
-                            <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image3 }}" width="614" height="460"></a></li>
-                            <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image4 }}" width="614" height="460"></a></li>
-                            <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image5 }}" width="614" height="460"></a></li>
-                            <li><a href="javascript:;" class="qa_16"><img src="/{{ building.image6 }}" width="614" height="460"></a></li>
+                            {% if building.image2 != 'pic_folder/none.jpg' %}<li><a href="javascript:;" class="qa_16"><img src="/{{ building.image2 }}" width="614" height="460"></a></li>{% endif %}
+                            {% if building.image3 != 'pic_folder/none.jpg' %}<li><a href="javascript:;" class="qa_16"><img src="/{{ building.image3 }}" width="614" height="460"></a></li>{% endif %}
+                            {% if building.image4 != 'pic_folder/none.jpg' %}<li><a href="javascript:;" class="qa_16"><img src="/{{ building.image4 }}" width="614" height="460"></a></li>{% endif %}
+                            {% if building.image5 != 'pic_folder/none.jpg' %}<li><a href="javascript:;" class="qa_16"><img src="/{{ building.image5 }}" width="614" height="460"></a></li>{% endif %}
+                            {% if building.image6 != 'pic_folder/none.jpg' %}<li><a href="javascript:;" class="qa_16"><img src="/{{ building.image6 }}" width="614" height="460"></a></li>{% endif %}
 
                         </ul>
                     </div>
@@ -51,11 +55,12 @@
                         <div class="xq_7">
                             在租房源：{{ building.rent_count }}个<br/>
                             可租面积：{{ building.rent_min_area }}-{{ building.rent_max_area }}m2<br/>
-                            地址：{{ building.address }}<br/>
-                            距离地铁：{{ building.transport }}
+                            地址：{{ building.area_type.country_name }}-{{ building.district_type.district_name }}-{{ building.address }}<br/>
+                            附近地铁：{{ building.subway.subway_name }}
                         </div>
                     </li>
                     <li style=" border-bottom:none;">
+                    <!--
                         {% if request.session.login %}
                             <form action="{{ request.path  }}" method="post" id="form">
                                 {% csrf_token %}
@@ -69,6 +74,16 @@
                         {% else %}
                             <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="/frontsite/login/?returnUrl={{ request.path }}">预约看房</a></div>
                         {% endif %}
+                        -->
+                            <form action="{{ request.path  }}" method="post" id="form">
+                                <input type="hidden" id="param" name="telephone" value="">
+                                {% csrf_token %}
+                            </form>
+                            {% if isAppoint == 'true' %}
+                                <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="javascript:void(0)">已预约</a></div>
+                            {% else %}
+                                <div class="xq_6" style=" margin-left:0; margin-top:10px;"><a href="javascript:submitForm()">预约看房</a></div>
+                            {% endif %}
                     </li>
                 </div>
             </div>
@@ -129,8 +144,8 @@
                             <tr>
                               <td width="162"><a href="/frontsite/office/{{ office.id }}"><img src="/{{ office.image1 }}" width="140" height="104"></a></td>
                               <td width="168" align="center" style=" color:#333333;"><span class="l2_1">{{ office.areaNum }}</span>㎡</td>
-                              <td width="220" align="center" style=" color:#666666;"><span class="l2_2"><strong style=" color:#000000;">{{ office.rent_price }}</strong> /㎡/月万</span></td>
-                              <td width="374"><span class="l2_3">{{ office.title }}</span></td>
+                              <td width="220" align="center" style=" color:#666666;"><span class="l2_2"><strong style=" color:#000000;">{{ office.rent_price }}</strong> /㎡/月</span></td>
+                              <td width="374"><span class="l2_3">{{ office.information }}</span></td>
                               <td width="196"><a href="/frontsite/office/{{ office.id }}" class="more2">查看详情</a></td>
                             </tr>
                          </table>
@@ -156,12 +171,14 @@
                 <div class="zbpt_tit"><span>基本信息</span></div>
                 <div class="fyxq_cont">
                     <p>{{ building.information }}</p>
+                    <!--
                     <p style=" margin-top:22px;"><span style=" float:left; width:66px; height:21px; line-height:20px; color:#fff; font-size:14px; font-weight:bold; background:#090909; text-align:center;">房源特色</span></p><br>
                     <p>{{ building.information_special }}</p>
                     <p><span style=" float:left; height:1px; width:100%; border-bottom:1px dashed #cccccc; margin-top:12px;"></span></p>
                     <p style=" float:left; width:100%; margin-top:15px;"><span style=" float:left; width:66px; height:21px; line-height:20px; color:#fff; font-size:14px; font-weight:bold; background:#090909; text-align:center;">房源配套</span></p><br>
                     <p>{{ building.information_match }}</p>
                     <p><span style=" float:left; height:1px; width:100%; border-bottom:1px dashed #cccccc; margin-top:12px;"></span></p>
+                    -->
                 </div>
             </div>
             <div class="zbpt bd" id="tab4">
@@ -184,11 +201,11 @@
             <ul>
                 {% for building in buildinglist %}
                     <li class=""><a href="/frontsite/building/{{ building.id }}">
-                        <div class="tab_pic"><img src="/{{ building.image1 }}" width="100%" alt=""></div>
+                        <div class="tab_pic"><img src="/{{ building.image1 }}" width="100%" height="285px;" alt=""></div>
                         <div class="tab_pf2">
                             <h1>{{ building.title }}</h1>
                             <p>{{ building.address }}</p>
-                            <h2><span>待租房源：{{ building.rent_count }}个</span><time>210</time></h2>
+                            <h2><span>待租房源：{{ building.rent_count }}个</span><!--<time>210</time>--></h2>
                         </div>
                     </a></li>
                 {% endfor %}
@@ -301,7 +318,19 @@ $(document).ready(function(){
 <script type="text/javascript" src="{% static "js/swiper.min.js" %}"></script>
 <script>
     function submitForm(){
-        $("#form").submit()
+{#        $("#form").submit()#}
+         new $.flavr().prompt('', '请输入联系电话', function( $container, $prompt ){
+                var value=$prompt.val();
+                if(value.length!=11){
+                    new $.flavr('手机号输入错误，请重新输入!');
+                    return false;
+                }
+                $("#param").attr("value",value)
+                $("#form").submit()
+                return false;
+            }, function(){
+
+            });
     }
     var appoint="{{ appoint }}"
     if(appoint!=""){

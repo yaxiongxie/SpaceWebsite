@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.db import models
 
 # Create your models here.
-from commonData.models import Area,Subway,Status,NewType,District,SourceType
+from commonData.models import Area,Subway,Status,NewType,District,SourceType,DecorateDegree
 
 
 class OfficeBuildingList(models.Model):
@@ -24,11 +24,12 @@ class OfficeBuildingList(models.Model):
     information = models.TextField('房源信息',max_length=2000,null=True,blank=True)
     information_match=models.TextField('房源配套',max_length=500,null=True,blank=True)
     building_type= models.ForeignKey(SourceType,verbose_name='类型',default=1)
-    buildTime = models.DateTimeField('大厦建成时间')
+    buildTime = models.DateTimeField('大厦建成时间',null=True,blank=True)
     createTime = models.DateTimeField('信息发布时间',auto_now=True)
 
     location = models.CharField('地图坐标',max_length=200, default='0.0',null=True,blank=True)
     status= models.ForeignKey(Status,verbose_name='状态')
+    type=models.IntegerField('类型',default=1)
 
     image1 = models.ImageField('图片1',upload_to='pic_folder/', default='pic_folder/None/no-img.jpg',null=True,blank=True)
     image2 = models.ImageField('图片2',upload_to='pic_folder/', default='pic_folder/None/no-img.jpg',null=True,blank=True)
@@ -53,6 +54,11 @@ class OfficeList(models.Model):
     areaNum = models.IntegerField('面积',default=0)
     floorNum = models.IntegerField('楼层',default=0)
     information = models.TextField('房源信息',max_length=2000,null=True,blank=True)
+
+    buildNum = models.CharField('楼栋号', max_length=200,default='')
+    doorNum = models.CharField('门牌号', max_length=200,default='')
+
+    decorate=models.ForeignKey(DecorateDegree,verbose_name='装修程序',default=1)
 
     ownerName=models.CharField('房东姓名',max_length=200,default='',blank=True,null=True)
     ownerTelephone = models.CharField('房东联系电话', max_length=200,default='',blank=True,null=True)

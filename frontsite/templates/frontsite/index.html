@@ -76,9 +76,11 @@
         <div class="bann_tab">
             <div class="hd">
                 <ul>
+                    <!--
                     <li>写字楼</li>
                     <li>商铺</li>
                     <li>住宅</li>
+                    -->
                 </ul>
             </div>
             <div class="bd">
@@ -107,11 +109,13 @@
                         <li><a href="/frontsite/buildinglist/a7">1000㎡ 以上</a></li>
                     </div>
                     <div class="bann_so">
-                        <div class="so">
-                            <input type="text" class="Search" id="searchText" placeholder="">
+                        <div class="so" style="width:100%">
+                            <input type="text" class="Search" style="width: 70%" id="searchText" placeholder="">
                             <input type="button" value="开始搜索" id="searchButton" class="sear_sub">
                         </div>
+                        <!--
                         <div class="Map_search"><a href="javascript:popWindow()">地图搜索</a></div>
+                        -->
                     </div>
                 </ul>
             </div>
@@ -238,7 +242,7 @@
     	<div class="w_1200">
         	<div class="home_tit">
                 <h1><img src="{% static "images/main2.png" %}" width="1200" height="38" alt=""></h1>
-                <div class="more"><a href="/frontsite/services">read more</a></div>
+
             </div>
             <div class="home_tab home_tab_two">
             	<div class="hd">
@@ -366,6 +370,7 @@
                                 <div class="tab_text2">版权培训</div>
                             </a></li>
                         </ul>
+
                     </div>
 
                     <div class="bd_ul_two">
@@ -411,6 +416,7 @@
                     </div>
                 </div>
             </div>
+            <div class="more"><a href="/frontsite/services">read more</a></div>
             <script>
 				jQuery(".home_tab_two").slide({trigger:"click",pnLoop:false});
 			</script>

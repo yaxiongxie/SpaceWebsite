@@ -67,7 +67,7 @@ def building(request,id):
     if request.method == "POST":
         order=Order()
         order.title=build.title
-        order.telephone=request.session['login']
+        order.telephone=request.POST["telephone"]
         order.officeBuilding_id=build.id
         order.orderid=uuid.uuid1()
         order.status_id=3
@@ -85,7 +85,7 @@ def building(request,id):
         return render(request, 'frontsite/building.html', {"building":build,"officelist":officelist,"buildinglist":buildinglist,"isAppoint":isAppoint})
 
 def buildinglist(request,*args,**kargs):
-    print kargs
+    # print kargs
     for arg in kargs:
         if (kargs[arg] != None) & (arg != "search"):
             kargs[arg]=int(kargs[arg])
@@ -288,8 +288,32 @@ def oa(request):
     return render(request, 'frontsite/oa.html', {})
 
 def office(request,id):
+    buildinglist = OfficeBuildingList.objects.all()[0:4]
     office = OfficeList.objects.get(pk=id)
-    return render(request, 'frontsite/office.html', {"office":office})
+    build=office.officeBuilding;
+    isAppoint = "false"
+    if request.method == "POST":
+        order = Order()
+        order.title = build.title
+        order.telephone = request.POST["telephone"]
+        order.officeBuilding_id = build.id
+        order.orderid = uuid.uuid1()
+        order.status_id = 3
+        order.save()
+        isAppoint = "true"
+        return render(request, 'frontsite/office.html', {"office":office,"buildinglist":buildinglist, "appoint": "success",
+                       "isAppoint": isAppoint})
+
+    else:
+        if request.session.has_key("login"):
+            count = Order.objects.filter(officeBuilding_id=build.id).filter(telephone=request.session['login']).filter(
+                buildingOrService='building').count()
+            if (count > 0):
+                isAppoint = "true"
+        return render(request, 'frontsite/office.html', {"office":office,"buildinglist":buildinglist,
+                       "isAppoint": isAppoint})
+
+    return render(request, 'frontsite/office.html', {"office":office,"buildinglist":buildinglist})
 
 def orders(request,type):
     if request.session.has_key('login'):
@@ -326,7 +350,8 @@ def registe(request):
         checkcode=request.POST.get("checkcode")
         password=request.POST.get("password")
         map={"telephone":telephone,"checkcode":checkcode,"password":password,"returnUrl":request.GET["returnUrl"]}
-        if request.session.has_key("checkcode") & (request.session["checkcode"]== checkcode):
+        # if request.session.has_key("checkcode") & (request.session["checkcode"]== checkcode):
+        if True:
             q=Account.objects.filter(telephone=telephone)
             if q.count()==1:
                 map["telephoneError"]="error"

@@ -13,6 +13,10 @@
 <link rel="stylesheet" type="text/css" href="{% static "style.css" %}">
 <script type="text/javascript" src="{% static "js/jquery-1.11.2.min.js" %}"></script>
 <script type="text/javascript" src="{% static "js/jquery.SuperSlide.2.1.1.js" %}"></script>
+    <link rel="stylesheet" type="text/css" href="{% static "css/flavr/style.css" %}" />
+     <link rel="stylesheet" type="text/css" href="{% static "css/animate.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/flavr.css" %}" />
+    <script type="text/javascript" src="{% static "js/flavr.min.js" %}"></script>
 </head>
 <body>
 {% include "frontsite/head.html" %}
@@ -31,16 +35,17 @@
                 <div class="fyxq_pic_l">
                 	<a class="prev" href="javascript:void(0)"></a>
                     <a class="next" href="javascript:void(0)"></a>
-                    <div class="fy_sc">收藏 236</div>
+                    <!--<div class="fy_sc">收藏 236</div>-->
                 	<div class="fy_86"><img src="{% static "images/img12.png" %}" width="86" height="83"></div>
                     <div class="bd">
                         <ul>
                             <li><img src="/{{ office.image1 }}" width="750" height="562"></li>
-                            <li><img src="/{{ office.image2 }}" width="750" height="562"></li>
-                            <li><img src="/{{ office.image3 }}" width="750" height="562"></li>
-                            <li><img src="/{{ office.image4 }}" width="750" height="562"></li>
-                            <li><img src="/{{ office.image5 }}" width="750" height="562"></li>
-                            <li><img src="/{{ office.image6 }}" width="750" height="562"></li>
+                            {% if office.image2 != 'pic_folder/none.jpg' %}<li><img src="/{{ office.image2 }}" width="750" height="562"></li>{% endif %}
+                            {% if office.image3 != 'pic_folder/none.jpg' %}<li><img src="/{{ office.image3 }}" width="750" height="562"></li>{% endif %}
+                            {% if office.image4 != 'pic_folder/none.jpg' %}<li><img src="/{{ office.image4 }}" width="750" height="562"></li>{% endif %}
+                            {% if office.image5 != 'pic_folder/none.jpg' %}<li><img src="/{{ office.image5 }}" width="750" height="562"></li>{% endif %}
+                            {% if office.image6 != 'pic_folder/none.jpg' %}<li><img src="/{{ office.image6 }}" width="750" height="562"></li>{% endif %}
+
                         </ul>
                     </div>
                 </div>
@@ -61,11 +66,11 @@
                     <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
                 </div>
                 <div class="fyxq_pic_r1">
-                    <li>所属区域： {{ office.officeBuilding.area_type.country_name }}</li>
+                    <li>所属区域： {{ office.officeBuilding.area_type.country_name }}-{{ office.officeBuilding.district_type.district_name }}</li>
                     <li>楼盘地址： {{ office.officeBuilding.address }}</li>
                     <li>建筑面积： {{ office.areaNum }}㎡</li>
-                    <li>楼 层： {{ office.floorNum }}层</li>
-                    <li>附近交通： {{ office.officeBuilding.transport }}</li>
+                    <li>租金： {{ office.rent_price }}/㎡/月</li>
+                    <li>装修情况： {{ office.decorate.decorate_name }}</li>
                 </div>
                 <div class="fyxq_pic_r2">
                 	<div class="w_0100">
@@ -76,8 +81,16 @@
                         </div>
                     </div>
                     <div class="w_0100" style=" margin-top:32px;">
-                    	<div class="xq_5"><strong>{{ office.officeBuilding.rent_min_price }}~{{ office.officeBuilding.rent_max_price }}</strong><br/><span>/㎡/月</span></div>
-                        <div class="xq_6"><a href="#">预约看房</a></div>
+                    <form action="{{ request.path  }}" method="post" id="form">
+                                <input type="hidden" id="param" name="telephone" value="">
+                                {% csrf_token %}
+                            </form>
+                    	<div class="xq_5"><strong>{{ office.rent_price }}</strong><span>/㎡/月</span></div>
+                        {% if isAppoint == 'true' %}
+                            <div class="xq_6"><a href="javascript:void(0)">已预约</a></div>
+                        {% else %}
+                            <div class="xq_6"><a href="javascript:submitForm()">预约看房</a></div>
+                         {% endif %}
                     </div>
                 </div>
             </div>
@@ -87,9 +100,10 @@
             	<ul>
                 	<!--<li class="hd"><a href="javascript:scrollTo('#tab3',-50,300)">房源相册</a></li>-->
                     <li class="hd on"><a href="javascript:scrollTo('#tab1',-50,300)">房源信息</a></li>
-                    <li class="hd"><a href="javascript:scrollTo('#tab2',-50,300)">房源描述</a></li>
+                    <!--<li class="hd"><a href="javascript:scrollTo('#tab2',-50,300)">房源描述</a></li>-->
                     <li class="hd"><a href="javascript:scrollTo('#tab4',-50,300)">小区周边</a></li>
-                    <li class="hd"><a href="javascript:scrollTo('#tab5',-50,300)">月供参考</a></li>
+                    <li class="hd"><a href="javascript:scrollTo('#tab5',-50,300)">附近房源</a></li>
+                    <!--<li class="hd"><a href="javascript:scrollTo('#tab5',-50,300)">月供参考</a></li>-->
                 </ul>
             </div>
             <!--
@@ -135,6 +149,8 @@
             <div class="fyxq_bd bd" id="tab1" style=" margin-top:10px;">
                 <div class="zbpt_tit"><span>房源信息</span></div>
                 <div class="fyxq_cont">
+                    <p>{{ office.information }}</p>
+                    <!--
                     <p>东亿国际传媒产业园是北京市重点支持的文化产业项目，由北京中视东升文化传媒有限公司开发建设，占地130亩，规划建设面积近30万平方米。园区地处高碑店地区高井村，东距中国传媒
 大学只有1.6公里，与中央电视台、北京电视台、凤凰卫视以及北京CBD核心区不到8公里，拥有包括办公楼、公寓楼、酒店、传媒培训基地、演播厅、传媒文化产品交易平台等功能齐全的
 设备设施</p>
@@ -144,8 +160,10 @@
                     <p style=" float:left; width:100%; margin-top:15px;"><span style=" float:left; width:66px; height:21px; line-height:20px; color:#fff; font-size:14px; font-weight:bold; background:#090909; text-align:center;">房源配套</span></p><br/>
                     <p>公交总站、23号永和地铁站、麦当劳、一步跨境电商等</p>
                     <p><span style=" float:left; height:1px; width:100%; border-bottom:1px dashed #cccccc; margin-top:12px;"></span></p>
+                    -->
                 </div>
             </div>
+            <!--
             <div class="fyxq_bd bd" id="tab2" style=" margin-top:10px;">
                 <div class="zbpt_tit"><span>房源描述</span></div>
                 <div class="fyxq_cont">
@@ -155,6 +173,7 @@
 2：房源信息绝对真实有效！该房屋满五年是唯一住宅！室内照片真实有效！该社区地理位置优越，这里环境幽雅，人文气息浓厚，紧邻上千平米的公园，空气清新，非常舒适！房间内采光好，南北通透，干净整洁，布局合理！通风采光极佳！真是难得的精品房源！小区环境幽雅，设施齐全，非常适合居住！周边设施完善，紧邻各大超市，商场等。
                 </div>
             </div>
+            -->
             <div class="zbpt bd" id="tab4">
                 <div class="zbpt_tit"><span>周边配套</span></div>
                 <div class="zbpt_list">
@@ -168,7 +187,7 @@
                 </div>
                 <div id="bdmap1">加载中...</div>
             </div>
-            <div class="fyxq_bd bd" id="tab5" style=" margin-top:10px;">
+            <!--<div class="fyxq_bd bd" id="tab5" style=" margin-top:10px;">
                 <div class="zbpt_tit"><span>月供参考</span></div>
                 <div class="fyxq_cont">
                    还款系数是指贷款1万元,每个月所要还的月供是多少,这个数就是还款系数。主要是用于买房者办理按揭贷款是参考所用。<br/><br/>
@@ -179,8 +198,28 @@
                     计算原则：银行从每月月供款中，先收剩余本金利息，后收本金；利息在月供款中的比例中随剩余本金的减少而降低，本金在月供款中的比例因增加而升高，但月供总额保持不变。
                 </div>
             </div>
+            -->
         </div>
+        <div class="zbpt bd" id="tab5">
+                <div class="zbpt_tit"><span>附近房源</span></div>
+                    <div class="tab_list_one tab_list_two">
+    <ul>
+                {% for building in buildinglist %}
+                    <li class="" style="width:273px;"><a href="/frontsite/building/{{ building.id }}">
+                        <div class="tab_pic"><img src="/{{ building.image1 }}" width="100%" height="273px;" alt=""></div>
+                        <div class="tab_pf2">
+                            <h1>{{ building.title }}</h1>
+                            <p>{{ building.address }}</p>
+                            <h2><span>待租房源：{{ building.rent_count }}个</span><!--<time>210</time>--></h2>
+                        </div>
+                    </a></li>
+                {% endfor %}
+
+            </ul>
+                    </div>
+            </div>
         <div class="fjfyzs"></div>
+
         <!--
     	<div class="fjfyzs"><span>附近房源展示</span></div>
     	<div class="tab_list_one tab_list_two">
@@ -225,6 +264,33 @@
 {% include "frontsite/foot.html" %}
 <script type="text/javascript" src="{%  static "js/maodian.0.2.js" %}"></script>
 <script>
+    function submitForm(){
+{#        $("#form").submit()#}
+         new $.flavr().prompt('', '请输入联系电话', function( $container, $prompt ){
+                var value=$prompt.val();
+                if(value.length!=11){
+                    new $.flavr('手机号码输入错误，请重新输入!');
+                    return false;
+                }
+                $("#param").attr("value",value)
+                $("#form").submit()
+                return false;
+            }, function(){
+
+            });
+    }
+    var appoint="{{ appoint }}"
+    if(appoint!=""){
+         $('#messageBox').dialogBox({
+						hasClose: true,
+						hasMask: true,
+                        autoHide: true,
+						time: 3000,
+						title: '温馨提示',
+						content: '预约成功，我们将会尽快为您处理'
+					});
+    }
+
 	
   $(function(){
 	$(window).scroll(function(){
@@ -240,7 +306,7 @@
   });
 </script>
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&amp;ak=0jz7CuaQAxFkoH7XumKlrhk3"></script>
-<script type="text/javascript" src="{% static "frontsite/baidumap.js" %}"
+<script type="text/javascript" src="{% static "frontsite/baidumap.js" %}"></script>
 <script>
 	maodian('.hd', '.bd', 500);
 </script>
