@@ -20,6 +20,7 @@ class OfficeBuildingList(models.Model):
     rent_max_area=models.IntegerField('最大可租面积',default=1)
     rent_min_area=models.IntegerField('最小可租面积',default=1)
     floor_count=models.IntegerField('总楼层',default=1)
+    order_int = models.IntegerField('排序值', default=1)
     rent_area=models.CharField('可租面积（多个用逗号连接）',max_length=200,null=True,blank=True)
     information = models.TextField('房源信息',max_length=2000,null=True,blank=True)
     information_match=models.TextField('房源配套',max_length=500,null=True,blank=True)

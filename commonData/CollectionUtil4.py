@@ -101,7 +101,7 @@ def getMap(url):
     #     print '开发商：' + map.get('开发商：')
     # if map.has_key('物业公司：'):
     #     print '物业公司：' + map.get('物业公司：')
-    return {"images":list};
+    return list;
 # count=0
 #
 # book = Workbook()

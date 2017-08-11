@@ -55,10 +55,11 @@ for j in range(1, 11):
             if htag.a:
                 url = "http://www.haozu.com" + htag.a["href"]
                 attMap = CollectionUtil4.getMap(url)
-                attArr.append(attMap)
+                # attArr.append(attMap)
                 titleArr.append(htag.a.string.strip())
                 print attMap
-                r.sadd('building_' + htag.a.string.strip(), attMap.get("images"))
+                for li in attMap:
+                    r.sadd('buildings_' + htag.a.string.strip(), li)
         # addressarr = soup.find_all('p')
         # for aa in addressarr:
         #     aaarr = aa.contents
